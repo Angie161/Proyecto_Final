@@ -28,6 +28,7 @@ El mausoleo.
 * Aqui la muerte puede decidir enviar demonios al mundo terrenal, subir su poder, reparar el puente  y reparar o mejorar la barca para enviar a los demonios.
   
 ### 💻 Interfaz Gráfica (Boceto)
+![WhatsApp Image 2023-11-08 at 15 08 58](https://github.com/Angie161/Proyecto_Final/assets/146099765/26933464-6905-48a8-a019-61af1a00fd22)
 
 
 ### 📍Casos de Uso
