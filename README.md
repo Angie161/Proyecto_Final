@@ -31,10 +31,15 @@ El mausoleo.
 
 
 ### 📍Casos de Uso
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/57e5f025-1670-4aa5-bc6d-625873182e6a)
+
 
 ### 📝 UML (Boceto)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/defcab0b-4b8f-4450-afef-3fbecd79c2cc)
+
 
 ### 🔍Por implementar (Consultas)
+Ninguna consulta de momento.
 
 
 ### 🤝🏻 Contribuidores
