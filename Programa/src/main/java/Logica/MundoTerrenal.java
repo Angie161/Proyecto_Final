@@ -40,5 +40,8 @@ public class MundoTerrenal {
         if(probDestruccionBarca==111 && funcional==true){
             return false;
         }
+        else {
+            return true;
+        }
     }
 }
