@@ -1,14 +1,15 @@
 package Logica;
 
+import java.awt.*;
+
 public abstract class Angel extends Almas{
     protected int rango;
-    protected boolean enElLimbo;
 
-    public Angel(int bondad, int rango){
+    public Angel(int bondad, int rango, Color color){
         super();
-        enElLimbo=true;
         this.bondad=bondad;
         this.rango=rango;
+        this.color=color;
     }
 
     @Override
