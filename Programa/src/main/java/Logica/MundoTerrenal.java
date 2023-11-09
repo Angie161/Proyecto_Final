@@ -100,7 +100,7 @@ public class MundoTerrenal {
      * @param probDestruccionBarca entero con un número al azar.
      * @param barca la barca que se quiere destruir.
      */
-    public void destruccionBarca(int probDestruccionBarca, Barca barca) {
+    private void destruccionBarca(int probDestruccionBarca, Barca barca) {
         if(probDestruccionBarca == 111 && barca.getFuncional() == true){
             barca.setFuncional(false);
         }

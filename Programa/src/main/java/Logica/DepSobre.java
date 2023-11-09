@@ -49,7 +49,7 @@ public class DepSobre<Almas> {
      *
      * @return Objeto genérico obtenido del contenedor.
      */
-    public Almas see(){
-        return contSobre.get(0);
+    public Almas see(int cual){
+        return contSobre.get(cual);
     }
 }

@@ -8,7 +8,6 @@ import java.util.Random;
  */
 public abstract class Demonio extends Almas {
     protected int rango;
-    protected boolean enElLimbo;
 
     /**
      * Constructor personalizado para poder asignar las características a los demonios.
@@ -19,7 +18,7 @@ public abstract class Demonio extends Almas {
      */
     public Demonio(int maldad, int rango, Color color) {
         super();
-        this.enElLimbo = true;
+
         this.maldad    = maldad;
         this.rango     = rango;
         this.color     = color;
@@ -30,11 +29,16 @@ public abstract class Demonio extends Almas {
      *
      * @return el valor del demonio.
      */
-    @Override
+
     public int calcValor() {
         int    colores    = color.getBlue() + color.getRed() + color.getGreen();
         double random     = ((new Random()).nextDouble(0.4) + 0.4);
         double valorFinal = random * Math.pow(rango,1.5)*(colores + maldad);
         return (int) valorFinal;
+    }
+
+    public int matar() {
+        double asesinatos = maldad * Math.pow(rango,1.5);
+        return (int) asesinatos;
     }
 }

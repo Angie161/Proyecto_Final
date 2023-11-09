@@ -10,8 +10,8 @@ public class Arcangel extends Angel {
     /**
      * Constructor que utiliza el de la superclase.
      *
-     * @param bondad la bondad del ángel.
-     * @param color el color del ángel.
+     * @param bondad la bondad del arcángel.
+     * @param color el color del arcángel.
      */
     public Arcangel(int bondad, Color color) {
         super(bondad, 1, color);
