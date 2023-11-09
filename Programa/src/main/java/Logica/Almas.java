@@ -2,29 +2,54 @@ package Logica;
 
 import java.awt.*;
 
+/**
+ * Esta es la superclase de todas las almas del juego y contiene las variables base y métodos básicos.
+ */
 public abstract class Almas {
     protected int bondad;
     protected int maldad;
     protected Color color;
 
-    public Almas(){
-        bondad=0;
-        maldad=0;
-        color=null;
+    /**
+     * Este es el constructor en el que inicializamos las variables base.
+     */
+    public Almas() {
+        bondad = 0;
+        maldad = 0;
+        color  = null;
     }
 
-    public int getBondad(){
+    /**
+     * Getter de la variable bondad.
+     *
+     * @return el valor de la variable bondad.
+     */
+    public int getBondad() {
         return bondad;
     }
 
-    public int getMaldad(){
+    /**
+     * Getter de la variable maldad.
+     *
+     * @return el valor de la variable maldad.
+     */
+    public int getMaldad() {
         return maldad;
     }
 
-    public Color getColor(){
+    /**
+     * Getter del color del alma.
+     *
+     * @return  el color del alma como una instancia de la clase Color.
+     */
+    public Color getColor() {
         return color;
     }
 
-    //Consultar al Walter si trabajaremos con enteros o doubles
+    /**
+     * Método para calcular el valor.
+     *
+     * @return el valor que va a tomar el objeto.
+     */
     public abstract int calcValor();
 }
