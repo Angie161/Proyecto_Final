@@ -30,10 +30,10 @@ public abstract class Demonio extends Almas {
      * @return el valor del demonio.
      */
 
-    public int calcValor() {
-        int    colores    = color.getBlue() + color.getRed() + color.getGreen();
-        double random     = ((new Random()).nextDouble(0.4) + 0.4);
-        double valorFinal = random * Math.pow(rango,1.5)*(colores + maldad);
+    public int calcValor(LaMuerte laMuerte) {
+        double colores    = (color.getBlue() + color.getRed() + color.getGreen()) / 255;
+        double random     = ((new Random()).nextDouble(0.4) + 0.8);
+        double valorFinal = Math.pow(laMuerte.getPoder(),5) * random * Math.pow(rango,1.5) * (colores + maldad);
         return (int) valorFinal;
     }
 

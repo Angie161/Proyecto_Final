@@ -28,10 +28,10 @@ public abstract class Angel extends Almas {
      *
      * @return el valor del ángel.
      */
-    public int calcValor() {
-        int    colores    = color.getBlue() + color.getRed() + color.getGreen();
+    public int calcValor(LaMuerte laMuerte) {
+        double colores    = (color.getBlue() + color.getRed() + color.getGreen()) / 255;
         double random     = ((new Random()).nextDouble(0.4) + 0.8);
-        double valorFinal = random*Math.pow(rango,1.5)*(colores + bondad);
+        double valorFinal = Math.pow(laMuerte.getPoder(),5) * random * Math.pow(rango,1.5) * (colores + bondad);
         return (int) valorFinal;
     }
 }
