@@ -70,6 +70,15 @@ public class MundoTerrenal {
     }
 
     /**
+     * Getter para la variable capacidad.
+     *
+     * @return la cantidad que se tiene actualmente.
+     */
+    public int getCapacidad() {
+        return capacidad;
+    }
+
+    /**
      * La cantidad de gente que muere en el mundo terrenal.
      *
      * @return la cantidad de gente que murió.
