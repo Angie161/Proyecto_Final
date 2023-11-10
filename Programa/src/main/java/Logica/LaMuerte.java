@@ -13,7 +13,7 @@ public class LaMuerte {
      */
     public LaMuerte() {
         fragAlmas = 0;
-        poder     = 0;
+        poder     = 1;
 
         depSobre    = new DepSobre[3];
         depSobre[0] = new DepSobre<Persona>();
