@@ -9,15 +9,15 @@ Esto es un videojuego donde la muerte, el jugador, se encuentra en el limbo y es
 Las almas de los demonios y ángeles pueden ser empujadas, y de esa manera, hacerles caer al infierno para recibir fragmentos del almas acambio. Tambien, en el mausoleo, se pueden enviar demonios al mundo terrenal con la ayuda de ángeles, lo que alterará la cantidad de muertes que suceden allí. Las almas de los demonios, ángeles y personas se pueden guardar en los contenedores sobrenaturales ya que desaparecen despues de un tiempo si no lo haces. Y por último, estas se pueden fusionar en el cielo para crear nuevas almas más o menos valiosas.
 
 La muerte.
-* Es el jugador y tiene asociada una cantidad de fragmentos de almas y una fuerza ,lo que le permite empujar a las almas más rápido.
+* Es el jugador y tiene asociada una cantidad de fragmentos de almas y un poder, lo que le permite desbloquear mejoras.
 
 Las almas de los ángeles.
 
-* Aparecen en el limbo, hay varios tipos,se pueden empujar al infierno lo que entregará fragmentos de almas a la muerte dependiendo del tipo que sean, la bondad que tengan y el color de sus aureolas. Son más dificiles de empujar mientras más bondad tengan. Por ultimo se pueden usar en el cielo para conseguir almas de personas fusionandola con una de una persona o una de un demonio.
+* Aparecen en el limbo, hay varios tipos,se pueden empujar al infierno lo que entregará fragmentos de almas a la muerte dependiendo del tipo que sean, la bondad que tengan y el color de sus aureolas. Por ultimo se pueden usar en el cielo para conseguir almas de personas fusionandola con una de una persona o una de un demonio.
 
 Las almas de los demonios.
 
-* Aparecen en el limbo, hay varios tipos,se pueden empujar al infierno lo que entregará fragmentos de almas a la muerte dependiendo del tipo que sean, la maldad que tengan y el color de sus cuernitos. Son más dificiles de empujar mientras más maldad tengan. Por ultimo se pueden usar en el cielo para conseguir almas de personas fusionandola con una de una persona o una de un ángel.
+* Aparecen en el limbo, hay varios tipos,se pueden empujar al infierno lo que entregará fragmentos de almas a la muerte dependiendo del tipo que sean, la maldad que tengan y el color de sus cuernitos. Por ultimo se pueden usar en el cielo para conseguir almas de personas fusionandola con una de una persona o una de un ángel.
 
 Las almas de las personas.
 
