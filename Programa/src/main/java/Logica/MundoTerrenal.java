@@ -78,6 +78,11 @@ public class MundoTerrenal {
         return capacidad;
     }
 
+    /**
+     * Método para obtener la cantidad de demonios que se han enviado al mundo terrenal.
+     *
+     * @return la cantidad de demonios que hay actualmente en el mundo terrenal.
+     */
     public int getCantDemEnviados() {
         return demEnviados.getTam();
     }
