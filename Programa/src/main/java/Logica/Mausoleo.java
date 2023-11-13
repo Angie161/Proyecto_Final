@@ -24,8 +24,14 @@ public class Mausoleo {
      * @param demonio       el que será enviado.
      * @throws SinCapPermitidaException si es que no se puede enviar el demonio.
      */
-    public void enviarDemonio(MundoTerrenal mundoTerrenal, Demonio demonio) throws SinCapPermitidaException {
-        barca.traslado(mundoTerrenal, demonio);
+    public void enviarDemonio(MundoTerrenal mundoTerrenal, Demonio demonio) throws SinCapPermitidaException, BarcaRotaException {
+        try {
+            barca.traslado(mundoTerrenal, demonio);
+        }catch (BarcaRotaException b){
+            throw b;
+        }catch (SinCapPermitidaException s){
+            throw s;
+        }
     }
 
     /**
@@ -45,7 +51,7 @@ public class Mausoleo {
     }
 
     /**
-     * Método para reparar el puente si es q esta roto.
+     * Método para reparar el puente si es que está roto.
      *
      * @param puente el puente que se quiere reparar.
      */

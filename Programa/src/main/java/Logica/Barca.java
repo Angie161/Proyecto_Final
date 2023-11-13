@@ -1,7 +1,7 @@
 package Logica;
 
 /**
- * Esta clase representa la barca que usan lso demonios para ir del limbo al mundo terrenal.
+ * Esta clase representa la barca que usan los demonios para ir del limbo al mundo terrenal.
  */
 public class Barca {
     private boolean funcional;
@@ -10,7 +10,7 @@ public class Barca {
      * Constructor personalizado en el que se inicializan las variables.
      */
     public Barca() {
-        funcional = true;
+        funcional = false;
     }
 
     /**
@@ -20,8 +20,14 @@ public class Barca {
      * @param demonio       el demonio que quiere ser trasladado.
      * @throws SinCapPermitidaException  la excepción que puede saltar si es que no se permiten más demonios.
      */
-    public void traslado(MundoTerrenal mundoTerrenal, Demonio demonio) throws SinCapPermitidaException {
-        mundoTerrenal.agregarDemonio(demonio);
+    public void traslado(MundoTerrenal mundoTerrenal, Demonio demonio) throws SinCapPermitidaException, BarcaRotaException {
+        if(funcional==false){
+            System.out.println("No puedes enviar demonios, tu barca está rota");
+            throw new BarcaRotaException();
+        }
+        else {
+            mundoTerrenal.agregarDemonio(demonio);
+        }
     }
 
     /**
