@@ -6,7 +6,7 @@ package Logica;
 public class LaMuerte {
     private int fragAlmas;
     private int poder;
-    private DepSobre[] depSobre;
+    private DepSobre[] depSobre = new DepSobre[3];;
 
     /**
      * Constructor personalizado en el que se inicializan las variables.
@@ -15,7 +15,6 @@ public class LaMuerte {
         fragAlmas = 0;
         poder     = 1;
 
-        depSobre    = new DepSobre[3];
         depSobre[0] = new DepSobre<Persona>();
         depSobre[1] = new DepSobre<Demonio>();
         depSobre[2] = new DepSobre<Angel>();
