@@ -6,6 +6,11 @@ import java.util.Random;
  * Esta clase es utilizada para que aleatoriamente suceda un terremoto y destruya el puente.
  */
 public class Terremoto {
+    /**
+     *
+     *
+     * @param puente afectado por el terremoto.
+     */
     public Terremoto(Puente puente) {
         terremoto(puente);
     }
@@ -18,7 +23,7 @@ public class Terremoto {
             @Override
             public void run() {
                 while(true) {
-                    if((new Random()).nextInt(1000) == 1) {
+                    if((new Random()).nextInt(1000) == 1 && puente.getFuncional()==true) {
                         puente.setFuncional(false);
                     }
                     try {

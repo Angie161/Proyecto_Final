@@ -15,7 +15,7 @@ public class DepSobre<Almas> {
     /**
      * Método para ver la cantidad de almas que hay adentro.
      *
-     * @return el largo del deposito.
+     * @return el largo del depósito.
      */
     public int getTam() {
         return contSobre.size();

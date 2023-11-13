@@ -97,7 +97,7 @@ public class MundoTerrenal {
      * @param probExorcismo el valor aleatorio que se comparará.
      */
     private void exorcizar(int probExorcismo) {
-        //Valor de probabilidad provicional (333 es el número Sagrado)
+        //Valor de probabilidad provisional (333 es el número Sagrado)
         if(probExorcismo == 333 && demEnviados.getTam() != 0){
             demEnviados.get();
         }
