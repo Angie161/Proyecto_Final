@@ -78,6 +78,10 @@ public class MundoTerrenal {
         return capacidad;
     }
 
+    public int getCantDemEnviados() {
+        return demEnviados.getTam();
+    }
+
     /**
      * La cantidad de gente que muere en el mundo terrenal.
      *
