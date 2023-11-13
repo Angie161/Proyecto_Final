@@ -28,6 +28,7 @@ public abstract class Angel extends Almas {
      *
      * @return el valor del ángel.
      */
+    @Override
     public int calcValor(LaMuerte laMuerte) {
         double colores    = (color.getBlue() + color.getRed() + color.getGreen()) / 255;
         double random     = ((new Random()).nextDouble(0.4) + 0.8);

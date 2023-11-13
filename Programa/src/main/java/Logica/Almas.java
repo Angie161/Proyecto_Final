@@ -51,5 +51,5 @@ public abstract class Almas {
      *
      * @return el valor que va a tomar el objeto.
      */
-    public abstract int calcValor();
+    public abstract int calcValor(LaMuerte laMuerte);
 }

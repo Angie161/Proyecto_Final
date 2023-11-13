@@ -26,6 +26,7 @@ public class Persona extends Almas {
      *
      * @return el valor de la persona.
      */
+    @Override
     public int calcValor(LaMuerte laMuerte) {
         double colores    = (color.getBlue() + color.getRed() + color.getGreen()) / 255;
         double random     = ((new Random()).nextDouble(0.4) + 0.8);
