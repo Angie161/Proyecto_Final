@@ -31,7 +31,6 @@ public class Mausoleo {
      */
     public void enviarDemonio() throws SinCapPermitidaException, BarcaRotaException, AngelesInsuficienteException, FragmentosInsuficientesException {
         if(propietario.getDepSobre()[2].getTam() >= precios.getCantAngelesEnvio(tierra) && propietario.getFragAlmas() >= precios.getPrecioFragEnvio(tierra)) {
-            enviarDemonio();
             for(int i = 0; i < precios.getCantAngelesEnvio(tierra); i++) {
                 barca.traslado(tierra, (Demonio) propietario.getDepSobre()[1].get());
             }
@@ -45,6 +44,8 @@ public class Mausoleo {
 
     /**
      * Método para subir el nivel de la barca lo que permitirá enviar más demonios al mismo tiempo al mundo terrenal.
+     *
+     * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void aumentarCapacidad() throws FragmentosInsuficientesException {
         if(propietario.getFragAlmas() >= precios.getPrecioMejoraCapacidad(tierra) && propietario.getPoder() * 2 >= tierra.getCapacidad()) {
@@ -56,6 +57,8 @@ public class Mausoleo {
 
     /**
      * Método para aumentar el poder el propietario.
+     *
+     * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void aumentarPoder() throws FragmentosInsuficientesException {
         if(propietario.getFragAlmas() >= precios.getPrecioMejoraPoder()) {
@@ -69,6 +72,7 @@ public class Mausoleo {
      * Método para reparar el puente si es que está roto.
      *
      * @param puente el puente que se quiere reparar.
+     * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void repararPuente(Puente puente) throws FragmentosInsuficientesException {
         if(propietario.getFragAlmas() >= precios.getPrecioRepararaPuente() && !puente.getFuncional()) {
@@ -80,6 +84,8 @@ public class Mausoleo {
 
     /**
      * Método para reparar la barca del mausoleo si es que está rota.
+     *
+     * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void repararBarca() throws FragmentosInsuficientesException {
         if(propietario.getFragAlmas() >= precios.getPrecioRepararaPuente() && !barca.getFuncional()) {
