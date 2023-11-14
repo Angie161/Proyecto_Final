@@ -49,7 +49,7 @@ public class Precios {
      * @return el precio necesario para aumentar el poder de LaMuerte.
      */
     public int getPrecioMejoraPoder() {
-        return Math.pow(laMuerte.getPoder(), 2) * 2000;
+        return (int) Math.pow(laMuerte.getPoder(), 2) * 2000;
     }
     
     /**
