@@ -1,11 +1,13 @@
 package Interfaz;
 
 import GameTools.Hitbox;
+import Logica.LaMuerte;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class PanelLaMuerte extends JPanel {
+    private final LaMuerte laMuerte;
     private Dimension size = new Dimension(60,100);
     private Point velocidad = new Point(0, 0);
     private final int aceleracion = 1;
@@ -14,10 +16,14 @@ public class PanelLaMuerte extends JPanel {
     public PanelLaMuerte() {
         super();
 
+        laMuerte = new LaMuerte();
         hitbox = new Hitbox(new Rectangle(ubicacionInicial, size), this);
 
         setSize(size);
         setLocation(ubicacionInicial);
+    }
+    public LaMuerte getLaMuerte() {
+        return laMuerte;
     }
 
     public Point getVelocidad() {
