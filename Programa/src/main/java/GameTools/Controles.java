@@ -64,6 +64,14 @@ public class Controles extends JPanel {
         });
     }
 
+    public boolean hayMovimiento() {
+        if(jugador.getVelocidad().distance(new Point(0,0)) == 0) {
+            return false;
+        } else {
+            return true;
+        }
+    }
+
     public PanelLaMuerte getJugador() {
         return jugador;
     }
