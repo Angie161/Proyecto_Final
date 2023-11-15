@@ -18,6 +18,18 @@ public class PanelLaMuerte extends JPanel {
         setLocation(ubicacionInicial);
     }
 
+    public Point getVelocidad() {
+        return velocidad;
+    }
+
+    public int getAceleracion() {
+        return aceleracion;
+    }
+
+    public void setVelocidad(Point velocidad) {
+        this.velocidad = velocidad;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
