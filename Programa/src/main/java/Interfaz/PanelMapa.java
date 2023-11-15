@@ -15,17 +15,8 @@ public class PanelMapa extends JPanel {
         PanelLaMuerte panelLaMuerte = new PanelLaMuerte();
         Controles controles = new Controles(panelLaMuerte);
 
-        PanelAlma panelAlma = new PanelAlma();
-        PanelAlma panelAlma1 = new PanelAlma();
-        PanelAlma panelAlma2 = new PanelAlma();
-        PanelAlma panelAlma3 = new PanelAlma();
-
         add(panelLaMuerte);
         add(controles);
-        add(panelAlma);
-        add(panelAlma1);
-        add(panelAlma2);
-        add(panelAlma3);
 
         new Tick(controles);
 
@@ -52,7 +43,7 @@ public class PanelMapa extends JPanel {
 
             // Temporal para ubicarnos.
             g.setColor(new Color(120, 180, 120));
-            g.fillRect(120, 200, 550, 500);
+            g.fillRect(120, 200, 550, 506);
             g.setColor(Color.RED);
             g.fillRect(750, 0, 150, size.height);
             g.setColor(new Color(180, 100, 0));
