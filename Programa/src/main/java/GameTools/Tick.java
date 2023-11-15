@@ -11,7 +11,7 @@ public class Tick extends Thread {
 
     @Override
     public void run() {
-        while(controles.hayMovimiento()) {
+        while(true) {
             jugadorSigueAControles();
             try {
                 Thread.sleep(Tick.tick);
