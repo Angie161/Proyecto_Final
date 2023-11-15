@@ -1,5 +1,8 @@
 package Interfaz;
 
+import GameTools.Controles;
+import GameTools.Tick;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -10,7 +13,11 @@ public class PanelMapa extends JPanel {
         super();
 
         PanelLaMuerte panelLaMuerte = new PanelLaMuerte();
+        Controles controles = new Controles(panelLaMuerte);
         add(panelLaMuerte);
+        add(controles);
+
+        Tick tick = new Tick(controles);
 
         setPreferredSize(size);
         setLocation(0, 0);
