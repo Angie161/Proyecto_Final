@@ -38,6 +38,9 @@ public class Hitbox {
     public JPanel getPanelAsociado() {
         return panelAsociado;
     }
+    public static void eliminarHitbox(Hitbox hitbox) {
+        todasLasHitbox.remove(hitbox);
+    }
 
     public static ArrayList<Hitbox> getTodasLasHitbox() {
         return todasLasHitbox;
