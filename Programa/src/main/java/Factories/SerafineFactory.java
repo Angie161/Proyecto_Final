@@ -13,7 +13,7 @@ public class SerafineFactory extends AngelesFactory{
      * @param color el cual se le asignará al nuevo ángel como estadística.
      * @return Serafine con las características concedidas.
      */
-    public Serafin crearSerafine(int bondad, Color color){
+    public static Serafin crearSerafine(int bondad, Color color){
         return new Serafin(bondad, color);
     }
 }

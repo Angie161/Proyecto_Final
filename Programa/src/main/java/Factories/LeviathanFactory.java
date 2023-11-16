@@ -13,7 +13,7 @@ public class LeviathanFactory extends DemoniosFactory{
      * @param color el cual se le asignará al nuevo demonio como estadística.
      * @return Leviathan con las características concedidas.
      */
-    public Demonio crearLeviathan(int maldad, Color color){
+    public static Demonio crearLeviathan(int maldad, Color color){
         return new Leviathan(maldad,color);
     }
 }

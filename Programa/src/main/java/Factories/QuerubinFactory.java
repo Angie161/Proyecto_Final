@@ -13,7 +13,7 @@ public class QuerubinFactory extends AngelesFactory{
      * @param color el cual se le asignará al nuevo ángel como estadística.
      * @return Querubín con las características concedidas.
      */
-    public Angel crearQuerubin(int bondad, Color color){
+    public static Angel crearQuerubin(int bondad, Color color){
         return new Querubin(bondad,color);
     }
 }

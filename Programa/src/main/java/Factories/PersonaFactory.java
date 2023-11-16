@@ -8,8 +8,6 @@ import java.util.Random;
  * Clase que representa y funciona como una fábrica de almas de Personas.
  */
 public class PersonaFactory extends AlmasFactory{
-    protected int maldadRandom;
-    protected int bondadRandom;
 
     /**
      * Crea almas de Personas, calculando su maldad y bondad previamente a partir de las estadísticas de Poder de la muerte.
@@ -17,11 +15,11 @@ public class PersonaFactory extends AlmasFactory{
      * @param color que se pasará como parámetro al método de creación del alma de la persona.
      * @return Persona con las estadísticas asignadas.
      */
-    public Persona crearPersona(LaMuerte laMuerte, Color color){
+    public static Persona crearPersona(LaMuerte laMuerte, Color color){
         Random random = new Random();
 
-        maldadRandom=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
-        bondadRandom=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
+        int maldadRandom=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
+        int bondadRandom=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
 
         return new Persona(bondadRandom,maldadRandom,color);
     }
