@@ -1,6 +1,7 @@
 package Interfaz;
 
 import GameTools.Controles;
+import GameTools.Spawner;
 import GameTools.Tick;
 
 import javax.swing.*;
@@ -14,11 +15,14 @@ public class PanelMapa extends JPanel {
 
         PanelLaMuerte panelLaMuerte = new PanelLaMuerte();
         Controles controles = new Controles(panelLaMuerte);
+        Spawner runeable = new Spawner(this, new Point(120, 200), new Dimension(550, 506), panelLaMuerte.getSize());
+        Thread spawn = new Thread(runeable);
 
         add(panelLaMuerte);
         add(controles);
 
         new Tick(controles);
+        spawn.start();
 
         setPreferredSize(size);
         setLocation(0, 0);
