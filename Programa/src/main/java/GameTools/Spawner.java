@@ -1,5 +1,6 @@
 package GameTools;
 
+import Factories.AlmasFactory;
 import Interfaz.PanelAlma;
 import Interfaz.PanelMapa;
 import Interfaz.Ventana;
@@ -8,12 +9,13 @@ import java.awt.*;
 import java.util.Random;
 
 public class Spawner implements Runnable {
-    private int almasActuales = 0;
+    private static int almasActuales = 0;
     private final Point ubicacion;
     private final Dimension size;
     private final Dimension entidadSize;
     private final PanelMapa panelMapa;
     private final int[] spawner;
+    private AlmasFactory almasFactory = new AlmasFactory();
     public Spawner(PanelMapa panelMapa, Point ubicacion, Dimension size, Dimension entidadSize) {
         this.ubicacion = ubicacion;
         this.panelMapa = panelMapa;
@@ -50,11 +52,10 @@ public class Spawner implements Runnable {
             actualizarCasillasOcupadas(Hitbox.getTodasLasHitbox().get(j));
         }
         if(spawner[i * (int) size.width/entidadSize.width + u] == 0 && almasActuales <= 10) {
-            PanelAlma panelAlma = new PanelAlma();
+            PanelAlma panelAlma = new PanelAlma(almasFactory.crearAlmas(panelMapa.getPanelLaMuerte().getLaMuerte()));
             panelAlma.setLocation(ubicacion.x + u * entidadSize.width + u + 1, ubicacion.y + entidadSize.height * i + i + 1);
             panelAlma.getHitbox().setLocation(ubicacion.x + u * entidadSize.width + u + 1, ubicacion.y + entidadSize.height * i + i + 1);
             panelMapa.add(panelAlma);
-            Ventana.repintar();
             almasActuales++;
           } else {
             throw new CasillaOcupadaException();
@@ -68,7 +69,7 @@ public class Spawner implements Runnable {
             spawner[i] = 0;
         }
     }
-    public void unAlmaMenos() {
+    public static void unAlmaMenos() {
         almasActuales--;
     }
     public int[] getSpawner() {
