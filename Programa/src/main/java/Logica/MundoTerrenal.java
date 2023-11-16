@@ -35,7 +35,7 @@ public class MundoTerrenal {
                     exorcizar((new Random().nextInt(5000)));
                     destruccionBarca((new Random().nextInt(5000)), barca);
                     try {
-                        Thread.sleep(500/demEnviados.getTam());
+                        Thread.sleep(500/(demEnviados.getTam() + 1));
                     } catch (InterruptedException e) {
                         return;
                     }
