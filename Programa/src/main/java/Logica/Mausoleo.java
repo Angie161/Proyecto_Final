@@ -21,6 +21,10 @@ public class Mausoleo {
         precios     = new Precios(propietario);
     }
 
+    public MundoTerrenal getTierra() {
+        return tierra;
+    }
+
     /**
      * Método para enviar un demonio desde el mausoleo.
      *
