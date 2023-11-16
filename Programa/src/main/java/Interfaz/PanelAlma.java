@@ -10,8 +10,12 @@ public class PanelAlma extends JPanel {
     private Hitbox hitbox;
     public PanelAlma() {
         super();
-        setBounds(200 + Hitbox.getTodasLasHitbox().size()*70 ,350,60,100);
+        setSize(60,100);
         hitbox = new Hitbox(getBounds(), this);
+    }
+
+    public Hitbox getHitbox() {
+        return hitbox;
     }
 
     public Almas getAlma() {
