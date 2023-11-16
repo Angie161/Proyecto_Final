@@ -4,7 +4,7 @@ import Logica.*;
 import java.awt.*;
 
 public class LuciferFactory extends DemoniosFactory{
-    public Demonio crearLucifer(int maldadRandom, Color selectColor){
-        return new Lucifer(maldadRandom,selectColor());
+    public Demonio crearLucifer(int maldad, Color color){
+        return new Lucifer(maldad,color);
     }
 }

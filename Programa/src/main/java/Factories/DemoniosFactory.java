@@ -5,41 +5,29 @@ import java.awt.*;
 import java.util.Random;
 
 public class DemoniosFactory extends AlmasFactory{
-    protected int maldadRandom;
-    protected Color color;
-    private int xColor;
+    protected int numSelect;
+    private int maldad;
+
     private LuciferFactory luciferFactory = new LuciferFactory();
     private SatanFactory satanFactory = new SatanFactory();
     private LeviathanFactory leviathanFactory = new LeviathanFactory();
 
-    public Demonio crearDemonio(LaMuerte laMuerte){
-        Random NumrandomSelect = new Random();
-        Random NumrandomMaldad = new Random();
+    public Demonio crearDemonio(LaMuerte laMuerte, Color color){
+        Random random = new Random();
 
-        maldadRandom=(int)(NumrandomMaldad.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
-        numRandom=NumrandomSelect.nextInt(2)+1;
+        maldad=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
+        numSelect=random.nextInt(2)+1;
 
-        switch (numRandom){
+        switch (numSelect){
             case 1:
-                return leviathanFactory.crearLeviathan(maldadRandom,selectColor());
+                return leviathanFactory.crearLeviathan(maldad,color);
             case 2:
-                return luciferFactory.crearLucifer(maldadRandom,selectColor());
+                return luciferFactory.crearLucifer(maldad,color);
             case 3:
-                return satanFactory.crearSatan(maldadRandom,selectColor());
+                return satanFactory.crearSatan(maldad,color);
             default:
-                System.out.println("Se creó un alma nula");
+                System.out.println("Se creó un Demonios nulo");
                 return null;
         }
-    }
-
-    @Override
-    public Color selectColor() {
-        Random NumrandomColor = new Random();
-        xColor=NumrandomColor.nextInt(101);
-        int redComponent=0; //Funcion para red
-        int greenComponent=0; //Funcion para green
-        int blueComponent=0; //Funcion para blue
-
-        return color=new Color(redComponent, greenComponent, blueComponent);
     }
 }
