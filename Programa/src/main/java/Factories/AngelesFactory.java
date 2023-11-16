@@ -18,8 +18,8 @@ public class AngelesFactory extends AlmasFactory{
     public static Angel crearAngel(LaMuerte laMuerte, Color color){
         Random random = new Random();
 
-        int bondad=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
-        int numSelect=random.nextInt(2)+1;
+        int bondad=(int)(random.nextInt(101) * Math.pow(laMuerte.getPoder(),2));
+        int numSelect=random.nextInt(3)+1;
 
         switch (numSelect){
             case 1:

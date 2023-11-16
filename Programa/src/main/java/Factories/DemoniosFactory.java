@@ -18,8 +18,8 @@ public class DemoniosFactory extends AlmasFactory{
     public static Demonio crearDemonio(LaMuerte laMuerte, Color color){
         Random random = new Random();
 
-        int maldad=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
-        int numSelect=random.nextInt(2)+1;
+        int maldad=(int)(random.nextInt(101) * Math.pow(laMuerte.getPoder(),2));
+        int numSelect=random.nextInt(3)+1;
 
         switch (numSelect){
             case 1:

@@ -36,27 +36,27 @@ public class AlmasFactory{
         // 0 para persona, 1 para demonios y 2 para ángeles.
         if(cual == 0) {
             // Color para las personas.
-            int red   = random.nextInt(230) + 25;
-            int green = random.nextInt(230) + 25;
-            int blue  = random.nextInt(230) + 25;
+            int red   = random.nextInt(231) + 25;
+            int green = random.nextInt(231) + 25;
+            int blue  = random.nextInt(231) + 25;
             return new Color(red, green, blue);
 
         } else if(cual == 1) {
             // Color para los demonios.
-            int r = random.nextInt(100);
+            int r = random.nextInt(101);
             int red = (int) (-Math.pow(r, 3)*0.00049 + Math.pow(r, 2)*0.0685 + 24.9);
             return new Color(red, 0, 0);
 
         } else if(cual == 2) {
             // Color para los ángeles.
-            int r = random.nextInt(100);
+            int r = random.nextInt(101);
             int red   = (int) (Math.pow(r, 3)*0.0000036 - Math.pow(r, 2)*0.00066 + 255);
             int green = (int) (-Math.pow(r, 3)*0.000024897959 - Math.pow(r, 2)*0.00091 + 255);
             int blue  = (int) (-Math.pow(r, 3)*0.0001534 - Math.pow(r, 2)*0.00415986 + 255);
             return new Color(red, green, blue);
 
         } else {
-            // Si se ingresa un numero erroneo.
+            // Si se ingresa un numero erróneo.
             return null;
         }
     }

@@ -18,8 +18,8 @@ public class PersonaFactory extends AlmasFactory{
     public static Persona crearPersona(LaMuerte laMuerte, Color color){
         Random random = new Random();
 
-        int maldadRandom=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
-        int bondadRandom=(int)(random.nextInt(100) * Math.pow(laMuerte.getPoder(),2));
+        int maldadRandom=(int)(random.nextInt(101) * Math.pow(laMuerte.getPoder(),2));
+        int bondadRandom=(int)(random.nextInt(101) * Math.pow(laMuerte.getPoder(),2));
 
         return new Persona(bondadRandom,maldadRandom,color);
     }
