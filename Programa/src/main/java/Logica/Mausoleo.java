@@ -24,6 +24,9 @@ public class Mausoleo {
     public MundoTerrenal getTierra() {
         return tierra;
     }
+    public Barca getBarca() {
+        return barca;
+    }
 
     /**
      * Método para enviar un demonio desde el mausoleo.
@@ -53,6 +56,7 @@ public class Mausoleo {
      */
     public void aumentarCapacidad() throws FragmentosInsuficientesException {
         if(propietario.getFragAlmas() >= precios.getPrecioMejoraCapacidad(tierra) && propietario.getPoder() * 2 >= tierra.getCapacidad()) {
+            propietario.addFragAlmas(-precios.getPrecioMejoraCapacidad(tierra));
             tierra.setCapacidad(tierra.getCapacidad() + 1);
         } else {
             throw new FragmentosInsuficientesException();
@@ -66,6 +70,7 @@ public class Mausoleo {
      */
     public void aumentarPoder() throws FragmentosInsuficientesException {
         if(propietario.getFragAlmas() >= precios.getPrecioMejoraPoder()) {
+            propietario.addFragAlmas(-precios.getPrecioMejoraPoder());
             propietario.setPoder(propietario.getPoder() + 1);
         } else {
             throw new FragmentosInsuficientesException();
@@ -81,6 +86,7 @@ public class Mausoleo {
     public void repararPuente(Puente puente) throws FragmentosInsuficientesException {
         if(propietario.getFragAlmas() >= precios.getPrecioRepararaPuente() && !puente.getFuncional()) {
             puente.setFuncional(true);
+            propietario.addFragAlmas(-precios.getPrecioRepararaPuente());
         } else {
             throw new FragmentosInsuficientesException();
         }
@@ -92,8 +98,9 @@ public class Mausoleo {
      * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void repararBarca() throws FragmentosInsuficientesException {
-        if(propietario.getFragAlmas() >= precios.getPrecioRepararaPuente() && !barca.getFuncional()) {
+        if(propietario.getFragAlmas() >= precios.getPrecioRepararBarca() && !barca.getFuncional()) {
             barca.setFuncional(true);
+            propietario.addFragAlmas(-precios.getPrecioRepararBarca());
         } else {
             throw new FragmentosInsuficientesException();
         }
