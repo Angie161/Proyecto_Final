@@ -34,7 +34,7 @@ public class TestDepSobre {
      */
     @Test
     @DisplayName("Test ingreso Almas")
-    void IngresoAlmasMismoTipo(){
+    void ingresoAlmasMismoTipo(){
         assertEquals(0, depositoAngeles.getTam());
         depositoAngeles.add(arcangel);
         assertEquals(1, depositoAngeles.getTam());
@@ -50,7 +50,7 @@ public class TestDepSobre {
      */
     @Test
     @DisplayName("Test egreso Almas del mismo tipo")
-    void EgresoAlmasMismoTipo(){
+    void egresoAlmasMismoTipo(){
         depositoAngeles.add(arcangel);
         depositoAngeles.add(querubin);
         assertNotNull(depositoAngeles);
@@ -66,7 +66,7 @@ public class TestDepSobre {
      */
     @Test
     @DisplayName("Test verificación de Alma")
-    void VerificadoAlma(){
+    void verificadoAlma(){
         depositoAngeles.add(arcangel);
         depositoAngeles.add(querubin);
 
