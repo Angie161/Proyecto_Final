@@ -5,7 +5,7 @@
 </p>
 
 ### 📋 Descripción y instrucciones de uso de la Interfaz.
-Esto es un videojuego donde la muerte, el jugador, se encuentra en el limbo y es la encargada de recibir las defunciones del mundo terrenal como fractmentos de almas, la moneda del juego, además de gestionar las almas de los demonios y ángeles que van apareciendo en el limbo y decidir que hacer con ellas.
+Esto es un videojuego donde la muerte, el jugador, se encuentra en el limbo y es la encargada de recibir las defunciones del mundo terrenal como fragmentos de almas, la moneda del juego, además de gestionar las almas de los demonios y ángeles que van apareciendo en el limbo y decidir que hacer con ellas.
 Las almas de los demonios y ángeles pueden ser empujadas, y de esa manera, hacerles caer al infierno para recibir fragmentos del almas acambio. Tambien, en el mausoleo, se pueden enviar demonios al mundo terrenal con la ayuda de ángeles, lo que alterará la cantidad de muertes que suceden allí. Las almas de los demonios, ángeles y personas se pueden guardar en los contenedores sobrenaturales ya que desaparecen despues de un tiempo si no lo haces. Y por último, estas se pueden fusionar en el cielo para crear nuevas almas más o menos valiosas.
 
 La muerte.
@@ -13,30 +13,56 @@ La muerte.
 
 Las almas de los ángeles.
 
-* Aparecen en el limbo, hay varios tipos,se pueden empujar al infierno lo que entregará fragmentos de almas a la muerte dependiendo del tipo que sean, la bondad que tengan y el color de sus aureolas. Por ultimo se pueden usar en el cielo para conseguir almas de personas fusionandola con una de una persona o una de un demonio.
+* Aparecen en el limbo, hay varios tipos, se pueden empujar al infierno lo que entregará fragmentos de almas a la muerte dependiendo del tipo que sean, la bondad que tengan y el color de sus aureolas. Por último se pueden usar en el cielo para conseguir almas de personas fusionandola con una de una persona o una de un demonio.
 
 Las almas de los demonios.
 
-* Aparecen en el limbo, hay varios tipos,se pueden empujar al infierno lo que entregará fragmentos de almas a la muerte dependiendo del tipo que sean, la maldad que tengan y el color de sus cuernitos. Por ultimo se pueden usar en el cielo para conseguir almas de personas fusionandola con una de una persona o una de un ángel.
+* Aparecen en el limbo, hay varios tipos, se pueden empujar al infierno lo que entregará fragmentos de almas a la muerte dependiendo del tipo que sean, la maldad que tengan y el color de sus cuernitos. Por ultimo se pueden usar en el cielo para conseguir almas de personas fusionandola con una de una persona o una de un ángel.
 
 Las almas de las personas.
 
-* Solo se pueden conseguir al fucionar otras almas en el cielo, y son arrojables al infierno. su precio depende de su maldad, bondad y color de ojos.
+* Se pueden conseguir al fusionar otras almas en el cielo, o muy rara vez pueden aparecer en el Limbo, y son arrojables al infierno. Su precio depende de su maldad, bondad y color de ojos.
 
 El mausoleo.
 
-* Aqui la muerte puede decidir enviar demonios al mundo terrenal, subir su poder, reparar el puente  y reparar o mejorar la barca para enviar a los demonios.
-  
-### 💻 Interfaz Gráfica (Boceto)
-![WhatsApp Image 2023-11-08 at 15 08 58](https://github.com/Angie161/Proyecto_Final/assets/146099765/26933464-6905-48a8-a019-61af1a00fd22)
-
-
-### 📍Casos de Uso
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/57e5f025-1670-4aa5-bc6d-625873182e6a)
+* Aqui la muerte puede decidir enviar demonios al mundo terrenal, subir su poder, reparar el puente y reparar o mejorar la barca para enviar a los demonios.
 
 
 ### 📝 UML (Boceto)
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/defcab0b-4b8f-4450-afef-3fbecd79c2cc)
+
+Avance en el UML: Modificaciones en clases del uml en el package logica, agregado del uml de la interfaz y de las Factories.
+
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/b979a319-f655-4c5d-a1f5-3b2412ec0ad6)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/1ed64adb-92fa-4e72-ba38-28ab7fc4b50c)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/2d1d145d-4ec1-42c6-9c15-dd924cbec07e)
+
+Imagen del uml completo:
+
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/402c87ad-1291-4f68-8b3a-0920c9846ede)
+
+
+### 📍Casos de Uso
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/c1ed6784-3f1d-4b6e-9f45-7de9d3384bae)
+
+
+### 📚Patrones Implementados
+1. Factory: Implementamos el patrón *Factoy* para la creación aleatoria de almas en la clase 'AlmasFactory' y sus subclases, permitiendonos llamar su método de 'crearAlmas()' y generando así uno de los distintos subtipos, como angeles, demonios o personas, con stats aleatorios seleccionados de igual manera dentro de estas clases.
+
+2. Singletón: Hicimos que la clase 'Ventana', perteneciente al package de la interfaz, implementase este patrón para así simplificar la tarea de repintarla cada que se tiene nueva información en los páneles de esta.
+
+
+### 💻 Interfaz Gráfica (Boceto)
+La siguiente foto es un boceto de referencia de la pantalla principal en papel.
+
+![WhatsApp Image 2023-11-08 at 15 08 58](https://github.com/Angie161/Proyecto_Final/assets/146099765/26933464-6905-48a8-a019-61af1a00fd22)
+
+Esta es una imagen con el prototipo de interfaz al ejecutar el programa. 
+
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/614555fa-931c-4bcf-bb09-9dfeb4b40726)
+
+La siguiente foto contiene un boceto de cómo se verá el panel del Mausoleo una vez se accede a él.
+
+![20231117_174338](https://github.com/Angie161/Proyecto_Final/assets/146099263/bb003db4-60bb-459e-9e26-6c1893029bfe)
 
 
 ### 🔍Por implementar (Consultas)
