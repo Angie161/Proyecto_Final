@@ -6,6 +6,9 @@ import org.junit.jupiter.api.Test;
 import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Clase de tipo Test Unitario para probar el correcto comportamiento de los métodos de la clase DepSobre.
+ */
 public class TestDepSobre {
     private DepSobre<Angel> depositoAngeles;
     private Color colorAngel;
@@ -13,6 +16,9 @@ public class TestDepSobre {
     private Querubin querubin;
     private Serafin serafin;
 
+    /**
+     * Inicializa las variables que se emplearán en todas las pruebas.
+     */
     @BeforeEach
     void setup(){
         depositoAngeles = new DepSobre<>();
@@ -23,8 +29,11 @@ public class TestDepSobre {
         serafin = new Serafin(70, colorAngel);
     }
 
+    /**
+     * Prueba del método add() y getTam(), que permiten añadir y ver el tamaño del depósito.
+     */
     @Test
-    @DisplayName("Test ingreso Almas del mismo tipo")
+    @DisplayName("Test ingreso Almas")
     void IngresoAlmasMismoTipo(){
         assertEquals(0, depositoAngeles.getTam());
         depositoAngeles.add(arcangel);
@@ -36,6 +45,9 @@ public class TestDepSobre {
         //Correcto ingreso de almas y tamaño al depósito
     }
 
+    /**
+     * Prueba del método get(), que permite sacar las almas del depósito.
+     */
     @Test
     @DisplayName("Test egreso Almas del mismo tipo")
     void EgresoAlmasMismoTipo(){
@@ -49,6 +61,9 @@ public class TestDepSobre {
         //Correcta salida de almas y tamaño del depósito
     }
 
+    /**
+     * Prueba del método see(), que permite ver el alma que se encuentra en la posición dada.
+     */
     @Test
     @DisplayName("Test verificación de Alma")
     void VerificadoAlma(){
