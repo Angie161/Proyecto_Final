@@ -36,8 +36,10 @@ public class Mausoleo {
      * @throws AngelesInsuficienteException cuando no hay suficientes angeles en los depósitos para enviar el demonio.
      * @throws FragmentosInsuficientesException cuando no hay suficientes fragmentos de almas para enviar el demonio.
      */
-    public void enviarDemonio() throws SinCapPermitidaException, BarcaRotaException, AngelesInsuficienteException, FragmentosInsuficientesException {
-        if(propietario.getDepSobre()[2].getTam() >= precios.getCantAngelesEnvio(tierra) && propietario.getFragAlmas() >= precios.getPrecioFragEnvio(tierra)) {
+    public void enviarDemonio() throws SinCapPermitidaException, BarcaRotaException, AngelesInsuficienteException, FragmentosInsuficientesException, DemonioNullException {
+        if(propietario.getDepSobre()[1].see(0)==null){
+            throw new DemonioNullException();
+        } else if(propietario.getDepSobre()[2].getTam() >= precios.getCantAngelesEnvio(tierra) && propietario.getFragAlmas() >= precios.getPrecioFragEnvio(tierra)) {
             for(int i = 0; i < precios.getCantAngelesEnvio(tierra); i++) {
                 barca.traslado(tierra, (Demonio) propietario.getDepSobre()[1].get());
             }
