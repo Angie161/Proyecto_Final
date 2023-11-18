@@ -21,9 +21,18 @@ public class Mausoleo {
         precios     = new Precios(propietario);
     }
 
+    /**
+     * Getter de la variable tierra.
+     * @return el mundo terrenal relacionado con el Mausoleo.
+     */
     public MundoTerrenal getTierra() {
         return tierra;
     }
+
+    /**
+     * Getter de la variable barca.
+     * @return la barca perteneciente al Mausoleo.
+     */
     public Barca getBarca() {
         return barca;
     }
@@ -35,6 +44,7 @@ public class Mausoleo {
      * @throws BarcaRotaException Cuando la barca está rota y se intenta manda un demonio.
      * @throws AngelesInsuficienteException cuando no hay suficientes angeles en los depósitos para enviar el demonio.
      * @throws FragmentosInsuficientesException cuando no hay suficientes fragmentos de almas para enviar el demonio.
+     * @throws DemonioNullException cuando se intenta enviar un demonio nulo o no hay demonios en el depósito de demonios de la muerte.
      */
     public void enviarDemonio() throws SinCapPermitidaException, BarcaRotaException, AngelesInsuficienteException, FragmentosInsuficientesException, DemonioNullException {
         if(propietario.getDepSobre()[1].see(0)==null){
