@@ -1,14 +1,15 @@
 package Logica;
 
 import Factories.*;
-import Logica.*;
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.awt.*;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Clase del tipo test unitario para probar el correcto funcionamiento de los envíos de demonios en la clase Mausoleo y sus excepciones.
+ */
 public class TestMausoleoEnvios {
     private Mausoleo mausoleo;
     private LaMuerte laMuerte;
@@ -18,6 +19,9 @@ public class TestMausoleoEnvios {
     private AngelesFactory angFactory;
     private Color color;
 
+    /**
+     * Inicializa las variables que se emplearán en todas las pruebas.
+     */
     @BeforeEach
     void setup(){
         laMuerte = new LaMuerte();
@@ -43,7 +47,16 @@ public class TestMausoleoEnvios {
         laMuerte.getDepSobre()[1].add(demFactory.crearDemonio(laMuerte, color));
     }
 
-    //Enviar demonio normal
+    /**
+     * Se prueba enviando un demonio con los requisitos correctos y corroborando el estado final de los depósitos, es decir,
+     * que se realice el descuento correcto de fragmentos de almas, angeles y demonios de sus respectivos depósitos.
+     *
+     * @throws DemonioNullException En caso de que el demonio elegido sea nulo.
+     * @throws BarcaRotaException En caso de que la barca para envíos esté dañada.
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente.
+     * @throws SinCapPermitidaException En caso de que se intente enviar otro demonio cuando no haya más capacidad en el mundo terrenal.
+     * @throws AngelesInsuficienteException En caso de que no haya suficientes angeles para realizar el envío.
+     */
     @Test
     @DisplayName("Test envío correcto")
     void envioCorrecto() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
@@ -61,7 +74,16 @@ public class TestMausoleoEnvios {
         assertEquals(0, laMuerte.getDepSobre()[2].getTam());
     }
 
-    //Enviar 2 demonios con capacidad de 1 en mundoTerrenal
+    /**
+     * Se intenta enviar 2 demonios cuando la capacidad es solo de 1.
+     * Se busca corroborar el correcto funcionamiento de la excepción SinCapPermitidaException.
+     *
+     * @throws DemonioNullException En caso de que el demonio elegido sea nulo.
+     * @throws BarcaRotaException En caso de que la barca para envíos esté dañada.
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente.
+     * @throws SinCapPermitidaException En caso de que se intente enviar otro demonio cuando no haya más capacidad en el mundo terrenal.
+     * @throws AngelesInsuficienteException En caso de que no haya suficientes angeles para realizar el envío.
+     */
     @Test
     @DisplayName("Test capacidad insuficiente")
     void capacidadInsuficiente() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
@@ -89,7 +111,16 @@ public class TestMausoleoEnvios {
         });
     }
 
-    //Enviar demonio con la barca rota
+    /**
+     * Se intenta realizar un envío cuando la barca está rota.
+     * Se busca corroborar el correcto funcionamiento de la excepción BarcaRotaException.
+     *
+     * @throws DemonioNullException En caso de que el demonio elegido sea nulo.
+     * @throws BarcaRotaException En caso de que la barca para envíos esté dañada.
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente.
+     * @throws SinCapPermitidaException En caso de que se intente enviar otro demonio cuando no haya más capacidad en el mundo terrenal.
+     * @throws AngelesInsuficienteException En caso de que no haya suficientes angeles para realizar el envío.
+     */
     @Test
     @DisplayName("Test envío con barca rota")
     void envioBarcaRota() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
@@ -99,7 +130,16 @@ public class TestMausoleoEnvios {
         });
     }
 
-    //Enviar demonio con Angeles insuficientes
+    /**
+     * Se intenta realizar un envío con la cantidad de almas de ángeles insuficiente.
+     * Se busca corroborar el correcto funcionamiento de la excepción AngelesInsuficientesException.
+     *
+     * @throws DemonioNullException En caso de que el demonio elegido sea nulo.
+     * @throws BarcaRotaException En caso de que la barca para envíos esté dañada.
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente.
+     * @throws SinCapPermitidaException En caso de que se intente enviar otro demonio cuando no haya más capacidad en el mundo terrenal.
+     * @throws AngelesInsuficienteException En caso de que no haya suficientes angeles para realizar el envío.
+     */
     @Test
     @DisplayName("Test envío con ángeles insuficientes")
     void envioAngelesInsuficientes() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
@@ -110,13 +150,42 @@ public class TestMausoleoEnvios {
         });
     }
 
-    //Enviar demonio con fragmentos insuficientes
+    /**
+     * Se intenta realizar un envío con la cantidad de fragmentos de alma insuficiente.
+     * Se busca corroborar el correcto funcionamiento de la excepción FragmentosInsuficientesException.
+     *
+     * @throws DemonioNullException En caso de que el demonio elegido sea nulo.
+     * @throws BarcaRotaException En caso de que la barca para envíos esté dañada.
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente.
+     * @throws SinCapPermitidaException En caso de que se intente enviar otro demonio cuando no haya más capacidad en el mundo terrenal.
+     * @throws AngelesInsuficienteException En caso de que no haya suficientes angeles para realizar el envío.
+     */
     @Test
     @DisplayName("Test envío con fragmentos insuficientes")
     void envioFragmentosInsuficientes() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
         laMuerte.addFragAlmas(-10);
         assertEquals(490,laMuerte.getFragAlmas());
         assertThrows(FragmentosInsuficientesException.class, () -> {
+            mausoleo.enviarDemonio();
+        });
+    }
+
+    /**
+     * Se intenta realizar un envío con un demonio nulo
+     * Se busca corroborar el correcto funcionamiento de la excepción DemonioNullException.
+     *
+     * @throws DemonioNullException En caso de que el demonio elegido sea nulo.
+     * @throws BarcaRotaException En caso de que la barca para envíos esté dañada.
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente.
+     * @throws SinCapPermitidaException En caso de que se intente enviar otro demonio cuando no haya más capacidad en el mundo terrenal.
+     * @throws AngelesInsuficienteException En caso de que no haya suficientes angeles para realizar el envío.
+     */
+    @Test
+    @DisplayName("Test envío con demonio nulo")
+    void envioDemonioNull() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
+        laMuerte.getDepSobre()[1].get();
+        laMuerte.getDepSobre()[1].add(null);
+        assertThrows(DemonioNullException.class, () -> {
             mausoleo.enviarDemonio();
         });
     }
