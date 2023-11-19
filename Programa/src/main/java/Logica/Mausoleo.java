@@ -38,6 +38,12 @@ public class Mausoleo {
     }
 
     /**
+     * Getter de la variable precios.
+     * @return los precios correspondientes a cada compra del mausoleo.
+     */
+    public Precios getPrecios() { return precios; }
+
+    /**
      * Método para enviar un demonio desde el mausoleo.
      *
      * @throws SinCapPermitidaException Cuando no se pueden enviar más demonios porque ya se envió el máximo.
@@ -50,10 +56,12 @@ public class Mausoleo {
         if(propietario.getDepSobre()[1].see(0)==null){
             throw new DemonioNullException();
         } else if(propietario.getDepSobre()[2].getTam() >= precios.getCantAngelesEnvio(tierra) && propietario.getFragAlmas() >= precios.getPrecioFragEnvio(tierra)) {
-            for(int i = 0; i < precios.getCantAngelesEnvio(tierra); i++) {
-                barca.traslado(tierra, (Demonio) propietario.getDepSobre()[1].get());
-            }
             propietario.addFragAlmas(-precios.getPrecioFragEnvio(tierra));
+            barca.traslado(tierra, (Demonio) propietario.getDepSobre()[1].get());
+            for(int i = 0; i < precios.getCantAngelesEnvio(tierra); i++) {
+                propietario.getDepSobre()[2].get();
+            }
+
         } else if(propietario.getDepSobre()[2].getTam() < precios.getCantAngelesEnvio(tierra)) {
             throw new AngelesInsuficienteException();
         } else if(propietario.getFragAlmas() < precios.getPrecioFragEnvio(tierra)) {
