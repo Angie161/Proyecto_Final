@@ -5,6 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
+/**
+ * Clase del tipo test unitario para probar el correcto funcionamiento de las mejoras y reparaciones en el Mausoleo.
+ */
 public class TestMausoleo {
     private Mausoleo mausoleo;
     private LaMuerte laMuerte;
@@ -12,6 +15,9 @@ public class TestMausoleo {
     private Barca barca;
     private Puente puente;
 
+    /**
+     * Inicializa las variables que se emplearán en todas las pruebas.
+     */
     @BeforeEach
     void setup(){
         laMuerte = new LaMuerte();
@@ -21,7 +27,12 @@ public class TestMausoleo {
         puente = new Puente();
     }
 
-    //Test aumento de capacidad con dinero insuficiente
+    /**
+     * Se intenta aumentar la capacidad con una cantidad de fragmentos de alma insuficientes.
+     * Se busca corroborar el correcto funcionamiento de la excepción FragmentosInsuficienteException.
+     *
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente para la compra.
+     */
     @Test
     @DisplayName("Test mejora de capacidad con fragmentos insuficientes")
     void aumentoFallidoCapacidad() throws FragmentosInsuficientesException{
@@ -32,7 +43,11 @@ public class TestMausoleo {
         });
     }
 
-    //Test aumento capacidad y checkear la capacidad
+    /**
+     * Se realiza un aumento de capacidad, con los requisitos correctos y corroborando el estado final de la capacidad y los fragmentos de almas restantes.
+     *
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente para la compra.
+     */
     @Test
     @DisplayName("Test aumento de capacidad")
     void aumentoCapacidad() throws FragmentosInsuficientesException{
@@ -43,7 +58,12 @@ public class TestMausoleo {
         assertEquals(100, laMuerte.getFragAlmas());
     }
 
-    //test aumento poder con dinero insuficiente
+    /**
+     * Se intenta aumentar el poder de la muerte con una cantidad de fragmentos de alma insuficientes.
+     * Se busca corroborar el correcto funcionamiento de la excepción FragmentosInsuficienteException.
+     *
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente para la compra.
+     */
     @Test
     @DisplayName("Test mejora de poder con fragmentos insuficientes")
     void aumentoFallidoPoder() throws FragmentosInsuficientesException{
@@ -53,7 +73,11 @@ public class TestMausoleo {
         });
     }
 
-    //Test aumento poder y checkear el poder
+    /**
+     * Se realiza un aumento de poder, con los requisitos correctos y corroborando el estado final del poder y los fragmentos de almas restantes.
+     *
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente para la compra.
+     */
     @Test
     @DisplayName("Test aumento de poder")
     void aumentoPoder() throws FragmentosInsuficientesException{
@@ -64,8 +88,12 @@ public class TestMausoleo {
         assertEquals(1000, laMuerte.getFragAlmas());
     }
 
-    //Test reparar el puente
-    //Test reparar el puente con dinero insuficiente
+    /**
+     * Se intenta reparar el puente con una cantidad de fragmentos de alma insuficientes.
+     * Se busca corroborar el correcto funcionamiento de la excepción FragmentosInsuficienteException.
+     *
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente para la compra.
+     */
     @Test
     @DisplayName("Test reparar puente con fragmentos insuficientes")
     void reparacionFallidaPuente() throws FragmentosInsuficientesException{
@@ -77,6 +105,11 @@ public class TestMausoleo {
         });
     }
 
+    /**
+     * Se realiza una correcta reparación del puente, con los requisitos correctos y corroborando el estado final del puente y los fragmentos de almas restantes.
+     *
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente para la compra.
+     */
     @Test
     @DisplayName("Test reparar puente")
     void reparacionPuente() throws FragmentosInsuficientesException{
@@ -88,7 +121,12 @@ public class TestMausoleo {
         assertEquals(0, laMuerte.getFragAlmas());
     }
 
-    //Test repara la barca con dinero insuficiente
+    /**
+     * Se intenta reparar la barca con una cantidad de fragmentos de alma insuficientes.
+     * Se busca corroborar el correcto funcionamiento de la excepción FragmentosInsuficienteException.
+     *
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente para la compra.
+     */
     @Test
     @DisplayName("Test reparar barca con fragmentos insuficientes")
     void reparacionFallidaBarca() throws FragmentosInsuficientesException{
@@ -100,7 +138,11 @@ public class TestMausoleo {
         });
     }
 
-    //Test reparar la barca y checkearlo
+    /**
+     * Se realiza una correcta reparación de la barca, con los requisitos correctos y corroborando el estado final de la barca y los fragmentos de almas restantes.
+     *
+     * @throws FragmentosInsuficientesException En caso de que la cantidad de fragmentos sea insuficiente para la compra.
+     */
     @Test
     @DisplayName("Test reparar barca")
     void reparacionBarca() throws FragmentosInsuficientesException{
