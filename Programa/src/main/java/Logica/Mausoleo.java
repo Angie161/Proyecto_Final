@@ -19,6 +19,7 @@ public class Mausoleo {
         tierra      = mundoTerrenal;
         barca       = new Barca();
         precios     = new Precios(propietario);
+        tierra.eventosAleatorios(barca);
     }
 
     /**
