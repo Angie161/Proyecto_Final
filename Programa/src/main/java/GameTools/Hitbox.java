@@ -18,6 +18,12 @@ public class Hitbox {
         hitbox = new Rectangle(rectangle);
         todasLasHitbox.add(this);
     }
+    public Hitbox(int x1, int y1, int x2, int y2){
+        panelAsociado = null;
+        movible = false;
+        hitbox = new Rectangle(x1, y1, x2, y2);
+        todasLasHitbox.add(this);
+    }
 
     public Rectangle getHitbox(){
         return hitbox;
@@ -25,6 +31,10 @@ public class Hitbox {
 
     public void setMovible(boolean movible) {
         this.movible = movible;
+    }
+
+    public boolean isMovible() {
+        return movible;
     }
 
     public Point getVelocidad() {

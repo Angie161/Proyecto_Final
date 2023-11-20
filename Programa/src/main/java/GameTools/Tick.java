@@ -28,7 +28,6 @@ public class Tick extends Thread {
             for(int i = 1; i < hitboxes.size(); i++) {
                 if(hitboxes.get(0).getHitbox().intersects(hitboxes.get(i).getHitbox())) {
                     moverHitbox(hitboxes.get(i));
-                    quemarAlma(hitboxes.get(i));
                 }
             }
             if((new Random()).nextInt(100) == 0) {
@@ -44,10 +43,20 @@ public class Tick extends Thread {
     }
 
     private void moverHitbox(Hitbox hitbox) {
-        hitbox.setVelocidad(Hitbox.getTodasLasHitbox().get(0).getVelocidad());
-        hitbox.setLocation(hitbox.getLocation().x + hitbox.getVelocidad().x, hitbox.getLocation().y + hitbox.getVelocidad().y);
-        hitbox.setVelocidad(new Point(0, 0));
-        hitbox.getPanelAsociado().setLocation(hitbox.getLocation());
+        //if(hitbox.isMovible()) {
+            quemarAlma(hitbox);
+            hitbox.setVelocidad(Hitbox.getTodasLasHitbox().get(0).getVelocidad());
+            hitbox.setLocation(hitbox.getLocation().x + hitbox.getVelocidad().x, hitbox.getLocation().y + hitbox.getVelocidad().y);
+            for (int i = 1; i < Hitbox.getTodasLasHitbox().size(); i++) {
+                if (Hitbox.getTodasLasHitbox().get(i) != hitbox && Hitbox.getTodasLasHitbox().get(i).getHitbox().intersects(hitbox.getHitbox())) {
+                    moverHitbox(Hitbox.getTodasLasHitbox().get(i));
+                }
+            }
+            hitbox.setVelocidad(new Point(0, 0));
+            hitbox.getPanelAsociado().setLocation(hitbox.getLocation());
+        //} else {
+          //  controles.getJugador().setVelocidad(new Point(0,0));
+        //}
     }
 
     private void jugadorSigueAControles() {
