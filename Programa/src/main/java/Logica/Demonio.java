@@ -32,7 +32,7 @@ public abstract class Demonio extends Almas {
     @Override
     public int calcValor(LaMuerte laMuerte) {
         double colores    = (color.getBlue() + color.getRed() + color.getGreen()) / 255;
-        double random     = ((new Random()).nextDouble(0.4) + 0.8);
+        double random     = ((new Random()).nextInt(10)*0.04 + 0.8);
         double valorFinal = Math.pow(laMuerte.getPoder(),5) * random * Math.pow(rango,1.5) * (colores + maldad);
         return (int) valorFinal;
     }
