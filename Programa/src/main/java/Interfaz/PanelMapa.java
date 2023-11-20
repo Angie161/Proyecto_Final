@@ -27,7 +27,7 @@ public class PanelMapa extends JPanel {
 
         panelLaMuerte = new PanelLaMuerte();
         Controles controles = new Controles(panelLaMuerte);
-        mausoleo = new Mausoleo(panelLaMuerte.getLaMuerte(), new MundoTerrenal(new Barca()));
+        mausoleo = new Mausoleo(panelLaMuerte.getLaMuerte(), new MundoTerrenal());
         Spawner runeable = new Spawner(this, new Point(120, 200), new Dimension(550, 506), panelLaMuerte.getSize());
         Thread spawn = new Thread(runeable);
 
