@@ -1,6 +1,7 @@
 package Interfaz;
 
 import GameTools.Controles;
+import GameTools.Hitbox;
 import GameTools.Spawner;
 import GameTools.Tick;
 import Logica.Barca;
@@ -14,9 +15,15 @@ public class PanelMapa extends JPanel {
     private static Dimension size = new Dimension(1300, 800);
     private PanelLaMuerte panelLaMuerte;
     private Mausoleo mausoleo;
+    private Hitbox[] bordes = new Hitbox[4];
 
     public PanelMapa() {
         super();
+
+        bordes[0] = new Hitbox(0, -1, size.width, 1);
+        bordes[1] = new Hitbox(size.width, 0, 1, size.height);
+        bordes[2] = new Hitbox(0, size.height, size.width, 1);
+        bordes[3] = new Hitbox(-1, 0, 1, size.height);
 
         panelLaMuerte = new PanelLaMuerte();
         Controles controles = new Controles(panelLaMuerte);
