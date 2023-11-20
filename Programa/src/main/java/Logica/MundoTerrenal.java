@@ -14,16 +14,15 @@ public class MundoTerrenal {
      *
      * @param barca la barca que se puede destruir.
      */
-    public MundoTerrenal(Barca barca) {
+    public MundoTerrenal() {
         demEnviados = new DepSobre<Demonio>();
         capacidad   = 1;
-        eventosAleatorios(barca);
     }
 
     /**
      * Método para que aleatoriamente los demonios sean exorcizados.
      */
-    private void eventosAleatorios(Barca barca) {
+    public void eventosAleatorios(Barca barca) {
         Thread tiempo = new Thread(new Runnable() {
 
             /**
