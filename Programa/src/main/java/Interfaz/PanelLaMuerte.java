@@ -37,6 +37,9 @@ public class PanelLaMuerte extends JPanel {
     public void setVelocidad(Point velocidad) {
         this.velocidad = velocidad;
     }
+    public void setVelocidad(int x, int y) {
+        velocidad = new Point(x,y);
+    }
 
     public Hitbox getHitbox() {
         return hitbox;
