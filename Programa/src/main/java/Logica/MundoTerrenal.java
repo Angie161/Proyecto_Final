@@ -11,8 +11,6 @@ public class MundoTerrenal {
 
     /**
      * Constructor personalizado en el que inicializamos las variables e iniciamos los eventos aleatorios.
-     *
-     * @param barca la barca que se puede destruir.
      */
     public MundoTerrenal() {
         demEnviados = new DepSobre<Demonio>();
@@ -21,6 +19,8 @@ public class MundoTerrenal {
 
     /**
      * Método para que aleatoriamente los demonios sean exorcizados.
+     *
+     * @param barca la barca que se puede destruir.
      */
     public void eventosAleatorios(Barca barca) {
         Thread tiempo = new Thread(new Runnable() {
