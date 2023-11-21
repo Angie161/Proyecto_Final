@@ -23,13 +23,13 @@ public class Tick extends Thread {
     @Override
     public void run() {
         while(true) {
-            jugadorSigueAControles();
             ArrayList<Hitbox> hitboxes = Hitbox.getTodasLasHitbox();
             for(int i = 1; i < hitboxes.size(); i++) {
                 if(hitboxes.get(0).getHitbox().intersects(hitboxes.get(i).getHitbox())) {
                     moverHitbox(hitboxes.get(i));
                 }
             }
+            jugadorSigueAControles();
             if((new Random()).nextInt(100) == 0) {
                  controles.getJugador().getLaMuerte().addFragAlmas(panelMapa.getMausoleo().getTierra().muertes());
             }
@@ -43,7 +43,7 @@ public class Tick extends Thread {
     }
 
     private void moverHitbox(Hitbox hitbox) {
-        //if(hitbox.isMovible()) {
+        if(hitbox.isMovible()) {
             quemarAlma(hitbox);
             hitbox.setVelocidad(Hitbox.getTodasLasHitbox().get(0).getVelocidad());
             hitbox.setLocation(hitbox.getLocation().x + hitbox.getVelocidad().x, hitbox.getLocation().y + hitbox.getVelocidad().y);
@@ -54,9 +54,12 @@ public class Tick extends Thread {
             }
             hitbox.setVelocidad(new Point(0, 0));
             hitbox.getPanelAsociado().setLocation(hitbox.getLocation());
-        //} else {
-          //  controles.getJugador().setVelocidad(new Point(0,0));
-        //}
+        } else {
+            hitbox.setLocation(hitbox.getLocation().x - hitbox.getVelocidad().x, hitbox.getLocation().y - hitbox.getVelocidad().y);
+            hitbox.setVelocidad(new Point(0, 0));
+            controles.setLocation(controles.getLocation().x - controles.getJugador().getVelocidad().x, controles.getLocation().y - controles.getJugador().getVelocidad().y);
+            controles.getJugador().setVelocidad(new Point(0,0));
+        }
     }
 
     private void jugadorSigueAControles() {
@@ -66,7 +69,7 @@ public class Tick extends Thread {
         controles.getJugador().getHitbox().setVelocidad(controles.getJugador().getVelocidad());
     }
     private void quemarAlma(Hitbox h) {
-        if((h.getLocation().x > 750 && h.getLocation().x < 900) && (h.getLocation().y > 500 || h.getLocation().y < (300 - h.getHitbox().height))) {
+        if((h.getLocation().x > 750 && h.getLocation().x < 900 - h.getHitbox().width) && (h.getLocation().y > 500 || h.getLocation().y < (300 - h.getHitbox().height))) {
             int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
             controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
             panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());

@@ -20,16 +20,16 @@ public class PanelMapa extends JPanel {
     public PanelMapa() {
         super();
 
-        bordes[0] = new Hitbox(0, -1, size.width, 1);
-        bordes[1] = new Hitbox(size.width, 0, 1, size.height);
-        bordes[2] = new Hitbox(0, size.height, size.width, 1);
-        bordes[3] = new Hitbox(-1, 0, 1, size.height);
-
         panelLaMuerte = new PanelLaMuerte();
         Controles controles = new Controles(panelLaMuerte);
         mausoleo = new Mausoleo(panelLaMuerte.getLaMuerte(), new MundoTerrenal());
         Spawner runeable = new Spawner(this, new Point(120, 200), new Dimension(550, 506), panelLaMuerte.getSize());
         Thread spawn = new Thread(runeable);
+
+        bordes[0] = new Hitbox(0, -1, size.width, 1);
+        bordes[1] = new Hitbox(size.width, 0, 1, size.height);
+        bordes[2] = new Hitbox(0, size.height, size.width, 1);
+        bordes[3] = new Hitbox(-1, 0, 1, size.height);
 
         add(panelLaMuerte);
         add(controles);
