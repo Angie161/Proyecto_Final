@@ -1,9 +1,6 @@
 package Interfaz;
 
-import GameTools.Controles;
-import GameTools.Hitbox;
-import GameTools.Spawner;
-import GameTools.Tick;
+import GameTools.*;
 import Logica.Barca;
 import Logica.Mausoleo;
 import Logica.MundoTerrenal;
@@ -16,6 +13,8 @@ public class PanelMapa extends JPanel {
     private PanelLaMuerte panelLaMuerte;
     private Mausoleo mausoleo;
     private Hitbox[] bordes = new Hitbox[4];
+    private Hitbox[] bordesParaAlmas = new Hitbox[4];
+    private Tick tick;
 
     public PanelMapa() {
         super();
@@ -26,15 +25,21 @@ public class PanelMapa extends JPanel {
         Spawner runeable = new Spawner(this, new Point(120, 200), new Dimension(550, 506), panelLaMuerte.getSize());
         Thread spawn = new Thread(runeable);
 
-        bordes[0] = new Hitbox(0, -1, size.width, 1);
-        bordes[1] = new Hitbox(size.width, 0, 1, size.height);
-        bordes[2] = new Hitbox(0, size.height, size.width, 1);
-        bordes[3] = new Hitbox(-1, 0, 1, size.height);
+        bordes[0] = new Hitbox(0, -1, size.width, 1, 0);
+        bordes[1] = new Hitbox(size.width, 0, 1, size.height,0);
+        bordes[2] = new Hitbox(0, size.height, size.width, 1,0);
+        bordes[3] = new Hitbox(-1, 0, 1, size.height,0);
+
+        Hitbox mausoleoHitbox = new Hitbox(0, 0, 650, 100,0);
+        Hitbox infierno1 =new Hitbox(750, 0, 150, 300,2);
+        Hitbox infierno2 =new Hitbox(750, 500, 150, 300,2);
+
 
         add(panelLaMuerte);
         add(controles);
 
-        new Tick(controles, this);
+        new Fps();
+        tick = new Tick(controles, this);
         spawn.start();
 
         setPreferredSize(size);
@@ -54,6 +59,12 @@ public class PanelMapa extends JPanel {
     public Mausoleo getMausoleo() {
         return mausoleo;
     }
+    public void stopTick() {
+        tick.interrupt();
+    }
+    public void reanudeTick() {
+        tick.start();
+    }
 
     @Override
     protected void paintComponent(Graphics g) {
@@ -69,12 +80,15 @@ public class PanelMapa extends JPanel {
             // Temporal para ubicarnos.
             g.setColor(new Color(120, 180, 120));
             g.fillRect(120, 200, 550, 506);
+
             // infierno
             g.setColor(Color.RED);
             g.fillRect(750, 0, 150, size.height);
 
+            //Mausoleo
             g.setColor(new Color(180, 100, 0));
             g.fillRect(0, 0, 650, 100);
+
             g.setColor(new Color(100, 100, 0));
             g.fillRect(350, 100, 300, 50);
 
