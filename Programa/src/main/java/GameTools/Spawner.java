@@ -15,6 +15,7 @@ public class Spawner implements Runnable {
     private final Dimension entidadSize;
     private final PanelMapa panelMapa;
     private final int[] spawner;
+    private final int maxCajas = 10;
     private AlmasFactory almasFactory = new AlmasFactory();
     public Spawner(PanelMapa panelMapa, Point ubicacion, Dimension size, Dimension entidadSize) {
         this.ubicacion = ubicacion;
@@ -51,7 +52,7 @@ public class Spawner implements Runnable {
         for(int j = 0; j < Hitbox.getTodasLasHitbox().size(); j++) {
             actualizarCasillasOcupadas(Hitbox.getTodasLasHitbox().get(j));
         }
-        if(spawner[i * (int) size.width/entidadSize.width + u] == 0 && almasActuales <= 10) {
+        if(spawner[i * (int) size.width/entidadSize.width + u] == 0 && almasActuales < (maxCajas - 1)) {
             PanelAlma panelAlma = new PanelAlma(almasFactory.crearAlmas(panelMapa.getPanelLaMuerte().getLaMuerte()));
             panelAlma.setLocation(ubicacion.x + u * entidadSize.width + u + 1, ubicacion.y + entidadSize.height * i + i + 1);
             panelAlma.getHitbox().setLocation(ubicacion.x + u * entidadSize.width + u + 1, ubicacion.y + entidadSize.height * i + i + 1);
