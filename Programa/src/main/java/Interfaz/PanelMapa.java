@@ -13,7 +13,6 @@ public class PanelMapa extends JPanel {
     private PanelLaMuerte panelLaMuerte;
     private Mausoleo mausoleo;
     private Hitbox[] bordes = new Hitbox[4];
-    private Hitbox[] bordesParaAlmas = new Hitbox[4];
     private Tick tick;
 
     public PanelMapa() {
@@ -29,7 +28,6 @@ public class PanelMapa extends JPanel {
         bordes[1] = new Hitbox(size.width, 0, 1, size.height,0);
         bordes[2] = new Hitbox(0, size.height, size.width, 1,0);
         bordes[3] = new Hitbox(-1, 0, 1, size.height,0);
-
         Hitbox mausoleoHitbox = new Hitbox(0, 0, 650, 100,0);
         Hitbox infierno1 =new Hitbox(750, 0, 150, 300,2);
         Hitbox infierno2 =new Hitbox(750, 500, 150, 300,2);

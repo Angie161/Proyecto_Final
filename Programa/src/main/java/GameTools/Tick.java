@@ -42,42 +42,27 @@ public class Tick extends Thread {
     }
 
     private void moverHitbox(Hitbox hitbox) {
-        if(!hitbox.isTraspasableForHitbox() && !hitbox.isTraspasableForPlayer()) {
-            if(hitbox.isMovible()) {
-                hitbox.setVelocidad(Hitbox.getTodasLasHitbox().get(0).getVelocidad());
-                hitbox.setLocation(hitbox.getLocation().x + hitbox.getVelocidad().x, hitbox.getLocation().y + hitbox.getVelocidad().y);
-                quemarAlma(hitbox);
-                for (int i = 1; i < Hitbox.getTodasLasHitbox().size(); i++) {
-                    if (Hitbox.getTodasLasHitbox().get(i) != hitbox && Hitbox.getTodasLasHitbox().get(i).getHitbox().intersects(hitbox.getHitbox())) {
-                        moverHitbox(Hitbox.getTodasLasHitbox().get(i));
-                    }
+        if(hitbox.isMovible()) {
+            hitbox.setVelocidad(Hitbox.getTodasLasHitbox().get(0).getVelocidad());
+            hitbox.setLocation(hitbox.getLocation().x + hitbox.getVelocidad().x, hitbox.getLocation().y + hitbox.getVelocidad().y);
+            quemarAlma(hitbox);
+            for (int i = 1; i < Hitbox.getTodasLasHitbox().size(); i++) {
+                if (Hitbox.getTodasLasHitbox().get(i) != hitbox && Hitbox.getTodasLasHitbox().get(i).getHitbox().intersects(hitbox.getHitbox())) {
+                    moverHitbox(Hitbox.getTodasLasHitbox().get(i));
                 }
-                hitbox.getPanelAsociado().setLocation(hitbox.getLocation());
-            } else {
+            }
+            hitbox.getPanelAsociado().setLocation(hitbox.getLocation());
+        } else {
+            if (!hitbox.isTraspasableForHitbox() && !hitbox.isTraspasableForPlayer()) {
                 for (int i = Hitbox.NoMovibleHitboxs(); i < Hitbox.getTodasLasHitbox().size(); i++) {
                     Hitbox.getTodasLasHitbox().get(i).setLocation(Hitbox.getTodasLasHitbox().get(i).getLocation().x - Hitbox.getTodasLasHitbox().get(i).getVelocidad().x, Hitbox.getTodasLasHitbox().get(i).getLocation().y - Hitbox.getTodasLasHitbox().get(i).getVelocidad().y);
                     Hitbox.getTodasLasHitbox().get(i).setVelocidad(0, 0);
                 }
                 controles.setLocation(controles.getLocation().x - controles.getJugador().getVelocidad().x, controles.getLocation().y - controles.getJugador().getVelocidad().y);
                 controles.getJugador().setVelocidad(new Point(0,0));
-            }
-        } else if(!hitbox.isTraspasableForHitbox() && hitbox.isTraspasableForPlayer()) {
-            if(hitbox.isMovible()) {
-
-            } else {
-
-            }
-        } else if(hitbox.isTraspasableForHitbox() && !hitbox.isTraspasableForPlayer()) {
-            if(hitbox.isMovible()) {
-
-            } else {
-
-            }
-        } else if(hitbox.isTraspasableForHitbox() && hitbox.isTraspasableForPlayer()) {
-            if(hitbox.isMovible()) {
-
-            } else {
-
+            } else if (hitbox.isTraspasableForHitbox() && !hitbox.isTraspasableForPlayer() && hitbox.getHitbox().intersects(Hitbox.getTodasLasHitbox().get(0).getHitbox())) {
+                controles.setLocation(controles.getLocation().x - controles.getJugador().getVelocidad().x, controles.getLocation().y - controles.getJugador().getVelocidad().y);
+                controles.getJugador().setVelocidad(new Point(0,0));
             }
         }
             /*
