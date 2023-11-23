@@ -11,18 +11,23 @@ import java.awt.*;
 public class PanelMapa extends JPanel {
     private static Dimension size = new Dimension(1300, 800);
     private PanelLaMuerte panelLaMuerte;
+    private PanelPuente panelPuente;
     private Mausoleo mausoleo;
     private Hitbox[] bordes = new Hitbox[4];
+    private PanelDepSobre[] panelDepSobres = new PanelDepSobre[3];
     private Tick tick;
+    private Thread spawn;
+    private Spawner runeable;
+    private Controles controles;
 
     public PanelMapa() {
         super();
 
         panelLaMuerte = new PanelLaMuerte();
-        Controles controles = new Controles(panelLaMuerte);
+        controles = new Controles(panelLaMuerte);
         mausoleo = new Mausoleo(panelLaMuerte.getLaMuerte(), new MundoTerrenal());
-        Spawner runeable = new Spawner(this, new Point(120, 200), new Dimension(550, 506), panelLaMuerte.getSize());
-        Thread spawn = new Thread(runeable);
+        runeable = new Spawner(this, new Point(120, 200), new Dimension(550, 506), panelLaMuerte.getSize());
+        spawn = new Thread(runeable);
 
         bordes[0] = new Hitbox(0, -1, size.width, 1, 0);
         bordes[1] = new Hitbox(size.width, 0, 1, size.height,0);
@@ -32,8 +37,13 @@ public class PanelMapa extends JPanel {
         Hitbox infierno1 =new Hitbox(750, 0, 150, 300,2);
         Hitbox infierno2 =new Hitbox(750, 500, 150, 300,2);
 
+        panelDepSobres[0] = new PanelDepSobre(15, 290, 2);
+        panelDepSobres[1] = new PanelDepSobre(15, 430, 0);
+        panelDepSobres[2] = new PanelDepSobre(15, 570, 1);
 
+        panelPuente = new PanelPuente(700,300);
         add(panelLaMuerte);
+        add(panelPuente);
         add(controles);
 
         new Fps();
@@ -57,11 +67,9 @@ public class PanelMapa extends JPanel {
     public Mausoleo getMausoleo() {
         return mausoleo;
     }
-    public void stopTick() {
-        tick.interrupt();
-    }
-    public void reanudeTick() {
-        tick.start();
+
+    public PanelDepSobre[] getPanelDepSobres() {
+        return panelDepSobres;
     }
 
     @Override
@@ -86,26 +94,22 @@ public class PanelMapa extends JPanel {
             //Mausoleo
             g.setColor(new Color(180, 100, 0));
             g.fillRect(0, 0, 650, 100);
-
+            panelDepSobres[0].paintComponent(g);
+            panelDepSobres[1].paintComponent(g);
+            panelDepSobres[2].paintComponent(g);
+            panelPuente.paintComponent(g);
             g.setColor(new Color(100, 100, 0));
-            g.fillRect(350, 100, 300, 50);
 
-            //puente
-            g.setColor(new Color(200, 150, 0));
-            g.fillRect(700, 300, 250, 200);
+            g.fillRect(350, 100, 300, 50);
 
             g.setColor(new Color(200, 200, 200));
             g.fillRect(1181, 50, 119, 199);
             g.fillRect(1181, 551, 119, 199);
             g.fillRect(1150, 315, 150, 170);
             g.setColor(new Color(100, 100, 200));
-            g.fillRect(915, 30, 60, 100);
             g.fillRect(915, 160, 60, 100);
             g.fillRect(915, 540, 60, 100);
             g.fillRect(915, 670, 60, 100);
-            g.fillRect(15, 290, 60, 100);
-            g.fillRect(15, 430, 60, 100);
-            g.fillRect(15, 570, 60, 100);
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.PLAIN,20));
             g.drawString(Integer.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
