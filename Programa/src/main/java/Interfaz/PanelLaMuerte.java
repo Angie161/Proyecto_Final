@@ -14,11 +14,10 @@ public class PanelLaMuerte extends JPanel {
     private final Point ubicacionInicial = new Point(635,375);
     private Hitbox hitbox;
     public PanelLaMuerte() {
-        super();
-
         laMuerte = new LaMuerte();
         hitbox = new Hitbox(new Rectangle(ubicacionInicial, size), this);
 
+        setOpaque(false);
         setSize(size);
         setLocation(ubicacionInicial);
     }
@@ -49,7 +48,7 @@ public class PanelLaMuerte extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         try {
-            ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("laMuerte.png"));
+            ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("LaMuerte.png"));
             g.drawImage(imageIcon.getImage(), 0, 0, null);
         } catch (Exception e) {
             //System.err.println("Error al cargar a la muerte");

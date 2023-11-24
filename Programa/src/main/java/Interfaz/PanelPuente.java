@@ -36,18 +36,14 @@ public class PanelPuente extends JPanel {
     }
 
     @Override
-    public void paint(Graphics g) {
-
-    }
-
-    @Override
     protected void paintComponent(Graphics g) {
+        super.paintComponent(g);
         g.setColor(new Color(200, 150, 0));
         if(puente.getFuncional()) {
-            g.fillRect(700, 300, size.width, size.height);
+            g.fillRect(0, 0, size.width, size.height);
         } else {
-            g.fillRect(700, 300, size.width/3, size.height);
-            g.fillRect(700 + 2*size.width/3, 300, size.width/3, size.height);
+            g.fillRect(0, 0, size.width/3, size.height);
+            g.fillRect(2*size.width/3, 0, size.width/3, size.height);
         }
     }
 }

@@ -57,6 +57,7 @@ public class Spawner implements Runnable {
             panelAlma.setLocation(ubicacion.x + u * entidadSize.width + u + 1, ubicacion.y + entidadSize.height * i + i + 1);
             panelAlma.getHitbox().setLocation(ubicacion.x + u * entidadSize.width + u + 1, ubicacion.y + entidadSize.height * i + i + 1);
             panelMapa.add(panelAlma);
+            panelMapa.setComponentZOrder(panelAlma, 1);
             almasActuales++;
           } else {
             throw new CasillaOcupadaException();

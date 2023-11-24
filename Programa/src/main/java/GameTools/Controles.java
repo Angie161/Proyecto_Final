@@ -11,9 +11,9 @@ public class Controles extends JPanel {
     private final int[] teclas = {KeyEvent.VK_W, KeyEvent.VK_A, KeyEvent.VK_S, KeyEvent.VK_D};
     private final PanelLaMuerte jugador;
     public Controles(PanelLaMuerte jugador) {
-        super();
         this.jugador = jugador;
 
+        setOpaque(false);
         setFocusable(true);
         setSize(jugador.getSize());
         setLocation(jugador.getLocation());

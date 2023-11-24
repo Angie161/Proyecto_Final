@@ -46,10 +46,18 @@ public class PanelMapa extends JPanel {
         panelSalidaDepSobres[2] = new PanelSalidaDepSobre(915,540,panelDepSobres[2].getDepSobre());
         panelSalidaDepSobres[3] = new PanelSalidaDepSobre(915,670,panelDepSobres[1].getDepSobre());
         panelPuente = new PanelPuente(700,300);
-        add(panelLaMuerte);
         add(panelPuente);
+        setComponentZOrder(panelPuente,0);
+        add(panelLaMuerte);
+        setComponentZOrder(panelPuente,1);
         add(controles);
-
+        add(panelDepSobres[0]);
+        add(panelDepSobres[1]);
+        add(panelDepSobres[2]);
+        add(panelSalidaDepSobres[0]);
+        add(panelSalidaDepSobres[1]);
+        add(panelSalidaDepSobres[2]);
+        add(panelSalidaDepSobres[3]);
         new Fps();
         tick = new Tick(controles, this);
         spawn.start();
@@ -102,14 +110,6 @@ public class PanelMapa extends JPanel {
             //Mausoleo
             g.setColor(new Color(180, 100, 0));
             g.fillRect(0, 0, 650, 100);
-            panelDepSobres[0].paintComponent(g);
-            panelDepSobres[1].paintComponent(g);
-            panelDepSobres[2].paintComponent(g);
-            panelSalidaDepSobres[0].paintComponent(g);
-            panelSalidaDepSobres[1].paintComponent(g);
-            panelSalidaDepSobres[2].paintComponent(g);
-            panelSalidaDepSobres[3].paintComponent(g);
-            panelPuente.paintComponent(g);
             g.setColor(new Color(100, 100, 0));
 
             g.fillRect(350, 100, 300, 50);

@@ -25,6 +25,6 @@ public class PanelSalidaDepSobre extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         g.setColor(new Color(100, 100, 200));
-        g.fillRect(ubicacion.x, ubicacion.y, 60, 100);
+        g.fillRect(0, 0, 60, 100);
     }
 }
