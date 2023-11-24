@@ -16,6 +16,7 @@ public class PanelMapa extends JPanel {
     private Hitbox[] bordes = new Hitbox[4];
     private PanelDepSobre[] panelDepSobres = new PanelDepSobre[3];
     private PanelSalidaDepSobre[] panelSalidaDepSobres = new PanelSalidaDepSobre[4];
+    private PanelAltar[] panelAltar = new PanelAltar[2];
     private Tick tick;
     private Thread spawn;
     private Spawner runeable;
@@ -50,6 +51,10 @@ public class PanelMapa extends JPanel {
         setComponentZOrder(panelPuente,0);
         add(panelLaMuerte);
         setComponentZOrder(panelPuente,1);
+        panelAltar[0] = new PanelAltar(1181, 50);
+        panelAltar[1] = new PanelAltar(1181, 551);
+        add(panelAltar[0]);
+        add(panelAltar[1]);
         add(controles);
         add(panelDepSobres[0]);
         add(panelDepSobres[1]);
@@ -70,6 +75,10 @@ public class PanelMapa extends JPanel {
 
     public static Dimension getTam() {
         return size;
+    }
+
+    public PanelAltar[] getPanelAltar() {
+        return panelAltar;
     }
 
     public PanelLaMuerte getPanelLaMuerte() {

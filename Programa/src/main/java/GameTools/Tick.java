@@ -51,6 +51,8 @@ public class Tick extends Thread {
             hitbox.setLocation(hitbox.getLocation().x + hitbox.getVelocidad().x, hitbox.getLocation().y + hitbox.getVelocidad().y);
             quemarAlma(hitbox);
             guardarAlma(hitbox);
+            panelMapa.getPanelAltar()[0].ingresarAlma(hitbox);
+            panelMapa.getPanelAltar()[1].ingresarAlma(hitbox);
             for (int i = 1; i < Hitbox.getTodasLasHitbox().size(); i++) {
                 if (Hitbox.getTodasLasHitbox().get(i) != hitbox && Hitbox.getTodasLasHitbox().get(i).getHitbox().intersects(hitbox.getHitbox())) {
                     moverHitbox(Hitbox.getTodasLasHitbox().get(i));
