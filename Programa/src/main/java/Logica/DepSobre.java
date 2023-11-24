@@ -36,7 +36,7 @@ public class DepSobre<Almas> {
      * @return
      */
     public Almas get() {
-        if(contSobre.size() != 0) {
+        if(!contSobre.isEmpty()) {
             return contSobre.remove(0);
         }
         else{
@@ -50,6 +50,11 @@ public class DepSobre<Almas> {
      * @return Objeto genérico obtenido del contenedor.
      */
     public Almas see(int cual){
-        return contSobre.get(cual);
+        if(!contSobre.isEmpty()) {
+            return contSobre.get(cual);
+        }
+        else {
+            return null;
+        }
     }
 }
