@@ -15,6 +15,7 @@ public class PanelMapa extends JPanel {
     private Mausoleo mausoleo;
     private Hitbox[] bordes = new Hitbox[4];
     private PanelDepSobre[] panelDepSobres = new PanelDepSobre[3];
+    private PanelSalidaDepSobre[] panelSalidaDepSobres = new PanelSalidaDepSobre[4];
     private Tick tick;
     private Thread spawn;
     private Spawner runeable;
@@ -40,7 +41,10 @@ public class PanelMapa extends JPanel {
         panelDepSobres[0] = new PanelDepSobre(15, 290, 2);
         panelDepSobres[1] = new PanelDepSobre(15, 430, 0);
         panelDepSobres[2] = new PanelDepSobre(15, 570, 1);
-
+        panelSalidaDepSobres[0] = new PanelSalidaDepSobre(915,30,panelDepSobres[1].getDepSobre());
+        panelSalidaDepSobres[1] = new PanelSalidaDepSobre(915,160,panelDepSobres[0].getDepSobre());
+        panelSalidaDepSobres[2] = new PanelSalidaDepSobre(915,540,panelDepSobres[2].getDepSobre());
+        panelSalidaDepSobres[3] = new PanelSalidaDepSobre(915,670,panelDepSobres[1].getDepSobre());
         panelPuente = new PanelPuente(700,300);
         add(panelLaMuerte);
         add(panelPuente);
@@ -72,6 +76,10 @@ public class PanelMapa extends JPanel {
         return panelDepSobres;
     }
 
+    public PanelSalidaDepSobre[] getPanelSalidaDepSobres() {
+        return panelSalidaDepSobres;
+    }
+
     @Override
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -97,6 +105,10 @@ public class PanelMapa extends JPanel {
             panelDepSobres[0].paintComponent(g);
             panelDepSobres[1].paintComponent(g);
             panelDepSobres[2].paintComponent(g);
+            panelSalidaDepSobres[0].paintComponent(g);
+            panelSalidaDepSobres[1].paintComponent(g);
+            panelSalidaDepSobres[2].paintComponent(g);
+            panelSalidaDepSobres[3].paintComponent(g);
             panelPuente.paintComponent(g);
             g.setColor(new Color(100, 100, 0));
 
@@ -106,10 +118,6 @@ public class PanelMapa extends JPanel {
             g.fillRect(1181, 50, 119, 199);
             g.fillRect(1181, 551, 119, 199);
             g.fillRect(1150, 315, 150, 170);
-            g.setColor(new Color(100, 100, 200));
-            g.fillRect(915, 160, 60, 100);
-            g.fillRect(915, 540, 60, 100);
-            g.fillRect(915, 670, 60, 100);
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.PLAIN,20));
             g.drawString(Integer.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
