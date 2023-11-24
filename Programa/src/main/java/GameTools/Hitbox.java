@@ -89,9 +89,11 @@ public class Hitbox {
     }
     public void setLocation(Point point) {
         hitbox.setLocation(point);
+        panelAsociado.setLocation(point);
     }
     public void setLocation(int x, int y) {
         hitbox.setLocation(x, y);
+        panelAsociado.setLocation(x,y);
     }
     public Point getLocation() {
         return hitbox.getLocation();

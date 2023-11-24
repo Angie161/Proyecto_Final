@@ -56,7 +56,6 @@ public class Tick extends Thread {
                     moverHitbox(Hitbox.getTodasLasHitbox().get(i));
                 }
             }
-            hitbox.getPanelAsociado().setLocation(hitbox.getLocation());
         } else {
             if (!hitbox.isTraspasableForHitbox() && !hitbox.isTraspasableForPlayer()) {
                 for (int i = Hitbox.NoMovibleHitboxs(); i < Hitbox.getTodasLasHitbox().size(); i++) {
