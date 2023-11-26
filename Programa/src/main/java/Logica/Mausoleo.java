@@ -108,6 +108,8 @@ public class Mausoleo {
         if(propietario.getFragAlmas() >= precios.getPrecioRepararaPuente() && !puente.getFuncional()) {
             puente.setFuncional(true);
             propietario.addFragAlmas(-precios.getPrecioRepararaPuente());
+        } else if (barca.getFuncional()) {
+            System.out.println("El puente no está roto");
         } else {
             throw new FragmentosInsuficientesException();
         }
@@ -122,6 +124,8 @@ public class Mausoleo {
         if(propietario.getFragAlmas() >= precios.getPrecioRepararBarca() && !barca.getFuncional()) {
             barca.setFuncional(true);
             propietario.addFragAlmas(-precios.getPrecioRepararBarca());
+        } else if (barca.getFuncional()) {
+            System.out.println("La barca no está rota");
         } else {
             throw new FragmentosInsuficientesException();
         }
