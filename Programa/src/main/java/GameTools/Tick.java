@@ -26,7 +26,7 @@ public class Tick extends Thread {
     public void run() {
         while(true) {
             ArrayList<Hitbox> hitboxes = Hitbox.getTodasLasHitbox();
-            //entrarAlMenu(hitboxes.get(0));
+            entrarAlMenu(hitboxes.get(0));
             for(int i = 1; i < hitboxes.size(); i++) {
                 if(hitboxes.get(0).getHitbox().intersects(hitboxes.get(i).getHitbox())) {
                     moverHitbox(hitboxes.get(i));
@@ -134,10 +134,10 @@ public class Tick extends Thread {
         }
     }
     private void entrarAlMenu(Hitbox h) {
-        if((h.getLocation().x >= 300 && h.getLocation().x <= 650 ) && (h.getLocation().y > 100 && h.getLocation().y < 150)) {
-            PanelMenuMausoleo pm = new PanelMenuMausoleo(panelMapa);
-            panelMapa.add(pm);
-            panelMapa.setComponentZOrder(pm, 0);
+        if((h.getLocation().x >= 325 && h.getLocation().x <= 565 ) && (h.getLocation().y > 75 && h.getLocation().y < 100)) {
+            panelMapa.setComponentZOrder(panelMapa.getPanelMenuMausoleo(), 0);
+            panelMapa.getPanelMenuMausoleo().setVisible(true);
+            panelMapa.getPanelMenuMausoleo().actualizarValores();
             controles.setLocation(controles.getLocation().x - controles.getJugador().getVelocidad().x, controles.getLocation().y - controles.getJugador().getVelocidad().y);
             controles.getJugador().setVelocidad(new Point(0, 0));
         }

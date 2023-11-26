@@ -17,6 +17,7 @@ public class PanelMapa extends JPanel {
     private PanelDepSobre[] panelDepSobres = new PanelDepSobre[3];
     private PanelSalidaDepSobre[] panelSalidaDepSobres = new PanelSalidaDepSobre[4];
     private PanelAltar[] panelAltar = new PanelAltar[2];
+    private PanelMenuMausoleo panelMenuMausoleo;
     private Tick tick;
     private Thread spawn;
     private Spawner runeable;
@@ -53,6 +54,7 @@ public class PanelMapa extends JPanel {
         setComponentZOrder(panelPuente,1);
         panelAltar[0] = new PanelAltar(1181, 50);
         panelAltar[1] = new PanelAltar(1181, 551);
+        panelMenuMausoleo = new PanelMenuMausoleo(this);
         add(panelAltar[0]);
         add(panelAltar[1]);
         add(controles);
@@ -63,6 +65,7 @@ public class PanelMapa extends JPanel {
         add(panelSalidaDepSobres[1]);
         add(panelSalidaDepSobres[2]);
         add(panelSalidaDepSobres[3]);
+        add(panelMenuMausoleo);
         new Fps();
         tick = new Tick(controles, this);
         spawn.start();
@@ -71,7 +74,6 @@ public class PanelMapa extends JPanel {
         setLocation(0, 0);
         setLayout(null);
     }
-
 
     public static Dimension getTam() {
         return size;
@@ -95,6 +97,10 @@ public class PanelMapa extends JPanel {
 
     public PanelSalidaDepSobre[] getPanelSalidaDepSobres() {
         return panelSalidaDepSobres;
+    }
+
+    public PanelMenuMausoleo getPanelMenuMausoleo() {
+        return panelMenuMausoleo;
     }
 
     @Override
