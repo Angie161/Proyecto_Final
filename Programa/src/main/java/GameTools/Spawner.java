@@ -74,6 +74,9 @@ public class Spawner implements Runnable {
     public static void unAlmaMenos() {
         almasActuales--;
     }
+    public static void unAlmaMas() {
+        almasActuales++;
+    }
     public int[] getSpawner() {
         return spawner;
     }

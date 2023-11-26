@@ -92,14 +92,17 @@ public class Tick extends Thread {
             panelMapa.getPanelDepSobres()[0].getDepSobre().add(((PanelAlma) h.getPanelAsociado()).getAlma());
             panelMapa.remove(h.getPanelAsociado());
             Hitbox.eliminarHitbox(h);
+            Spawner.unAlmaMenos();
         } else if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Demonio && (h.getLocation().x >= 75 && h.getLocation().x <= 137 - h.getHitbox().width) && (h.getLocation().y > 420 && h.getLocation().y < (540 - h.getHitbox().height))) {
             panelMapa.getPanelDepSobres()[2].getDepSobre().add(((PanelAlma) h.getPanelAsociado()).getAlma());
             panelMapa.remove(h.getPanelAsociado());
             Hitbox.eliminarHitbox(h);
+            Spawner.unAlmaMenos();
         } else if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Persona && (h.getLocation().x >= 75 && h.getLocation().x <= 137 - h.getHitbox().width) && (h.getLocation().y > 560 && h.getLocation().y < (680 - h.getHitbox().height))) {
             panelMapa.getPanelDepSobres()[1].getDepSobre().add(((PanelAlma) h.getPanelAsociado()).getAlma());
             panelMapa.remove(h.getPanelAsociado());
             Hitbox.eliminarHitbox(h);
+            Spawner.unAlmaMenos();
         }
     }
     private void sacarAlma(Hitbox h) {
@@ -109,6 +112,7 @@ public class Tick extends Thread {
                 pa.setLocation(1060, 30);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
+                Spawner.unAlmaMas();
             }
         } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 150 && h.getLocation().y < (270 - h.getHitbox().height))) {
             if(panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().see(0) != null) {
@@ -116,6 +120,7 @@ public class Tick extends Thread {
                 pa.setLocation(1060, 160);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
+                Spawner.unAlmaMas();
             }
         } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 530 && h.getLocation().y < (650 - h.getHitbox().height))) {
             if(panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().see(0) != null) {
@@ -123,6 +128,7 @@ public class Tick extends Thread {
                 pa.setLocation(1060, 540);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
+                Spawner.unAlmaMas();
             }
         } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 660 && h.getLocation().y < (780 - h.getHitbox().height))) {
             if(panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().see(0) != null) {
@@ -130,6 +136,7 @@ public class Tick extends Thread {
                 pa.setLocation(1060, 670);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
+                Spawner.unAlmaMas();
             }
         }
     }
