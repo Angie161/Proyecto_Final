@@ -25,13 +25,31 @@ public class AlmasFactory{
             return DemoniosFactory.crearDemonio(laMuerte, getColorAleatorio(1));
         }
     }
+    public static Almas fusionarAlmas(LaMuerte laMuerte, Almas alma1, Almas alma2) {
+        if(alma1 instanceof Angel) {
+            if(alma2 instanceof Angel) {
+                return AngelesFactory.crearAngel((Angel) alma1, (Angel) alma2);
+            } else if(alma2 instanceof Persona || alma2 instanceof Demonio) {
+                return PersonaFactory.crearPersona(alma1, alma2);
+            }
+        } else if(alma1 instanceof Demonio) {
+            if(alma2 instanceof Demonio) {
+                return DemoniosFactory.crearDemonio((Demonio) alma1, (Demonio) alma2);
+            } else if(alma2 instanceof Persona || alma2 instanceof Angel) {
+                return PersonaFactory.crearPersona(alma1, alma2);
+            }
+        } else if(alma1 instanceof Persona) {
+            return PersonaFactory.crearPersona(alma1, alma2);
+        }
+        return null;
+    }
 
     /**
      * Obtiene un color al azar dentro de la gama de colores permitida para cada tipo de alma.
      * @param cual entero con un valor entre 0 y 2 que permitirá seleccionar la gama de colores.
      * @return un color al azar dentro de la gama correspondiente al alma.
      */
-    private static Color getColorAleatorio(int cual) {
+    protected static Color getColorAleatorio(int cual) {
         Random random = new Random();
         // 0 para persona, 1 para demonios y 2 para ángeles.
         if(cual == 0) {
