@@ -10,14 +10,14 @@ public class PanelDepSobre extends JPanel {
     private static Dimension size = new Dimension(120, 100);
     private Point ubicacion;
     private DepSobre depSobre;
-    public PanelDepSobre(int x, int y, int cual) {
+    public PanelDepSobre(int x, int y, int cual, LaMuerte laMuerte) {
         super();
         if(cual == 0) {
-            depSobre = new DepSobre<Persona>();
+            depSobre = laMuerte.getDepSobre()[0];
         } else if(cual == 1) {
-            depSobre = new DepSobre<Demonio>();
+            depSobre = laMuerte.getDepSobre()[1];
         } else if(cual == 2) {
-            depSobre = new DepSobre<Angel>();
+            depSobre = laMuerte.getDepSobre()[2];
         }
         ubicacion = new Point(x, y);
         setBounds(x,y,size.width, size.height);
