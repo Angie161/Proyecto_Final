@@ -16,7 +16,7 @@ public class PanelMapa extends JPanel {
     private Hitbox[] bordes = new Hitbox[4];
     private PanelDepSobre[] panelDepSobres = new PanelDepSobre[3];
     private PanelSalidaDepSobre[] panelSalidaDepSobres = new PanelSalidaDepSobre[4];
-    private PanelAltar[] panelAltar = new PanelAltar[2];
+    private PanelAltar[] panelAltar = new PanelAltar[3];
     private Tick tick;
     private Thread spawn;
     private Spawner runeable;
@@ -48,13 +48,17 @@ public class PanelMapa extends JPanel {
         panelSalidaDepSobres[3] = new PanelSalidaDepSobre(915,670,panelDepSobres[1].getDepSobre());
         panelPuente = new PanelPuente(700,300);
         add(panelPuente);
-        setComponentZOrder(panelPuente,0);
         add(panelLaMuerte);
         setComponentZOrder(panelPuente,1);
         panelAltar[0] = new PanelAltar(1181, 50);
         panelAltar[1] = new PanelAltar(1181, 551);
+        panelAltar[2] = new PanelAltar(1150, 315);
         add(panelAltar[0]);
         add(panelAltar[1]);
+        add(panelAltar[2]);
+        setComponentZOrder(panelAltar[0],1);
+        setComponentZOrder(panelAltar[1],1);
+        setComponentZOrder(panelAltar[2],1);
         add(controles);
         add(panelDepSobres[0]);
         add(panelDepSobres[1]);
@@ -123,10 +127,6 @@ public class PanelMapa extends JPanel {
 
             g.fillRect(350, 100, 300, 50);
 
-            g.setColor(new Color(200, 200, 200));
-            g.fillRect(1181, 50, 119, 199);
-            g.fillRect(1181, 551, 119, 199);
-            g.fillRect(1150, 315, 150, 170);
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.PLAIN,20));
             g.drawString(Integer.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
