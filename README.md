@@ -63,7 +63,7 @@ La siguiente foto es un boceto de referencia de la pantalla principal en papel.
 
 Esta es una imagen con el prototipo de interfaz al ejecutar el programa. 
 
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/614555fa-931c-4bcf-bb09-9dfeb4b40726)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/47c261b1-5e13-4f1b-9005-95c46c77b178)
 
 La siguiente foto contiene un boceto de cómo se verá el panel del Mausoleo una vez se accede a él.
 
