@@ -40,9 +40,9 @@ public class PanelMapa extends JPanel {
         Hitbox infierno1 =new Hitbox(750, 0, 150, 300,2);
         Hitbox infierno2 =new Hitbox(750, 500, 150, 300,2);
 
-        panelDepSobres[0] = new PanelDepSobre(15, 290, 2);
-        panelDepSobres[1] = new PanelDepSobre(15, 430, 0);
-        panelDepSobres[2] = new PanelDepSobre(15, 570, 1);
+        panelDepSobres[0] = new PanelDepSobre(15, 290, 2, panelLaMuerte.getLaMuerte());
+        panelDepSobres[1] = new PanelDepSobre(15, 430, 0, panelLaMuerte.getLaMuerte());
+        panelDepSobres[2] = new PanelDepSobre(15, 570, 1, panelLaMuerte.getLaMuerte());
         panelSalidaDepSobres[0] = new PanelSalidaDepSobre(915,30,panelDepSobres[1].getDepSobre());
         panelSalidaDepSobres[1] = new PanelSalidaDepSobre(915,160,panelDepSobres[0].getDepSobre());
         panelSalidaDepSobres[2] = new PanelSalidaDepSobre(915,540,panelDepSobres[2].getDepSobre());
@@ -135,7 +135,7 @@ public class PanelMapa extends JPanel {
             g.fillRect(1150, 315, 150, 170);
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.PLAIN,20));
-            g.drawString(Integer.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
+            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
         }
     }
 }

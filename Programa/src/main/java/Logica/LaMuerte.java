@@ -4,7 +4,7 @@ package Logica;
  * Esta clase es el protagonista de nuestro juego y representa al personaje utilizado por el jugador.
  */
 public class LaMuerte {
-    private int fragAlmas;
+    private long fragAlmas;
     private int poder;
     private DepSobre[] depSobre = new DepSobre[3];;
 
@@ -26,7 +26,7 @@ public class LaMuerte {
      *
      * @return la cantidad de fragmentos de alma que tenga el jugador.
      */
-    public int getFragAlmas() {
+    public long getFragAlmas() {
         return fragAlmas;
     }
 
@@ -35,7 +35,7 @@ public class LaMuerte {
      *
      * @param fragAlmasObtenido la cantidad que se quiere agregar o quitar.
      */
-    public void addFragAlmas(int fragAlmasObtenido) {
+    public void addFragAlmas(long fragAlmasObtenido) {
         fragAlmas += fragAlmasObtenido;
     }
 
