@@ -30,15 +30,20 @@ El mausoleo.
 
 ### 📝 UML (Boceto)
 
-Avance en el UML: Modificaciones en clases del uml en el package logica, agregado del uml de la interfaz y de las Factories.
+Avance en el UML: Modificaciones en clases del uml en el package interfaz, agregado de clases al uml de Gametools y de las Factories.
 
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/b979a319-f655-4c5d-a1f5-3b2412ec0ad6)
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/1ed64adb-92fa-4e72-ba38-28ab7fc4b50c)
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/2d1d145d-4ec1-42c6-9c15-dd924cbec07e)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/86a026c9-cd9a-4fe2-ad35-09ffd054ebed)
+
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/97fdd8e9-39c8-4a1f-8d83-877a588cc756)
+
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/98096540-cf32-4331-84b4-fac2a7b08203)
+
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/586e7c4f-ea88-4028-9fbf-38ab1051d153)
+
 
 Imagen del uml completo:
 
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/402c87ad-1291-4f68-8b3a-0920c9846ede)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/fa72d6b0-afc6-4041-8557-31b31a910abc)
 
 
 ### 📍Casos de Uso
@@ -64,12 +69,15 @@ La siguiente foto contiene un boceto de cómo se verá el panel del Mausoleo una
 
 ![20231117_174338](https://github.com/Angie161/Proyecto_Final/assets/146099263/bb003db4-60bb-459e-9e26-6c1893029bfe)
 
+Esta es una imagen con el prototipo de interfaz al entrar al Mausoleo.
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/8757b973-3849-4027-9e2c-a86e014d3acb)
+
 
 ### 🔍Por implementar (Consultas)
-Ninguna consulta de momento.
+* (Por consultar) ¿Cómo poner en pausa un Hilo?: Queremos saber esto con la finalidad de generanr una especie de pausa en el juego al entrar en el Mausoleo.
 
 
-### 🤝🏻 Contribuidores
+### 🤝🏻 Contribuidores (Grupo 20)
 
 * 🌠 Angie Ramírez 
   
