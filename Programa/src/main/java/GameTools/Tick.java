@@ -15,6 +15,7 @@ public class Tick extends Thread {
     private static final int tick = 5;
     private Controles controles;
     private PanelMapa panelMapa;
+    private boolean interactuar = false;
     public Tick(Controles controles, PanelMapa panelMapa){
         super();
         this.controles = controles;
@@ -109,61 +110,71 @@ public class Tick extends Thread {
     }
     private void sacarAlma(Hitbox h) {
         if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 20 && h.getLocation().y < (140 - h.getHitbox().height))) {
-            if(panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null) {
+            if(panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().get());
                 pa.setLocation(1190, 60);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
                 panelMapa.setComponentZOrder(pa,0);
-            } else if(panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null) {
+                interactuar = true;
+            } else if(panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().get());
                 pa.setLocation(1190, 560);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
                 panelMapa.setComponentZOrder(pa,0);
+                interactuar = true;
             }
         } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 150 && h.getLocation().y < (270 - h.getHitbox().height))) {
-            if(panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null) {
+            if(panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().get());
                 pa.setLocation(1190, 140);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
                 panelMapa.setComponentZOrder(pa,0);
-            } else if(panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null) {
+                interactuar = true;
+            } else if(panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().get());
                 pa.setLocation(1190, 560);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
                 panelMapa.setComponentZOrder(pa,0);
+                interactuar = true;
             }
         } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 530 && h.getLocation().y < (650 - h.getHitbox().height))) {
-            if(panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null) {
+            if(panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().get());
                 pa.setLocation(1190, 560);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
                 panelMapa.setComponentZOrder(pa,0);
-            } else if(panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null) {
+                interactuar = true;
+            } else if(panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().get());
                 pa.setLocation(1190, 140);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
                 panelMapa.setComponentZOrder(pa,0);
+                interactuar = true;
             }
         } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 660 && h.getLocation().y < (780 - h.getHitbox().height))) {
-            if(panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null) {
+            if(panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().get());
                 pa.setLocation(1190, 650);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
                 panelMapa.setComponentZOrder(pa,0);
-            } else if(panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null) {
+                interactuar = true;
+            } else if(panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().get());
                 pa.setLocation(1190, 140);
                 pa.getHitbox().setLocation(pa.getLocation());
                 panelMapa.add(pa);
                 panelMapa.setComponentZOrder(pa,0);
+                interactuar = true;
             }
+        } else {
+            interactuar = false;
         }
     }
     private void entrarAlMenu(Hitbox h) {
