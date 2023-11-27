@@ -12,8 +12,7 @@ public class LaMuerte {
      * Constructor personalizado en el que se inicializan las variables.
      */
     public LaMuerte() {
-        //fragAlmas = 0;
-        fragAlmas = 999999999;
+        fragAlmas = 0;
         poder     = 1;
 
         depSobre[0] = new DepSobre<Persona>();
