@@ -7,13 +7,19 @@ import java.util.Random;
  */
 public class Terremoto {
     /**
-     *
+     * Constructor por defecto.
      *
      * @param puente afectado por el terremoto.
      */
     public Terremoto(Puente puente) {
         terremoto(puente);
     }
+
+    /**
+    * Genera un terremoto de manera aleatoria a través de un hilo, el cual afectará el estado de la barca.
+    *
+    * @param puente el cuál se verá afectado por el terremoto.
+    */
     private void terremoto(Puente puente) {
         Thread tiempo = new Thread(new Runnable() {
 
