@@ -51,7 +51,7 @@ public class PanelMenuMausoleo extends JPanel {
         texto[9] = new JLabel("Mundo Terrenal");
 
         try {
-            fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, new File("../Programa/target/classes/Fuentes/Angiesfont.ttf"));
+            fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
             fuentePersonalizada = fuentePersonalizada.deriveFont(fuentePersonalizada.getSize()*40f);
             fuentePersonalizada = fuentePersonalizada.deriveFont(Font.BOLD);
         }catch (Exception e){
