@@ -96,12 +96,14 @@ public class PanelMenuMausoleo extends JPanel {
         texto[4].setText("Frag: " + panelMapa.getPanelLaMuerte().getLaMuerte().getFragAlmas());
         texto[5].setText("Capacidad: " + panelMapa.getMausoleo().getTierra().getCapacidad());
         texto[6].setText("Dem. Enviados: " + panelMapa.getMausoleo().getTierra().getCantDemEnviados());
+        texto[7].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + " angeles y " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()) + " frag");
+
     }
 
     @Override
     protected void paintComponent(Graphics g) {
+        actualizarValores();
         super.paintComponent(g);
-
         //Retrato Muerte
         g.setColor(new Color(50, 50, 50));
         g.fillRect(350, 50, 150, 250);
