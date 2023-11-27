@@ -33,6 +33,14 @@ public class DemoniosFactory extends AlmasFactory{
                 return null;
         }
     }
+
+    /**
+    * Fusiona dos tipos de demonios para generar uno nuevo, que tendrá el rango del demonio con rango mayor.
+    * 
+    * @param demonio1 solicitado en el primer altar para hacer la fusión.
+    * @param demonio2 solicitado en el segundo altar para hacer la fusión.
+    * @return Demonio generado tras la fusión.
+    */
     public static Demonio crearDemonio(Demonio demonio1, Demonio demonio2) {
         Random random = new Random();
         int maldad;
