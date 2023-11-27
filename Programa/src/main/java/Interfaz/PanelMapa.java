@@ -16,8 +16,8 @@ public class PanelMapa extends JPanel {
     private Hitbox[] bordes = new Hitbox[4];
     private PanelDepSobre[] panelDepSobres = new PanelDepSobre[3];
     private PanelSalidaDepSobre[] panelSalidaDepSobres = new PanelSalidaDepSobre[4];
-    private PanelAltar[] panelAltar = new PanelAltar[2];
     private PanelMenuMausoleo panelMenuMausoleo;
+    private PanelAltar[] panelAltar = new PanelAltar[3];
     private Tick tick;
     private Thread spawn;
     private Spawner runeable;
@@ -26,37 +26,36 @@ public class PanelMapa extends JPanel {
     public PanelMapa() {
         super();
 
-        panelLaMuerte = new PanelLaMuerte();
-        controles = new Controles(panelLaMuerte);
-        mausoleo = new Mausoleo(panelLaMuerte.getLaMuerte(), new MundoTerrenal());
-        runeable = new Spawner(this, new Point(120, 200), new Dimension(550, 506), panelLaMuerte.getSize());
-        spawn = new Thread(runeable);
-
-        bordes[0] = new Hitbox(0, -1, size.width, 1, 0);
-        bordes[1] = new Hitbox(size.width, 0, 1, size.height,0);
-        bordes[2] = new Hitbox(0, size.height, size.width, 1,0);
-        bordes[3] = new Hitbox(-1, 0, 1, size.height,0);
-        Hitbox mausoleoHitbox = new Hitbox(0, 0, 650, 100,0);
-        Hitbox infierno1 =new Hitbox(750, 0, 150, 300,2);
-        Hitbox infierno2 =new Hitbox(750, 500, 150, 300,2);
-
-        panelDepSobres[0] = new PanelDepSobre(15, 290, 2, panelLaMuerte.getLaMuerte());
-        panelDepSobres[1] = new PanelDepSobre(15, 430, 0, panelLaMuerte.getLaMuerte());
-        panelDepSobres[2] = new PanelDepSobre(15, 570, 1, panelLaMuerte.getLaMuerte());
+        panelLaMuerte           = new PanelLaMuerte();
+        controles               = new Controles(panelLaMuerte);
+        mausoleo                = new Mausoleo(panelLaMuerte.getLaMuerte(), new MundoTerrenal());
+        runeable                = new Spawner(this, new Point(120, 200), new Dimension(550, 506), panelLaMuerte.getSize());
+        spawn                   = new Thread(runeable);
+        bordes[0]               = new Hitbox(0, -1, size.width, 1, 0);
+        bordes[1]               = new Hitbox(size.width, 0, 1, size.height,0);
+        bordes[2]               = new Hitbox(0, size.height, size.width, 1,0);
+        bordes[3]               = new Hitbox(-1, 0, 1, size.height,0);
+        Hitbox mausoleoHitbox   = new Hitbox(0, 0, 650, 100,0);
+        Hitbox infierno1        = new Hitbox(750, 0, 150, 300,2);
+        Hitbox infierno2        = new Hitbox(750, 500, 150, 300,2);
+        panelDepSobres[0]       = new PanelDepSobre(15, 290, 2, panelLaMuerte.getLaMuerte());
+        panelDepSobres[1]       = new PanelDepSobre(15, 430, 0, panelLaMuerte.getLaMuerte());
+        panelDepSobres[2]       = new PanelDepSobre(15, 570, 1, panelLaMuerte.getLaMuerte());
         panelSalidaDepSobres[0] = new PanelSalidaDepSobre(915,30,panelDepSobres[1].getDepSobre());
         panelSalidaDepSobres[1] = new PanelSalidaDepSobre(915,160,panelDepSobres[0].getDepSobre());
         panelSalidaDepSobres[2] = new PanelSalidaDepSobre(915,540,panelDepSobres[2].getDepSobre());
         panelSalidaDepSobres[3] = new PanelSalidaDepSobre(915,670,panelDepSobres[1].getDepSobre());
-        panelPuente = new PanelPuente(700,300);
+        panelPuente             = new PanelPuente(700,300);
+        panelMenuMausoleo       = new PanelMenuMausoleo(this);
+        panelAltar[0]           = new PanelAltar(1181, 50);
+        panelAltar[1]           = new PanelAltar(1181, 551);
+        panelAltar[2]           = new PanelAltar(1150, 315);
+
         add(panelPuente);
-        setComponentZOrder(panelPuente,0);
         add(panelLaMuerte);
-        setComponentZOrder(panelPuente,1);
-        panelAltar[0] = new PanelAltar(1181, 50);
-        panelAltar[1] = new PanelAltar(1181, 551);
-        panelMenuMausoleo = new PanelMenuMausoleo(this);
         add(panelAltar[0]);
         add(panelAltar[1]);
+        add(panelAltar[2]);
         add(controles);
         add(panelDepSobres[0]);
         add(panelDepSobres[1]);
@@ -66,6 +65,11 @@ public class PanelMapa extends JPanel {
         add(panelSalidaDepSobres[2]);
         add(panelSalidaDepSobres[3]);
         add(panelMenuMausoleo);
+        setComponentZOrder(panelPuente,1);
+        setComponentZOrder(panelAltar[0],1);
+        setComponentZOrder(panelAltar[1],1);
+        setComponentZOrder(panelAltar[2],1);
+        panelMenuMausoleo.setVisible(false);
         new Fps();
         tick = new Tick(controles, this);
         spawn.start();
@@ -77,6 +81,10 @@ public class PanelMapa extends JPanel {
 
     public static Dimension getTam() {
         return size;
+    }
+
+    public PanelPuente getPanelPuente() {
+        return panelPuente;
     }
 
     public PanelAltar[] getPanelAltar() {
@@ -107,7 +115,7 @@ public class PanelMapa extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         try {
-            ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("mapa.png"));
+            ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Mapa.png"));
             g.drawImage(imageIcon.getImage(), 0, 0, null);
         } catch (Exception e) {
             //System.err.println("Error al cargar el mapa");
@@ -129,10 +137,6 @@ public class PanelMapa extends JPanel {
 
             g.fillRect(350, 100, 300, 50);
 
-            g.setColor(new Color(200, 200, 200));
-            g.fillRect(1181, 50, 119, 199);
-            g.fillRect(1181, 551, 119, 199);
-            g.fillRect(1150, 315, 150, 170);
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.PLAIN,20));
             g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);

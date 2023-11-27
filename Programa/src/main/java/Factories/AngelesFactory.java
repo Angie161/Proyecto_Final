@@ -33,4 +33,21 @@ public class AngelesFactory extends AlmasFactory{
                 return null;
         }
     }
+
+    public static Angel crearAngel(Angel angel1, Angel angel2) {
+        Random random = new Random();
+        int bondad;
+        if(random.nextBoolean()) {
+            bondad = (angel1.getColor().getRGB() / angel2.getColor().getRGB()) * (angel1.getBondad() + angel2.getBondad());
+        } else {
+            bondad = (angel2.getColor().getRGB() / angel1.getColor().getRGB()) * (angel1.getBondad() + angel2.getBondad());
+        }
+        if(angel1 instanceof Serafin || angel2 instanceof Serafin) {
+            return SerafineFactory.crearSerafine(bondad, getColorAleatorio(2));
+        } else if(angel1 instanceof Querubin || angel2 instanceof Querubin) {
+            return QuerubinFactory.crearQuerubin(bondad, getColorAleatorio(2));
+        } else {
+            return ArcangelFactory.crearArcangel(bondad, getColorAleatorio(2));
+        }
+    }
 }

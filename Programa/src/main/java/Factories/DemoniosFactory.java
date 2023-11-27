@@ -33,4 +33,20 @@ public class DemoniosFactory extends AlmasFactory{
                 return null;
         }
     }
+    public static Demonio crearDemonio(Demonio demonio1, Demonio demonio2) {
+        Random random = new Random();
+        int maldad;
+        if(random.nextBoolean()) {
+            maldad = (demonio1.getColor().getRGB() / demonio2.getColor().getRGB()) * (demonio1.getMaldad() + demonio2.getMaldad());
+        } else {
+            maldad = (demonio2.getColor().getRGB() / demonio1.getColor().getRGB()) * (demonio1.getBondad() + demonio2.getMaldad());
+        }
+        if(demonio1 instanceof Satan || demonio2 instanceof Satan) {
+            return SatanFactory.crearSatan(maldad, getColorAleatorio(1));
+        } else if(demonio1 instanceof Lucifer || demonio2 instanceof Lucifer) {
+            return LuciferFactory.crearLucifer(maldad, getColorAleatorio(1));
+        } else {
+            return LeviathanFactory.crearLeviathan(maldad, getColorAleatorio(1));
+        }
+    }
 }
