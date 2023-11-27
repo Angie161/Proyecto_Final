@@ -34,6 +34,13 @@ public class AngelesFactory extends AlmasFactory{
         }
     }
 
+    /**
+    * Fusiona dos tipos de ángeles para generar uno nuevo, que tendrá el rango del angel con rango mayor.
+    * 
+    * @param angel1 solicitado en el primer altar para hacer la fusión.
+    * @param angel2 solicitado en el segundo altar para hacer la fusión.
+    * @return Angel generado tras la fusión.
+    */
     public static Angel crearAngel(Angel angel1, Angel angel2) {
         Random random = new Random();
         int bondad;
