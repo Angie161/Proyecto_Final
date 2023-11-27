@@ -23,6 +23,14 @@ public class PersonaFactory extends AlmasFactory{
 
         return new Persona(bondadRandom,maldadRandom,color);
     }
+
+    /**
+    * Fusiona dos tipos de almas para generar una persona.
+    * 
+    * @param alma1 solicitada en el primer altar para hacer la fusión.
+    * @param alma2 solicitada en el segundo altar para hacer la fusión.
+    * @return Persona generada tras la fusión.
+    */
     public static Persona crearPersona(Almas alma1, Almas alma2) {
         Random random = new Random();
         int maldadRandom;
