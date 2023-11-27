@@ -27,20 +27,14 @@ public class Tick extends Thread {
     public void run() {
         while(true) {
             ArrayList<Hitbox> hitboxes = Hitbox.getTodasLasHitbox();
+            jugadorSigueAControles();
             entrarAlMenu(hitboxes.get(0));
             for(int i = 1; i < hitboxes.size(); i++) {
                 if(hitboxes.get(0).getHitbox().intersects(hitboxes.get(i).getHitbox())) {
                     moverHitbox(hitboxes.get(i));
                 }
-                try {
-                    panelMapa.getPanelAltar()[0].ingresarAlma(hitboxes.get(i));
-                    panelMapa.getPanelAltar()[1].ingresarAlma(hitboxes.get(i));
-                    panelMapa.getPanelAltar()[2].ingresarAlma(hitboxes.get(i));
-                    panelMapa.getPanelAltar()[2].fucionarAlmas(panelMapa);
-                } catch(Exception e) {}
             }
             sacarAlma(hitboxes.get(0));
-            jugadorSigueAControles();
             if((new Random()).nextInt(100) == 0) {
                  controles.getJugador().getLaMuerte().addFragAlmas(panelMapa.getMausoleo().getTierra().muertes());
             }
@@ -68,10 +62,10 @@ public class Tick extends Thread {
                 for (int i = Hitbox.NoMovibleHitboxs(); i < Hitbox.getTodasLasHitbox().size(); i++) {
                     Hitbox.getTodasLasHitbox().get(i).setLocation(Hitbox.getTodasLasHitbox().get(i).getLocation().x - Hitbox.getTodasLasHitbox().get(i).getVelocidad().x, Hitbox.getTodasLasHitbox().get(i).getLocation().y - Hitbox.getTodasLasHitbox().get(i).getVelocidad().y);
                 }
-                controles.setLocation(controles.getLocation().x - controles.getJugador().getVelocidad().x, controles.getLocation().y - controles.getJugador().getVelocidad().y);
+                controles.setLocation(controles.getLocation().x - (controles.getJugador().getVelocidad().x), controles.getLocation().y - (controles.getJugador().getVelocidad().y));
                 controles.getJugador().setVelocidad(new Point(0, 0));
             } else if (hitbox.isTraspasableForHitbox() && !hitbox.isTraspasableForPlayer() && hitbox.getHitbox().intersects(Hitbox.getTodasLasHitbox().get(0).getHitbox())) {
-                controles.setLocation(controles.getLocation().x - controles.getJugador().getVelocidad().x, controles.getLocation().y - controles.getJugador().getVelocidad().y);
+                controles.setLocation(controles.getLocation().x - (controles.getJugador().getVelocidad().x), controles.getLocation().y - (controles.getJugador().getVelocidad().y));
                 controles.getJugador().setVelocidad(new Point(0, 0));
             }
         }
@@ -85,7 +79,13 @@ public class Tick extends Thread {
         controles.getJugador().getHitbox().setVelocidad(controles.getJugador().getVelocidad());
     }
     private void quemarAlma(Hitbox h) {
-        if((h.getLocation().x > 749 && h.getLocation().x < 901 - h.getHitbox().width) && (h.getLocation().y > 499 || h.getLocation().y < (301 - h.getHitbox().height))) {
+        if((h.getLocation().x > 749 && h.getLocation().x < 901 - h.getHitbox().width) && (h.getLocation().y > 499 || h.getLocation().y < (301 - h.getHitbox().height)) && PanelPuente.getPuente().getFuncional()) {
+            int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
+            controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
+            panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());
+            Spawner.unAlmaMenos();
+            System.out.println("Alma quemada");
+        } else if (((h.getLocation().x > 749 && h.getLocation().x < 901 - h.getHitbox().width) && (h.getLocation().y > 499 || h.getLocation().y < (301 - h.getHitbox().height)) || (h.getLocation().x > (PanelPuente.getUbicacion().x + PanelPuente.getPuenteSize().width/3) && h.getLocation().x < (PanelPuente.getUbicacion().x + 2 * PanelPuente.getPuenteSize().width/3) - h.getHitbox().width + 1)) && (h.getLocation().y < 499 || h.getLocation().y > (301 - h.getHitbox().height)) && !PanelPuente.getPuente().getFuncional()) {
             int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
             controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
             panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());
