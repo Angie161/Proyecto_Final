@@ -11,6 +11,7 @@ public class AlmasFactory{
 
     /**
      * Crea un tipo de alma a partir de un número random.
+     * 
      * @param laMuerte la cual se solicita para posteriormente acceder a sus estadísticas.
      * @return un alma de un tipo al azar.
      */
@@ -25,7 +26,15 @@ public class AlmasFactory{
             return DemoniosFactory.crearDemonio(laMuerte, getColorAleatorio(1));
         }
     }
-    public static Almas fusionarAlmas(LaMuerte laMuerte, Almas alma1, Almas alma2) {
+
+    /**
+    * Crea un nuevo tipo de alma tras la fusión de otras dos almas de cualquier tipo. Existen 5 combinaciones posibles.
+    * 
+    * @param alma1 solicitada en el primer altar para hacer la fusión.
+    * @param alma2 solicitada en el segundo altar para hacer la fusión.
+    * @return Almas generada tras la fusión.
+    */
+    public static Almas fusionarAlmas(Almas alma1, Almas alma2) {
         if(alma1 instanceof Angel) {
             if(alma2 instanceof Angel) {
                 return AngelesFactory.crearAngel((Angel) alma1, (Angel) alma2);
@@ -46,6 +55,7 @@ public class AlmasFactory{
 
     /**
      * Obtiene un color al azar dentro de la gama de colores permitida para cada tipo de alma.
+     *
      * @param cual entero con un valor entre 0 y 2 que permitirá seleccionar la gama de colores.
      * @return un color al azar dentro de la gama correspondiente al alma.
      */
