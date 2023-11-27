@@ -96,6 +96,7 @@ public class PanelMenuMausoleo extends JPanel {
         texto[4].setText("Frag: " + panelMapa.getPanelLaMuerte().getLaMuerte().getFragAlmas());
         texto[5].setText("Capacidad: " + panelMapa.getMausoleo().getTierra().getCapacidad());
         texto[6].setText("Dem. Enviados: " + panelMapa.getMausoleo().getTierra().getCantDemEnviados());
+        texto[7].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + " angeles y " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()) + " frag");
     }
 
     @Override
