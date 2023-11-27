@@ -44,7 +44,7 @@ public class PanelAltar extends JPanel {
         PanelAlma almas3 = panelMapa.getPanelAltar()[2].getPanelAlma();
         if(almas1 != null && almas2 != null && almas3 == null) {
             System.out.println("nueva fusion");
-            PanelAlma nuevaAlma = new PanelAlma(AlmasFactory.fusionarAlmas(panelMapa.getPanelLaMuerte().getLaMuerte(), almas1, almas2));
+            PanelAlma nuevaAlma = new PanelAlma(AlmasFactory.fusionarAlmas(almas1, almas2));
             nuevaAlma.setLocation(this.getX() + (this.getWidth() - nuevaAlma.getWidth())/2, this.getY() +(this.getHeight() - nuevaAlma.getHeight())/2);
             nuevaAlma.getHitbox().setLocation(nuevaAlma.getLocation());
             panelMapa.add(nuevaAlma);
