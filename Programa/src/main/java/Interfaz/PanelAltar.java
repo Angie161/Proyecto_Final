@@ -1,7 +1,6 @@
 package Interfaz;
 
 import Factories.AlmasFactory;
-import Factories.AngelesFactory;
 import GameTools.Hitbox;
 import Logica.*;
 
@@ -34,7 +33,7 @@ public class PanelAltar extends JPanel {
             System.out.println("se ingresaron almas a los altares");
             h.setLocation(getLocation().x + (getSize().width - h.getPanelAsociado().getSize().width)/2,getLocation().y + (getSize().height - h.getPanelAsociado().getSize().height)/2);
             panelAlma = ((PanelAlma) h.getPanelAsociado());
-        } else if(!this.getBounds().contains(h.getHitbox()) && panelAlma != null && h == panelAlma.getHitbox()) {
+        } else if(!this.getBounds().intersects(h.getHitbox()) && panelAlma != null && h == panelAlma.getHitbox()) {
             System.out.println("Salio alma del altar");
             panelAlma = null;
         }
