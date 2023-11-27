@@ -15,7 +15,7 @@ public class PanelPuente extends JPanel {
     public PanelPuente(int x, int y) {
         ubicacion = new Point(x, y);
         setBounds(x,y,size.width, size.height);
-        hitbox = new Hitbox(ubicacion.x + size.width/3,ubicacion.y,size.width - 2*size.width/3,size.height,0);
+        hitbox = new Hitbox(ubicacion.x + size.width/3,ubicacion.y,size.width - 2*size.width/3,size.height,2);
     }
 
     public static Puente getPuente() {
@@ -35,10 +35,8 @@ public class PanelPuente extends JPanel {
     }
     public void acutalizarHitbox() {
         if(puente.getFuncional()) {
-            hitbox.setTraspasableForHitbox(true);
             hitbox.setTraspasableForPlayer(true);
         } else {
-            hitbox.setTraspasableForHitbox(false);
             hitbox.setTraspasableForPlayer(false);
         }
     }
