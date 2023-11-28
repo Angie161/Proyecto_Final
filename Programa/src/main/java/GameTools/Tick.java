@@ -33,6 +33,12 @@ public class Tick extends Thread {
                 if(hitboxes.get(0).getHitbox().intersects(hitboxes.get(i).getHitbox())) {
                     moverHitbox(hitboxes.get(i));
                 }
+                try {
+                    panelMapa.getPanelAltar()[0].ingresarAlma(hitboxes.get(i));
+                    panelMapa.getPanelAltar()[1].ingresarAlma(hitboxes.get(i));
+                    panelMapa.getPanelAltar()[2].ingresarAlma(hitboxes.get(i));
+                    panelMapa.getPanelAltar()[2].fucionarAlmas(panelMapa);
+                } catch(Exception e) {}
             }
             sacarAlma(hitboxes.get(0));
             if((new Random()).nextInt(100) == 0) {
