@@ -31,10 +31,9 @@ public abstract class Demonio extends Almas {
      */
     @Override
     public int calcValor(LaMuerte laMuerte) {
-        double colores    = (color.getBlue() + color.getRed() + color.getGreen()) / 255;
-        double random     = ((new Random()).nextInt(10)*0.04 + 0.8);
-        double valorFinal = Math.pow(laMuerte.getPoder(),5) * random * Math.pow(rango,1.5) * (colores + maldad);
-        return (int) valorFinal;
+        double colores    = Math.pow(color.getRed(),1) + 150;
+        double valorFinal = Math.pow(laMuerte.getPoder(),4.3) * Math.pow(5.5, rango) * (colores + Math.pow(maldad,1.2));
+        return (int) Math.pow(valorFinal, 0.33);
     }
 
     /**
@@ -43,7 +42,7 @@ public abstract class Demonio extends Almas {
      * @return entero con la cantidad de asesinatos provocados por el demonio.
      */
     public int matar() {
-        double asesinatos = maldad * Math.pow(rango,1.5);
+        double asesinatos = (maldad / 50) * Math.pow(rango,5);
         return (int) asesinatos;
     }
 }

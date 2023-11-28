@@ -45,9 +45,9 @@ public class DemoniosFactory extends AlmasFactory{
         Random random = new Random();
         int maldad;
         if(random.nextBoolean()) {
-            maldad = (demonio1.getColor().getRGB() / demonio2.getColor().getRGB()) * (demonio1.getMaldad() + demonio2.getMaldad());
+            maldad = (int) (Math.pow(demonio1.getColor().getRed(), 0.5) * (demonio1.getMaldad() + demonio2.getMaldad() * 1.5));
         } else {
-            maldad = (demonio2.getColor().getRGB() / demonio1.getColor().getRGB()) * (demonio1.getBondad() + demonio2.getMaldad());
+            maldad = (int) (Math.pow(demonio2.getColor().getRed(), 0.5) * (demonio1.getBondad() * 1.5 + demonio2.getMaldad()));
         }
         if(demonio1 instanceof Satan || demonio2 instanceof Satan) {
             return SatanFactory.crearSatan(maldad, getColorAleatorio(1));

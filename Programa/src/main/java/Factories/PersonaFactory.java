@@ -36,14 +36,14 @@ public class PersonaFactory extends AlmasFactory{
         int maldadRandom;
         int bondadRandom;
         if(random.nextBoolean()) {
-            maldadRandom = (alma1.getColor().getRGB() / alma2.getColor().getRGB()) * (alma1.getMaldad() + alma2.getMaldad());
+            maldadRandom = (int) (alma1.getMaldad() + alma2.getMaldad() * 1.5);
         } else {
-            maldadRandom = (alma2.getColor().getRGB() / alma1.getColor().getRGB()) * (alma1.getMaldad() + alma2.getMaldad());
+            maldadRandom = (int) (alma1.getMaldad() * 1.5 + alma2.getMaldad());
         }
         if(random.nextBoolean()) {
-            bondadRandom = (alma1.getColor().getRGB() / alma2.getColor().getRGB()) * (alma1.getBondad() + alma2.getBondad());
+            bondadRandom = (alma1.getBondad() + alma2.getBondad() * 2);
         } else {
-            bondadRandom = (alma2.getColor().getRGB() / alma1.getColor().getRGB()) * (alma1.getBondad() + alma2.getBondad());
+            bondadRandom = (alma1.getBondad() * 2 + alma2.getBondad());
         }
 
         return new Persona(bondadRandom,maldadRandom,getColorAleatorio(0));

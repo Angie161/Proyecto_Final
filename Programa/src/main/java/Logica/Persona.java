@@ -28,9 +28,8 @@ public class Persona extends Almas {
      */
     @Override
     public int calcValor(LaMuerte laMuerte) {
-        double colores    = (color.getBlue() + color.getRed() + color.getGreen()) / 255;
-        double random     = ((new Random()).nextInt(10)*0.04 + 0.8);
-        double valorFinal = Math.pow(laMuerte.getPoder(),5) * random * Math.pow((maldad * bondad)/(maldad + bondad), 1.5)*(colores + maldad + bondad);
-        return (int) valorFinal;
+        double colores    = (color.getBlue() + color.getRed() + color.getGreen())/8 + 100;
+        double valorFinal = Math.pow(laMuerte.getPoder(),2.5) * (Math.pow(colores, 1.1) + Math.pow(maldad, 1) + Math.pow(bondad,1.5));
+        return (int) Math.pow(valorFinal, 0.85);
     }
 }

@@ -18,7 +18,7 @@ public class AngelesFactory extends AlmasFactory{
     public static Angel crearAngel(LaMuerte laMuerte, Color color){
         Random random = new Random();
 
-        int bondad=(int)(random.nextInt(101) * Math.pow(laMuerte.getPoder(),2));
+        int bondad = (int)(random.nextInt(101) * Math.pow(laMuerte.getPoder(),2));
         int numSelect=random.nextInt(3)+1;
 
         switch (numSelect){
@@ -45,9 +45,9 @@ public class AngelesFactory extends AlmasFactory{
         Random random = new Random();
         int bondad;
         if(random.nextBoolean()) {
-            bondad = (angel1.getColor().getRGB() / angel2.getColor().getRGB()) * (angel1.getBondad() + angel2.getBondad());
+            bondad = (int) (angel1.getBondad() + angel2.getBondad() * 1.5);
         } else {
-            bondad = (angel2.getColor().getRGB() / angel1.getColor().getRGB()) * (angel1.getBondad() + angel2.getBondad());
+            bondad = (int) (angel1.getBondad() * 1.5 + angel2.getBondad());
         }
         if(angel1 instanceof Serafin || angel2 instanceof Serafin) {
             return SerafineFactory.crearSerafine(bondad, getColorAleatorio(2));

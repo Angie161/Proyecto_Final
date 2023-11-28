@@ -30,9 +30,8 @@ public abstract class Angel extends Almas {
      */
     @Override
     public int calcValor(LaMuerte laMuerte) {
-        double colores    = (color.getBlue() + color.getRed() + color.getGreen()) / 255;
-        double random     = ((new Random()).nextInt(10)*0.04 + 0.8);
-        double valorFinal = Math.pow(laMuerte.getPoder(),5) * random * Math.pow(rango,1.5) * (colores + bondad);
-        return (int) valorFinal;
+        double colores    = Math.pow((- color.getBlue() + color.getRed() + color.getGreen()) / 20,3)/30;
+        double valorFinal = Math.pow(laMuerte.getPoder(),3.9) * Math.pow(5.74,rango) * (colores + Math.pow(bondad,1.065));
+        return (int) Math.pow(valorFinal, 0.4);
     }
 }
