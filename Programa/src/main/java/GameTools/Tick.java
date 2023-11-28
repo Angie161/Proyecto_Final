@@ -41,7 +41,7 @@ public class Tick extends Thread {
                 } catch(Exception e) {}
             }
             sacarAlma(hitboxes.get(0));
-            if((new Random()).nextInt(400) == 0) {
+            if((new Random()).nextInt((int)400/(panelMapa.getMausoleo().getTierra().getCantDemEnviados() + 1)) == 0) {
                  controles.getJugador().getLaMuerte().addFragAlmas(panelMapa.getMausoleo().getTierra().muertes());
             }
             try {

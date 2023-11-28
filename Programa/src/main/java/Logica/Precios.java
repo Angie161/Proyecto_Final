@@ -20,7 +20,7 @@ public class Precios {
      * @return la cantidad de ángeles que se necesitarán para realizar el siguiente envío.
      */
     public int getCantAngelesEnvio(MundoTerrenal mundoTerrenal) {
-        return (5 + mundoTerrenal.getCantDemEnviados() * 5);
+        return ((int) Math.log(mundoTerrenal.getCantDemEnviados() * 3 + 3));
     }
 
     /**
@@ -58,7 +58,7 @@ public class Precios {
      * @return el precio necesario para reparar la barca.
      */
     public int getPrecioRepararBarca() {
-        return laMuerte.getPoder() * 5000;
+        return (int) Math.pow(2, laMuerte.getPoder()) * 1000;
     }
 
     /**
@@ -67,6 +67,6 @@ public class Precios {
      * @return el precio necesario para reparar el puente.
      */
     public int getPrecioRepararaPuente() {
-        return laMuerte.getPoder() * 10000;
+        return (int) Math.pow(2, laMuerte.getPoder()) * 10000;
     }
 }
