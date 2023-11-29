@@ -17,6 +17,8 @@ public class PanelMapa extends JPanel {
     private PanelDepSobre[] panelDepSobres = new PanelDepSobre[3];
     private PanelSalidaDepSobre[] panelSalidaDepSobres = new PanelSalidaDepSobre[4];
     private PanelMenuMausoleo panelMenuMausoleo;
+    private PanelAnuncio panelAnuncio;
+    private PanelError panelError;
     private PanelAltar[] panelAltar = new PanelAltar[3];
     private Tick tick;
     private Thread spawn;
@@ -46,7 +48,9 @@ public class PanelMapa extends JPanel {
         panelSalidaDepSobres[2] = new PanelSalidaDepSobre(915,540,panelDepSobres[2].getDepSobre());
         panelSalidaDepSobres[3] = new PanelSalidaDepSobre(915,670,panelDepSobres[1].getDepSobre());
         panelPuente             = new PanelPuente(700,300);
+        panelError              = new PanelError();
         panelMenuMausoleo       = new PanelMenuMausoleo(this);
+        panelAnuncio            = new PanelAnuncio();
         panelAltar[0]           = new PanelAltar(1181, 50);
         panelAltar[1]           = new PanelAltar(1181, 551);
         panelAltar[2]           = new PanelAltar(1150, 315);
@@ -65,11 +69,17 @@ public class PanelMapa extends JPanel {
         add(panelSalidaDepSobres[2]);
         add(panelSalidaDepSobres[3]);
         add(panelMenuMausoleo);
+        add(panelError);
+        add(panelAnuncio);
+
         setComponentZOrder(panelPuente,1);
         setComponentZOrder(panelAltar[0],1);
         setComponentZOrder(panelAltar[1],1);
         setComponentZOrder(panelAltar[2],1);
-        panelMenuMausoleo.setVisible(false);
+        setComponentZOrder(panelMenuMausoleo,2);
+
+        setComponentZOrder(panelAnuncio,1);
+        setComponentZOrder(panelError,1);
         new Fps();
         tick = new Tick(controles, this);
         spawn.start();
@@ -109,6 +119,10 @@ public class PanelMapa extends JPanel {
 
     public PanelMenuMausoleo getPanelMenuMausoleo() {
         return panelMenuMausoleo;
+    }
+
+    public PanelError getPanelError(){
+        return panelError;
     }
 
     @Override
