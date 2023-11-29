@@ -90,9 +90,11 @@ public class Mausoleo {
      * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void aumentarPoder() throws FragmentosInsuficientesException {
-        if(propietario.getFragAlmas() >= precios.getPrecioMejoraPoder()) {
+        if(propietario.getFragAlmas() >= precios.getPrecioMejoraPoder() && propietario.getPoder()<100) {
             propietario.addFragAlmas(-precios.getPrecioMejoraPoder());
             propietario.setPoder(propietario.getPoder() + 1);
+        } else if (propietario.getPoder()>=100){
+            System.out.println("Nivel Máximo alcanzado");
         } else {
             throw new FragmentosInsuficientesException();
         }
