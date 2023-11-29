@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 public class ButtonAumPoder extends JButton {
     public ButtonAumPoder(PanelMapa panelMapa){
         super();
-        setBounds(600,50,350,100);
+        setBounds(600,35,350,95);
 
         addMouseListener(new MouseListener() {
             @Override

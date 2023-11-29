@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 public class ButtonAumCap extends JButton {
     public ButtonAumCap(PanelMapa panelMapa){
         super();
-        setBounds(600,200,450,100);
+        setBounds(600,185,450,95);
 
         addMouseListener(new MouseListener() {
             @Override
@@ -23,6 +23,7 @@ public class ButtonAumCap extends JButton {
                     panelMapa.getPanelMenuMausoleo().actualizarValores();
                 }catch (FragmentosInsuficientesException ex){
                     System.out.println("No tienes suficientes fragmentos");
+                    panelMapa.getPanelError().setVisible(true);
                 }
             }
 

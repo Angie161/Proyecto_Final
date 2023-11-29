@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 public class ButtonRepBarca extends JButton {
     public ButtonRepBarca(PanelMapa panelMapa){
         super();
-        setBounds(600,530,250,125);
+        setBounds(600,500,250,133);
 
         addMouseListener(new MouseListener() {
             @Override
@@ -39,6 +39,6 @@ public class ButtonRepBarca extends JButton {
     @Override
     protected void paintComponent(Graphics g) {
         g.setColor(new Color(100, 135, 220));
-        g.fillRect(0, 0,250,125);
+        g.fillRect(0, 0,250,133);
     }
 }

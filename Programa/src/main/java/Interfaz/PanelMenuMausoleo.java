@@ -16,8 +16,8 @@ public class PanelMenuMausoleo extends JPanel {
     private ButtonRepBarca buttonRepBarca;
     private ButtonRepPuente buttonRepPuente;
 
-    private Font customFont;
-    private Font fuentePersonalizada;
+    private Font fuentePersonalizadaNegr;
+    private Font fuenteNoNegr;
     private JLabel[] texto;
 
     public PanelMenuMausoleo(PanelMapa Mapa) {
@@ -26,7 +26,7 @@ public class PanelMenuMausoleo extends JPanel {
         setLayout(null);
         setBounds(50,50,PanelMapa.getTam().width - 100, PanelMapa.getTam().height - 100);
         setBackground(new Color(220, 220, 220));
-        //setVisible(false);
+        setVisible(true);
 
         this.panelMapa = Mapa;
 
@@ -36,7 +36,7 @@ public class PanelMenuMausoleo extends JPanel {
         buttonEnviarDem = new ButtonEnviarDem(panelMapa);
         buttonRepBarca = new ButtonRepBarca(panelMapa);
         buttonRepPuente = new ButtonRepPuente(panelMapa);
-        texto = new JLabel[10];
+        texto = new JLabel[14];
 
         // 0: Poder, 1:CantAngeles, 2:CantDemonios, 3:CantPersonas, 4:cantFragAlmas, 5:Capacidad, 6:DemoniosEnviados.
         texto[0] = new JLabel("Poder: " + panelMapa.getPanelLaMuerte().getLaMuerte().getPoder());
@@ -46,33 +46,57 @@ public class PanelMenuMausoleo extends JPanel {
         texto[4] = new JLabel("Frag: " + panelMapa.getPanelLaMuerte().getLaMuerte().getFragAlmas());
         texto[5] = new JLabel("Capacidad: " + panelMapa.getMausoleo().getTierra().getCapacidad());
         texto[6] = new JLabel("Dem. enviados: " + panelMapa.getMausoleo().getTierra().getCantDemEnviados());
-        texto[7] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + " angeles y " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()) + " frag");
-        texto[8] = new JLabel("La Muerte");
-        texto[9] = new JLabel("Mundo Terrenal");
+        texto[7] = new JLabel("La Muerte");
+        texto[8] = new JLabel("Mundo Terrenal");
+
+        texto[9] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraPoder() + " frag");
+        texto[10] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraCapacidad(panelMapa.getMausoleo().getTierra()) + " frag");
+        texto[11] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + " angeles y " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()) + " frag");
+        texto[12] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararBarca() + " frag");
+        texto[13] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararaPuente() + " frag");
 
         try {
-            fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
-            fuentePersonalizada = fuentePersonalizada.deriveFont(fuentePersonalizada.getSize()*40f);
-            fuentePersonalizada = fuentePersonalizada.deriveFont(Font.BOLD);
+            fuentePersonalizadaNegr = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
+            fuentePersonalizadaNegr = fuentePersonalizadaNegr.deriveFont(fuentePersonalizadaNegr.getSize()*40f);
+            fuentePersonalizadaNegr = fuentePersonalizadaNegr.deriveFont(Font.BOLD);
+
+            fuenteNoNegr = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
+            fuenteNoNegr = fuenteNoNegr.deriveFont(fuenteNoNegr.getSize()*30f);
+            fuenteNoNegr = fuenteNoNegr.deriveFont(Font.BOLD);
         }catch (Exception e){
             e.printStackTrace();
             System.out.println("Error al cargar la fuente personalizada. Se usará una fuente predeterminada.");
-            fuentePersonalizada = new Font("Arial", Font.PLAIN, 16);
+            fuentePersonalizadaNegr = new Font("Arial", Font.PLAIN, 16);
+            fuenteNoNegr = new Font("Arial", Font.PLAIN, 12);
         }
         texto[0].setBounds(50,125,275,50);
         texto[1].setBounds(50,175,275,50);
         texto[2].setBounds(50, 225, 275,50);
         texto[3].setBounds(50, 275, 275,50);
-        texto[4].setBounds(50, 325, 275,50);
+        texto[4].setBounds(50, 325, 450,50);
         texto[5].setBounds(50, 550, 275,50);
         texto[6].setBounds(50, 600, 275,50);
-        texto[7].setBounds(600, 450, 550,50);
-        texto[8].setBounds(50, 50, 250,50);
-        texto[9].setBounds(50, 475, 300,50);
+        texto[7].setBounds(50, 50, 250, 50);
+        texto[8].setBounds(50, 475, 250,50);
 
-        for(int i = 0; i<texto.length; i++){
-            if (fuentePersonalizada != null) {
-                texto[i].setFont(fuentePersonalizada);
+        texto[9].setBounds(600, 125, 300,50);
+        texto[10].setBounds(600, 275, 550, 50);
+        texto[11].setBounds(600, 425, 550, 50);
+        texto[12].setBounds(600, 630, 250, 50);
+        texto[13].setBounds(900, 630, 250, 50);
+
+        for(int i = 0; i<9; i++){
+            if (fuentePersonalizadaNegr != null) {
+                texto[i].setFont(fuentePersonalizadaNegr);
+                add(texto[i]);
+            } else {
+                // Manejar el caso en el que customFont sea null
+                System.out.println("La fuente personalizada no se cargó correctamente.");
+            }
+        }
+        for(int i = 13; i>8 ; i--){
+            if (fuenteNoNegr != null) {
+                texto[i].setFont(fuenteNoNegr);
                 add(texto[i]);
             } else {
                 // Manejar el caso en el que customFont sea null
@@ -96,8 +120,12 @@ public class PanelMenuMausoleo extends JPanel {
         texto[4].setText("Frag: " + panelMapa.getPanelLaMuerte().getLaMuerte().getFragAlmas());
         texto[5].setText("Capacidad: " + panelMapa.getMausoleo().getTierra().getCapacidad());
         texto[6].setText("Dem. Enviados: " + panelMapa.getMausoleo().getTierra().getCantDemEnviados());
-        texto[7].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + " angeles y " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()) + " frag");
 
+        texto[9].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraPoder() + "frag");
+        texto[10].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraCapacidad(panelMapa.getMausoleo().getTierra()) + "frag");
+        texto[11].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + " angeles y " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()) + " frag");
+        texto[12].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararBarca() + "frag");
+        texto[13].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararaPuente() + "frag");
     }
 
     @Override
@@ -113,7 +141,7 @@ public class PanelMenuMausoleo extends JPanel {
         g.fillRect(350, 500, 150, 100);
 
         g.setColor(new Color(100, 100, 40));
-        //g.fillRect(325, 75, 250,25);
+        //g.fillRect(50, 325, 450,50);
 
         Graphics2D g2d = (Graphics2D) g;
 

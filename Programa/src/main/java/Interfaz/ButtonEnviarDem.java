@@ -10,7 +10,7 @@ import java.awt.event.MouseListener;
 public class ButtonEnviarDem extends JButton {
     public ButtonEnviarDem(PanelMapa panelMapa){
         super();
-        setBounds(600,350,550,100);
+        setBounds(600,335,550,95);
 
         addMouseListener(new MouseListener() {
             @Override
