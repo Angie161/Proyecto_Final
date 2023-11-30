@@ -129,8 +129,8 @@ public class PanelMapa extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         try {
-            ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Mapa.png"));
-            g.drawImage(imageIcon.getImage(), 0, 0, null);
+            ImageIcon imageIcon1 = new ImageIcon(getClass().getClassLoader().getResource("Mapa.png"));
+            g.drawImage(imageIcon1.getImage(), 0, 0, null);
         } catch (Exception e) {
             //System.err.println("Error al cargar el mapa");
             g.setColor(new Color(100, 200, 100));
@@ -145,11 +145,8 @@ public class PanelMapa extends JPanel {
             g.fillRect(750, 0, 150, size.height);
 
             //Mausoleo
-            g.setColor(new Color(180, 100, 0));
-            g.fillRect(0, 0, 650, 100);
-            g.setColor(new Color(100, 100, 0));
-
-            g.fillRect(350, 100, 300, 50);
+            ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoOk.png"));
+            g.drawImage(imageIcon.getImage(), 0, 0, null);
 
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.PLAIN,20));

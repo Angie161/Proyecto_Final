@@ -26,7 +26,7 @@ public class PanelMenuMausoleo extends JPanel {
         setLayout(null);
         setBounds(50,50,PanelMapa.getTam().width - 100, PanelMapa.getTam().height - 100);
         setBackground(new Color(220, 220, 220));
-        setVisible(true);
+        setVisible(false);
 
         this.panelMapa = Mapa;
 
