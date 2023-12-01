@@ -14,6 +14,6 @@ public class SatanFactory extends DemoniosFactory{
      * @return demonio Satan con las características concedidas.
      */
     public static Demonio crearSatan(int maldad, Color color){
-        return new Leviathan(maldad,color);
+        return new Satan(maldad,color);
     }
 }
