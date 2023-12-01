@@ -87,15 +87,29 @@ public class PanelAlma extends JPanel {
                 ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/AlmaArcangel.png"));
                 g.drawImage(imageIcon.getImage(), 0, 0, null);
             } else if(alma instanceof Satan) {
+                g.setColor(alma.getColor());
+                int[] xpoint = {25,10,12,17,45,48,50,37};
+                int[] ypoint = {17,1,20,23,23,20,1,17};
+                g.fillPolygon(xpoint, ypoint, 8);
                 ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/AlmaSatan.png"));
                 g.drawImage(imageIcon.getImage(), 0, 0, null);
             } else if(alma instanceof Lucifer) {
+                g.setColor(alma.getColor());
+                int[] xpoint = {25,8,12,17,44,47,49,35};
+                int[] ypoint = {17,2,20,23,21,20,1,17};
+                g.fillPolygon(xpoint, ypoint, 8);
                 ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/AlmaLucifer.png"));
                 g.drawImage(imageIcon.getImage(), 0, 0, null);
             } else if(alma instanceof Leviathan) {
+                g.setColor(alma.getColor());
+                int[] xpoint = {25,10,13,17,45,50,52,37};
+                int[] ypoint = {17,1,20,23,23,20,1,17};
+                g.fillPolygon(xpoint, ypoint, 8);
                 ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/AlmaLeviathan.png"));
                 g.drawImage(imageIcon.getImage(), 0, 0, null);
             } else if(alma instanceof Persona) {
+                g.setColor(alma.getColor());
+                g.fillRect(13,15,32,20);
                 ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/AlmaPersona.png"));
                 g.drawImage(imageIcon.getImage(), 0, 0, null);
             }
