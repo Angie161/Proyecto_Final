@@ -38,22 +38,22 @@ public class PanelMapa extends JPanel {
         bordes[2]               = new Hitbox(0, size.height, size.width, 1,0);
         bordes[3]               = new Hitbox(-1, 0, 1, size.height,0);
         Hitbox mausoleoHitbox   = new Hitbox(0, 0, 650, 100,0);
-        Hitbox infierno1        = new Hitbox(750, 0, 150, 300,2);
-        Hitbox infierno2        = new Hitbox(750, 500, 150, 300,2);
+        Hitbox infierno1        = new Hitbox(720, 0, 150, 280,2);
+        Hitbox infierno2        = new Hitbox(720, 500, 150, 300,2);
         panelDepSobres[0]       = new PanelDepSobre(15, 290, 2, panelLaMuerte.getLaMuerte());
         panelDepSobres[1]       = new PanelDepSobre(15, 430, 0, panelLaMuerte.getLaMuerte());
         panelDepSobres[2]       = new PanelDepSobre(15, 570, 1, panelLaMuerte.getLaMuerte());
-        panelSalidaDepSobres[0] = new PanelSalidaDepSobre(915,30,panelDepSobres[1].getDepSobre());
-        panelSalidaDepSobres[1] = new PanelSalidaDepSobre(915,160,panelDepSobres[0].getDepSobre());
-        panelSalidaDepSobres[2] = new PanelSalidaDepSobre(915,540,panelDepSobres[2].getDepSobre());
-        panelSalidaDepSobres[3] = new PanelSalidaDepSobre(915,670,panelDepSobres[1].getDepSobre());
-        panelPuente             = new PanelPuente(700,300);
+        panelSalidaDepSobres[0] = new PanelSalidaDepSobre(885,20,panelDepSobres[1].getDepSobre());
+        panelSalidaDepSobres[1] = new PanelSalidaDepSobre(885,150,panelDepSobres[0].getDepSobre());
+        panelSalidaDepSobres[2] = new PanelSalidaDepSobre(885,540,panelDepSobres[2].getDepSobre());
+        panelSalidaDepSobres[3] = new PanelSalidaDepSobre(885,670,panelDepSobres[1].getDepSobre());
+        panelPuente             = new PanelPuente(670,300);
         panelError              = new PanelError();
         panelMenuMausoleo       = new PanelMenuMausoleo(this);
         panelAnuncio            = new PanelAnuncio();
-        panelAltar[0]           = new PanelAltar(1181, 50);
-        panelAltar[1]           = new PanelAltar(1181, 551);
-        panelAltar[2]           = new PanelAltar(1150, 315);
+        panelAltar[0]           = new PanelAltar(1165, 60);
+        panelAltar[1]           = new PanelAltar(1165, 531);
+        panelAltar[2]           = new PanelAltar(1150, 270);
 
         add(panelPuente);
         add(panelLaMuerte);
@@ -84,6 +84,7 @@ public class PanelMapa extends JPanel {
         tick = new Tick(controles, this);
         spawn.start();
 
+        setBackground(new Color(0,0,0,0));
         setPreferredSize(size);
         setLocation(0, 0);
         setLayout(null);
@@ -127,10 +128,33 @@ public class PanelMapa extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
         try {
-            ImageIcon imageIcon1 = new ImageIcon(getClass().getClassLoader().getResource("Mapa.png"));
+            ImageIcon imageIcon1 = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/Fondo.png"));
             g.drawImage(imageIcon1.getImage(), 0, 0, null);
+            if (mausoleo.getBarca().getFuncional()) {
+                ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoOk.png"));
+                g.drawImage(imageIcon.getImage(), 0, 0, null);
+            } else {
+                ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoNotOk.png"));
+                g.drawImage(imageIcon.getImage(), 0, 0, null);
+            }
+            panelDepSobres[0].paintComponent(g,"Imagenes/Mapa/CofreAbAngel.png");
+            panelDepSobres[1].paintComponent(g,"Imagenes/Mapa/CofreAbDem.png");
+            panelDepSobres[2].paintComponent(g,"Imagenes/Mapa/CofreAbPer.png");
+            panelSalidaDepSobres[0].paintComponent(g,"Imagenes/Mapa/CofreCerPer.png");
+            panelSalidaDepSobres[1].paintComponent(g,"Imagenes/Mapa/CofreCerAngel.png");
+            panelSalidaDepSobres[2].paintComponent(g,"Imagenes/Mapa/CofreCerDem.png");
+            panelSalidaDepSobres[3].paintComponent(g,"Imagenes/Mapa/CofreCerPer.png");
+            panelAltar[0].paintComponent(g,"Imagenes/Mapa/Altar1.png");
+            panelAltar[1].paintComponent(g,"Imagenes/Mapa/Altar3.png");
+            panelAltar[2].paintComponent(g,"Imagenes/Mapa/Altar2.png");
+            super.paintComponent(g);
+            Font fuentePersonalizadaNegr = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
+            fuentePersonalizadaNegr = fuentePersonalizadaNegr.deriveFont(fuentePersonalizadaNegr.getSize()*30f);
+            fuentePersonalizadaNegr = fuentePersonalizadaNegr.deriveFont(Font.BOLD);
+            g.setColor(Color.BLACK);
+            g.setFont(fuentePersonalizadaNegr);
+            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
         } catch (Exception e) {
             //System.err.println("Error al cargar el mapa");
             g.setColor(new Color(100, 200, 100));
@@ -143,10 +167,6 @@ public class PanelMapa extends JPanel {
             // infierno
             g.setColor(Color.RED);
             g.fillRect(750, 0, 150, size.height);
-
-            //Mausoleo
-            ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoOk.png"));
-            g.drawImage(imageIcon.getImage(), 0, 0, null);
 
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.PLAIN,20));
