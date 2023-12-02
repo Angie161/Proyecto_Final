@@ -10,6 +10,6 @@ public class PanelAnuncio extends JPanel {
         setLayout(null);
         setBounds(PanelMapa.getTam().width - 300,PanelMapa.getTam().height - 150,300, 150);
         setBackground(new Color(10, 10, 10));
-        setVisible(true);
+        setVisible(false);
     }
 }
