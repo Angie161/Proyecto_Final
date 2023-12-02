@@ -132,31 +132,37 @@ public class PanelMenuMausoleo extends JPanel {
     protected void paintComponent(Graphics g) {
         actualizarValores();
         super.paintComponent(g);
-        //Retrato Muerte
-        g.setColor(new Color(50, 50, 50));
-        g.fillRect(350, 50, 150, 250);
+        try {
+            ImageIcon imageIcon1 = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Menu/MenuMausoleo.png"));
+            g.drawImage(imageIcon1.getImage(), 0, 0, null);
+        } catch(Exception e) {
 
-        //Foto MundoTerrenal
-        g.setColor(new Color(50, 100, 50));
-        g.fillRect(350, 500, 150, 100);
+            //Retrato Muerte
+            g.setColor(new Color(50, 50, 50));
+            g.fillRect(350, 50, 150, 250);
 
-        g.setColor(new Color(100, 100, 40));
-        //g.fillRect(50, 325, 450,50);
+            //Foto MundoTerrenal
+            g.setColor(new Color(50, 100, 50));
+            g.fillRect(350, 500, 150, 100);
 
-        Graphics2D g2d = (Graphics2D) g;
+            g.setColor(new Color(100, 100, 40));
+            //g.fillRect(50, 325, 450,50);
 
-        // Configura el patrón de la línea punteada
-        float[] dashPattern = {5.0f}; // Ajusta el patrón según sea necesario
-        g2d.setStroke(new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dashPattern, 0.0f));
+            Graphics2D g2d = (Graphics2D) g;
 
-        // Dibuja la línea punteada
-        g2d.setColor(Color.BLACK);
-        g2d.drawLine(0, 425, 550, 425);
+            // Configura el patrón de la línea punteada
+            float[] dashPattern = {5.0f}; // Ajusta el patrón según sea necesario
+            g2d.setStroke(new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dashPattern, 0.0f));
 
-        float[] dashPattern2 = {5.0f}; // Ajusta el patrón según sea necesario
-        g2d.setStroke(new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dashPattern2, 0.0f));
+            // Dibuja la línea punteada
+            g2d.setColor(Color.BLACK);
+            g2d.drawLine(0, 425, 550, 425);
 
-        g2d.setColor(Color.BLACK);
-        g2d.drawLine(550, 0, 550, 800);
+            float[] dashPattern2 = {5.0f}; // Ajusta el patrón según sea necesario
+            g2d.setStroke(new BasicStroke(2.0f, BasicStroke.CAP_BUTT, BasicStroke.JOIN_MITER, 1.0f, dashPattern2, 0.0f));
+
+            g2d.setColor(Color.BLACK);
+            g2d.drawLine(550, 0, 550, 800);
+        }
     }
 }
