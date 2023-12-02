@@ -48,8 +48,13 @@ public class PanelLaMuerte extends JPanel {
     protected void paintComponent(Graphics g) {
         super.paintComponent(g);
         try {
-            ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/LaMuerte.png"));
-            g.drawImage(imageIcon.getImage(), 0, 0, null);
+            if(velocidad.x < 0) {
+                ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/LaMuerteLeft.png"));
+                g.drawImage(imageIcon.getImage(), 0, 0, null);
+            } else {
+                ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/LaMuerte.png"));
+                g.drawImage(imageIcon.getImage(), 0, 0, null);
+            }
         } catch (Exception e) {
             //System.err.println("Error al cargar a la muerte");
             g.setColor(new Color(100, 100, 100));
