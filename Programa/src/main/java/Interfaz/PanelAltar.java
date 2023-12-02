@@ -13,7 +13,8 @@ public class PanelAltar extends JPanel {
         super();
         setOpaque(false);
         setLocation(x,y);
-        setSize(119, 199);
+        setSize(140, 199);
+        setBackground(new Color(0,0,0,0));
         panelAlma = null;
     }
 
@@ -29,9 +30,9 @@ public class PanelAltar extends JPanel {
     }
 
     public void ingresarAlma(Hitbox h) {
-        if(this.getBounds().contains(h.getHitbox()) && panelAlma == null) {
+        if(this.getBounds().contains(h.getHitbox()) && panelAlma == null && !Hitbox.getTodasLasHitbox().get(0).getHitbox().intersects(this.getBounds())) {
             System.out.println("se ingresaron almas a los altares");
-            h.setLocation(getLocation().x + (getSize().width - h.getPanelAsociado().getSize().width)/2,getLocation().y + (getSize().height - h.getPanelAsociado().getSize().height)/2);
+            h.setLocation(getLocation().x + (getSize().width - 72),getLocation().y + (getSize().height - h.getPanelAsociado().getSize().height)/2 - 5);
             panelAlma = ((PanelAlma) h.getPanelAsociado());
         } else if(!this.getBounds().intersects(h.getHitbox()) && panelAlma != null && h == panelAlma.getHitbox()) {
             System.out.println("Salio alma del altar");
@@ -42,7 +43,7 @@ public class PanelAltar extends JPanel {
         Almas almas1 = panelMapa.getPanelAltar()[0].getPanelAlma().getAlma();
         Almas almas2 = panelMapa.getPanelAltar()[1].getPanelAlma().getAlma();
         PanelAlma almas3 = panelMapa.getPanelAltar()[2].getPanelAlma();
-        if(almas1 != null && almas2 != null && almas3 == null) {
+        if(almas1 != null && almas2 != null && almas3 == null && !panelMapa.getPanelLaMuerte().getHitbox().getHitbox().intersects(this.getBounds())) {
             System.out.println("nueva fusion");
             PanelAlma nuevaAlma = new PanelAlma(AlmasFactory.fusionarAlmas(almas1, almas2));
             nuevaAlma.setLocation(this.getX() + (this.getWidth() - nuevaAlma.getWidth())/2, this.getY() +(this.getHeight() - nuevaAlma.getHeight())/2);
@@ -53,10 +54,15 @@ public class PanelAltar extends JPanel {
             panelMapa.getPanelAltar()[1].quitarAlma(panelMapa, 1);
         }
     }
-    @Override
-    protected void paintComponent(Graphics g) {
-        super.paintComponent(g);
-        g.setColor(new Color(0xDDDDDD));
-        g.fillRect(0,0,getWidth(), getHeight());
+
+    protected void paintComponent(Graphics g, String ruta) {
+        try {
+            ImageIcon imageIcon1 = new ImageIcon(getClass().getClassLoader().getResource(ruta));
+            g.drawImage(imageIcon1.getImage(), getLocation().x, getLocation().y, null);
+        } catch (Exception e) {
+            super.paintComponent(g);
+            g.setColor(new Color(0xDDDDDD));
+            g.fillRect(0, 0, getWidth(), getHeight());
+        }
     }
 }
