@@ -6,7 +6,6 @@ import Logica.Angel;
 import Logica.Demonio;
 import Logica.Persona;
 
-import javax.swing.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
@@ -90,13 +89,11 @@ public class Tick extends Thread {
             controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
             panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());
             Spawner.unAlmaMenos();
-            System.out.println("Alma quemada");
         } else if (((h.getLocation().x > 719 && h.getLocation().x < 871 - h.getHitbox().width) && (h.getLocation().y > 435 || h.getLocation().y < (301 - h.getHitbox().height)) || (h.getLocation().x > (PanelPuente.getUbicacion().x + PanelPuente.getPuenteSize().width/3) && h.getLocation().x < (PanelPuente.getUbicacion().x + 2 * PanelPuente.getPuenteSize().width/3) - h.getHitbox().width + 1)) && (h.getLocation().y < 499 || h.getLocation().y > (301 - h.getHitbox().height)) && !PanelPuente.getPuente().getFuncional()) {
             int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
             controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
             panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());
             Spawner.unAlmaMenos();
-            System.out.println("Alma quemada");
         }
     }
     private void guardarAlma(Hitbox h) {

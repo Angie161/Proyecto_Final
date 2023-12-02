@@ -16,6 +16,8 @@ public class PanelPuente extends JPanel {
         ubicacion = new Point(x, y);
         setBounds(x,y,size.width, size.height);
         hitbox = new Hitbox(ubicacion.x + size.width/3,ubicacion.y,size.width - 2*size.width/3,size.height,2);
+        puente.setFuncional(true);
+        acutalizarHitbox();
     }
 
     public static Puente getPuente() {

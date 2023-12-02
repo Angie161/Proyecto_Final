@@ -13,6 +13,7 @@ public class PanelLaMuerte extends JPanel {
     private final int aceleracion = 1;
     private final Point ubicacionInicial = new Point(635,375);
     private Hitbox hitbox;
+    private ImageIcon[] iamgeMuerte = new ImageIcon[2];
     public PanelLaMuerte() {
         laMuerte = new LaMuerte();
         hitbox = new Hitbox(new Rectangle(ubicacionInicial, size), this);
@@ -20,6 +21,13 @@ public class PanelLaMuerte extends JPanel {
         setOpaque(false);
         setSize(size);
         setLocation(ubicacionInicial);
+        try {
+            iamgeMuerte[0] = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/LaMuerte.png"));
+            iamgeMuerte[1] = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/LaMuerteLeft.png"));
+        }catch (Exception e) {
+            iamgeMuerte[0] = null;
+            iamgeMuerte[1] = null;
+        }
     }
     public LaMuerte getLaMuerte() {
         return laMuerte;
@@ -49,11 +57,9 @@ public class PanelLaMuerte extends JPanel {
         super.paintComponent(g);
         try {
             if(velocidad.x < 0) {
-                ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/LaMuerteLeft.png"));
-                g.drawImage(imageIcon.getImage(), 0, 0, null);
+                g.drawImage(iamgeMuerte[1].getImage(), 0, 0, null);
             } else {
-                ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/LaMuerte.png"));
-                g.drawImage(imageIcon.getImage(), 0, 0, null);
+                g.drawImage(iamgeMuerte[0].getImage(), 0, 0, null);
             }
         } catch (Exception e) {
             //System.err.println("Error al cargar a la muerte");

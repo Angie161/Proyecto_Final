@@ -24,6 +24,8 @@ public class PanelMapa extends JPanel {
     private Thread spawn;
     private Spawner runeable;
     private Controles controles;
+    private ImageIcon[] imageMapa = new ImageIcon[3];
+    private Font fuentePersonalizada;
 
     public PanelMapa() {
         super();
@@ -37,23 +39,25 @@ public class PanelMapa extends JPanel {
         bordes[1]               = new Hitbox(size.width, 0, 1, size.height,0);
         bordes[2]               = new Hitbox(0, size.height, size.width, 1,0);
         bordes[3]               = new Hitbox(-1, 0, 1, size.height,0);
-        Hitbox mausoleoHitbox   = new Hitbox(0, 0, 650, 100,0);
+        Hitbox mausoleoHitbox   = new Hitbox(0, 0, 710, 100,0);
         Hitbox infierno1        = new Hitbox(720, 0, 150, 280,2);
         Hitbox infierno2        = new Hitbox(720, 500, 150, 300,2);
-        panelDepSobres[0]       = new PanelDepSobre(15, 290, 2, panelLaMuerte.getLaMuerte());
-        panelDepSobres[1]       = new PanelDepSobre(15, 430, 0, panelLaMuerte.getLaMuerte());
-        panelDepSobres[2]       = new PanelDepSobre(15, 570, 1, panelLaMuerte.getLaMuerte());
-        panelSalidaDepSobres[0] = new PanelSalidaDepSobre(885,20,panelDepSobres[1].getDepSobre());
-        panelSalidaDepSobres[1] = new PanelSalidaDepSobre(885,150,panelDepSobres[0].getDepSobre());
-        panelSalidaDepSobres[2] = new PanelSalidaDepSobre(885,540,panelDepSobres[2].getDepSobre());
-        panelSalidaDepSobres[3] = new PanelSalidaDepSobre(885,670,panelDepSobres[1].getDepSobre());
+        panelDepSobres[0]       = new PanelDepSobre(15, 290, 2, panelLaMuerte.getLaMuerte(),"Imagenes/Mapa/CofreAbAngel.png");
+        panelDepSobres[1]       = new PanelDepSobre(15, 430, 0, panelLaMuerte.getLaMuerte(),"Imagenes/Mapa/CofreAbDem.png");
+        panelDepSobres[2]       = new PanelDepSobre(15, 570, 1, panelLaMuerte.getLaMuerte(),"Imagenes/Mapa/CofreAbPer.png");
+        panelSalidaDepSobres[0] = new PanelSalidaDepSobre(885,20,panelDepSobres[1].getDepSobre(),"Imagenes/Mapa/CofreCerPer.png");
+        panelSalidaDepSobres[1] = new PanelSalidaDepSobre(885,150,panelDepSobres[0].getDepSobre(),"Imagenes/Mapa/CofreCerAngel.png");
+        panelSalidaDepSobres[2] = new PanelSalidaDepSobre(885,540,panelDepSobres[2].getDepSobre(),"Imagenes/Mapa/CofreCerDem.png");
+        panelSalidaDepSobres[3] = new PanelSalidaDepSobre(885,670,panelDepSobres[1].getDepSobre(),"Imagenes/Mapa/CofreCerPer.png");
         panelPuente             = new PanelPuente(670,300);
         panelError              = new PanelError();
         panelMenuMausoleo       = new PanelMenuMausoleo(this);
         panelAnuncio            = new PanelAnuncio();
-        panelAltar[0]           = new PanelAltar(1165, 60);
-        panelAltar[1]           = new PanelAltar(1165, 531);
-        panelAltar[2]           = new PanelAltar(1150, 270);
+        panelAltar[0]           = new PanelAltar(1165, 60,"Imagenes/Mapa/Altar1.png");
+        panelAltar[1]           = new PanelAltar(1165, 531,"Imagenes/Mapa/Altar3.png");
+        panelAltar[2]           = new PanelAltar(1150, 270,"Imagenes/Mapa/Altar2.png");
+
+        setLayout(null);
 
         add(panelPuente);
         add(panelLaMuerte);
@@ -80,14 +84,27 @@ public class PanelMapa extends JPanel {
 
         setComponentZOrder(panelAnuncio,1);
         setComponentZOrder(panelError,1);
-        new Fps();
-        tick = new Tick(controles, this);
-        spawn.start();
 
         setBackground(new Color(0,0,0,0));
         setPreferredSize(size);
         setLocation(0, 0);
-        setLayout(null);
+        try {
+            imageMapa[0] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/Fondo.png"));
+            imageMapa[1] = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoOk.png"));
+            imageMapa[2] = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoNotOk.png"));
+            fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
+            fuentePersonalizada = fuentePersonalizada.deriveFont(fuentePersonalizada.getSize()*30f);
+            fuentePersonalizada = fuentePersonalizada.deriveFont(Font.BOLD);
+        } catch (Exception e) {
+            imageMapa[0] = null;
+            imageMapa[1] = null;
+            imageMapa[2] = null;
+            fuentePersonalizada = null;
+        }
+
+        new Fps();
+        tick = new Tick(controles, this);
+        spawn.start();
     }
 
     public static Dimension getTam() {
@@ -129,31 +146,15 @@ public class PanelMapa extends JPanel {
     @Override
     protected void paintComponent(Graphics g) {
         try {
-            ImageIcon imageIcon1 = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/Fondo.png"));
-            g.drawImage(imageIcon1.getImage(), 0, 0, null);
+            g.drawImage(imageMapa[0].getImage(), 0, 0, null);
             if (mausoleo.getBarca().getFuncional()) {
-                ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoOk.png"));
-                g.drawImage(imageIcon.getImage(), 0, 0, null);
+                g.drawImage(imageMapa[1].getImage(), 0, 0, null);
             } else {
-                ImageIcon imageIcon = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoNotOk.png"));
-                g.drawImage(imageIcon.getImage(), 0, 0, null);
+                g.drawImage(imageMapa[2].getImage(), 0, 0, null);
             }
-            panelDepSobres[0].paintComponent(g,"Imagenes/Mapa/CofreAbAngel.png");
-            panelDepSobres[1].paintComponent(g,"Imagenes/Mapa/CofreAbDem.png");
-            panelDepSobres[2].paintComponent(g,"Imagenes/Mapa/CofreAbPer.png");
-            panelSalidaDepSobres[0].paintComponent(g,"Imagenes/Mapa/CofreCerPer.png");
-            panelSalidaDepSobres[1].paintComponent(g,"Imagenes/Mapa/CofreCerAngel.png");
-            panelSalidaDepSobres[2].paintComponent(g,"Imagenes/Mapa/CofreCerDem.png");
-            panelSalidaDepSobres[3].paintComponent(g,"Imagenes/Mapa/CofreCerPer.png");
-            panelAltar[0].paintComponent(g,"Imagenes/Mapa/Altar1.png");
-            panelAltar[1].paintComponent(g,"Imagenes/Mapa/Altar3.png");
-            panelAltar[2].paintComponent(g,"Imagenes/Mapa/Altar2.png");
             super.paintComponent(g);
-            Font fuentePersonalizadaNegr = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
-            fuentePersonalizadaNegr = fuentePersonalizadaNegr.deriveFont(fuentePersonalizadaNegr.getSize()*30f);
-            fuentePersonalizadaNegr = fuentePersonalizadaNegr.deriveFont(Font.BOLD);
             g.setColor(Color.BLACK);
-            g.setFont(fuentePersonalizadaNegr);
+            g.setFont(fuentePersonalizada);
             g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
         } catch (Exception e) {
             //System.err.println("Error al cargar el mapa");
