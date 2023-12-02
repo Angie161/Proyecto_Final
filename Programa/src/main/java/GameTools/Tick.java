@@ -85,13 +85,13 @@ public class Tick extends Thread {
         controles.getJugador().getHitbox().setVelocidad(controles.getJugador().getVelocidad());
     }
     private void quemarAlma(Hitbox h) {
-        if((h.getLocation().x > 749 && h.getLocation().x < 901 - h.getHitbox().width) && (h.getLocation().y > 499 || h.getLocation().y < (301 - h.getHitbox().height)) && PanelPuente.getPuente().getFuncional()) {
+        if((h.getLocation().x > 719 && h.getLocation().x < 871 - h.getHitbox().width) && (h.getLocation().y > 435 || h.getLocation().y < (301 - h.getHitbox().height)) && PanelPuente.getPuente().getFuncional()) {
             int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
             controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
             panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());
             Spawner.unAlmaMenos();
             System.out.println("Alma quemada");
-        } else if (((h.getLocation().x > 749 && h.getLocation().x < 901 - h.getHitbox().width) && (h.getLocation().y > 499 || h.getLocation().y < (301 - h.getHitbox().height)) || (h.getLocation().x > (PanelPuente.getUbicacion().x + PanelPuente.getPuenteSize().width/3) && h.getLocation().x < (PanelPuente.getUbicacion().x + 2 * PanelPuente.getPuenteSize().width/3) - h.getHitbox().width + 1)) && (h.getLocation().y < 499 || h.getLocation().y > (301 - h.getHitbox().height)) && !PanelPuente.getPuente().getFuncional()) {
+        } else if (((h.getLocation().x > 719 && h.getLocation().x < 871 - h.getHitbox().width) && (h.getLocation().y > 435 || h.getLocation().y < (301 - h.getHitbox().height)) || (h.getLocation().x > (PanelPuente.getUbicacion().x + PanelPuente.getPuenteSize().width/3) && h.getLocation().x < (PanelPuente.getUbicacion().x + 2 * PanelPuente.getPuenteSize().width/3) - h.getHitbox().width + 1)) && (h.getLocation().y < 499 || h.getLocation().y > (301 - h.getHitbox().height)) && !PanelPuente.getPuente().getFuncional()) {
             int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
             controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
             panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());
@@ -100,17 +100,17 @@ public class Tick extends Thread {
         }
     }
     private void guardarAlma(Hitbox h) {
-        if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Angel && (h.getLocation().x >= 75 && h.getLocation().x <= 137 - h.getHitbox().width) && (h.getLocation().y > 280 && h.getLocation().y < (400 - h.getHitbox().height))) {
+        if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Angel && panelMapa.getPanelDepSobres()[0].getBounds().contains(h.getHitbox())) {
             panelMapa.getPanelDepSobres()[0].getDepSobre().add(((PanelAlma) h.getPanelAsociado()).getAlma());
             panelMapa.remove(h.getPanelAsociado());
             Hitbox.eliminarHitbox(h);
             Spawner.unAlmaMenos();
-        } else if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Demonio && (h.getLocation().x >= 75 && h.getLocation().x <= 137 - h.getHitbox().width) && (h.getLocation().y > 420 && h.getLocation().y < (540 - h.getHitbox().height))) {
+        } else if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Demonio && panelMapa.getPanelDepSobres()[1].getBounds().contains(h.getHitbox())) {
             panelMapa.getPanelDepSobres()[2].getDepSobre().add(((PanelAlma) h.getPanelAsociado()).getAlma());
             panelMapa.remove(h.getPanelAsociado());
             Hitbox.eliminarHitbox(h);
             Spawner.unAlmaMenos();
-        } else if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Persona && (h.getLocation().x >= 75 && h.getLocation().x <= 137 - h.getHitbox().width) && (h.getLocation().y > 560 && h.getLocation().y < (680 - h.getHitbox().height))) {
+        } else if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Persona && panelMapa.getPanelDepSobres()[2].getBounds().contains(h.getHitbox())) {
             panelMapa.getPanelDepSobres()[1].getDepSobre().add(((PanelAlma) h.getPanelAsociado()).getAlma());
             panelMapa.remove(h.getPanelAsociado());
             Hitbox.eliminarHitbox(h);
@@ -118,7 +118,7 @@ public class Tick extends Thread {
         }
     }
     private void sacarAlma(Hitbox h) {
-        if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 20 && h.getLocation().y < (140 - h.getHitbox().height))) {
+        if(panelMapa.getPanelSalidaDepSobres()[0].getBounds().contains(h.getHitbox())) {
             if(panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().get());
                 pa.setLocation(1190, 60);
@@ -135,7 +135,7 @@ public class Tick extends Thread {
                 panelMapa.setComponentZOrder(pa,0);
                 interactuar = true;
             }
-        } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 150 && h.getLocation().y < (270 - h.getHitbox().height))) {
+        } else if(panelMapa.getPanelSalidaDepSobres()[1].getBounds().contains(h.getHitbox())) {
             if(panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[1].getDepSobre().get());
                 pa.setLocation(1190, 140);
@@ -152,7 +152,7 @@ public class Tick extends Thread {
                 panelMapa.setComponentZOrder(pa,0);
                 interactuar = true;
             }
-        } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 530 && h.getLocation().y < (650 - h.getHitbox().height))) {
+        } else if(panelMapa.getPanelSalidaDepSobres()[2].getBounds().contains(h.getHitbox())) {
             if(panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[2].getDepSobre().get());
                 pa.setLocation(1190, 560);
@@ -169,7 +169,7 @@ public class Tick extends Thread {
                 panelMapa.setComponentZOrder(pa,0);
                 interactuar = true;
             }
-        } else if((h.getLocation().x >= 975 && h.getLocation().x <= 990) && (h.getLocation().y > 660 && h.getLocation().y < (780 - h.getHitbox().height))) {
+        } else if(panelMapa.getPanelSalidaDepSobres()[3].getBounds().contains(h.getHitbox())) {
             if(panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[1].getPanelAlma() == null && !interactuar) {
                 PanelAlma pa = new PanelAlma((Almas) panelMapa.getPanelSalidaDepSobres()[3].getDepSobre().get());
                 pa.setLocation(1190, 650);
