@@ -10,7 +10,9 @@ import java.awt.event.MouseListener;
 public class ButtonRepPuente extends JButton {
     public ButtonRepPuente(PanelMapa panelMapa){
         super();
-        setBounds(900,500,250,133);
+        setBorder(null);
+        setBounds(903,500,247,133);
+        setBackground(new Color(0,0,0,0));
 
         addMouseListener(new MouseListener() {
             @Override
@@ -20,8 +22,6 @@ public class ButtonRepPuente extends JButton {
             public void mousePressed(MouseEvent e) {
                 try {
                     panelMapa.getMausoleo().repararPuente(PanelPuente.getPuente());
-                    panelMapa.getPanelPuente().acutalizarHitbox();
-                    panelMapa.getPanelMenuMausoleo().actualizarValores();
                 }catch (FragmentosInsuficientesException ex){
                     System.out.println("No tienes suficientes fragmentos");
                 }
@@ -31,15 +31,14 @@ public class ButtonRepPuente extends JButton {
             public void mouseReleased(MouseEvent e) {}
 
             @Override
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                setBackground(new Color(0,0,0,100));
+            }
 
             @Override
-            public void mouseExited(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {
+                setBackground(new Color(0,0,0,0));
+            }
         });
-    }
-    @Override
-    protected void paintComponent(Graphics g) {
-        g.setColor(new Color(100, 135, 220));
-        g.fillRect(0, 0,250,133);
     }
 }

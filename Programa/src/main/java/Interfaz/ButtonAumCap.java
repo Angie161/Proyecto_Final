@@ -11,6 +11,8 @@ public class ButtonAumCap extends JButton {
     public ButtonAumCap(PanelMapa panelMapa){
         super();
         setBounds(600,185,450,95);
+        setBackground(new Color(0,0,0,0));
+        setBorder(null);
 
         addMouseListener(new MouseListener() {
             @Override
@@ -20,7 +22,6 @@ public class ButtonAumCap extends JButton {
             public void mousePressed(MouseEvent e) {
                 try {
                     panelMapa.getMausoleo().aumentarCapacidad();
-                    panelMapa.getPanelMenuMausoleo().actualizarValores();
                 }catch (FragmentosInsuficientesException ex){
                     System.out.println("No tienes suficientes fragmentos");
                     panelMapa.getPanelError().setVisible(true);
@@ -31,15 +32,10 @@ public class ButtonAumCap extends JButton {
             public void mouseReleased(MouseEvent e) {}
 
             @Override
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {setBackground(new Color(0,0,0,100));}
 
             @Override
-            public void mouseExited(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {setBackground(new Color(0,0,0,0));}
         });
-    }
-    @Override
-    protected void paintComponent(Graphics g) {
-        g.setColor(new Color(100, 135, 220));
-        g.fillRect(0, 0,450,100);
     }
 }

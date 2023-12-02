@@ -8,7 +8,9 @@ import java.awt.event.MouseListener;
 public class ButtonVolver extends JButton {
     public ButtonVolver(JPanel panelMenuMausoleo){
         super();
+        setBorder(null);
         setBounds(1120,20,60,50);
+        setBackground(new Color(0,0,0,0));
 
         addMouseListener(new MouseListener() {
             @Override
@@ -20,20 +22,19 @@ public class ButtonVolver extends JButton {
             }
 
             @Override
-            public void mouseReleased(MouseEvent e) {}
+            public void mouseReleased(MouseEvent e) {
+            }
 
             @Override
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                setBackground(new Color(0,0,0,100));
+            }
 
             @Override
-            public void mouseExited(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {
+                setBackground(new Color(0,0,0,0));
+            }
         });
-    }
-
-    @Override
-    protected void paintComponent(Graphics g) {
-        g.setColor(new Color(100, 135, 220));
-        g.fillRect(0, 0, 150, 150);
     }
 }
 

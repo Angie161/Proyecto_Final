@@ -11,6 +11,8 @@ public class ButtonEnviarDem extends JButton {
     public ButtonEnviarDem(PanelMapa panelMapa){
         super();
         setBounds(600,335,550,95);
+        setBackground(new Color(0,0,0,0));
+        setBorder(null);
 
         addMouseListener(new MouseListener() {
             @Override
@@ -20,7 +22,6 @@ public class ButtonEnviarDem extends JButton {
             public void mousePressed(MouseEvent e) {
                 try {
                     panelMapa.getMausoleo().enviarDemonio();
-                    panelMapa.getPanelMenuMausoleo().actualizarValores();
                 }catch (FragmentosInsuficientesException ex){
                     System.out.println("No tienes suficientes fragmentos");
                 } catch (DemonioNullException ex) {
@@ -38,15 +39,14 @@ public class ButtonEnviarDem extends JButton {
             public void mouseReleased(MouseEvent e) {}
 
             @Override
-            public void mouseEntered(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {
+                setBackground(new Color(0,0,0,100));
+            }
 
             @Override
-            public void mouseExited(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {
+                setBackground(new Color(0,0,0,0));
+            }
         });
-    }
-    @Override
-    protected void paintComponent(Graphics g) {
-        g.setColor(new Color(100, 135, 220));
-        g.fillRect(0, 0,550,100);
     }
 }
