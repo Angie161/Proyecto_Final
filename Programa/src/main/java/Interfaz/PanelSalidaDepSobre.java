@@ -17,7 +17,7 @@ public class PanelSalidaDepSobre extends JPanel {
         ubicacion = new Point(x, y);
         setBounds(x,y,size.width, size.height);
         setBackground(new Color(0,0,0,0));
-        new Hitbox(ubicacion.x ,ubicacion.y,size.width - 60,size.height,0);
+        new Hitbox(ubicacion.x ,ubicacion.y,size.width - 60,size.height - 75,0);
         try {
             imageDepSobre = new ImageIcon(getClass().getClassLoader().getResource(rutaASuImagen));
         } catch (Exception e) {

@@ -38,7 +38,7 @@ public class PanelMapa extends JPanel {
         bordes[2]               = new Hitbox(0, size.height, size.width, 1,0);
         bordes[3]               = new Hitbox(-1, 0, 1, size.height,0);
         Hitbox mausoleoHitbox   = new Hitbox(0, 0, 710, 100,0);
-        Hitbox infierno1        = new Hitbox(720, 0, 150, 280,2);
+        Hitbox infierno1        = new Hitbox(720, 0, 150, 240,2);
         Hitbox infierno2        = new Hitbox(720, 500, 150, 300,2);
         panelDepSobres[0]       = new PanelDepSobre(15, 290, 2, panelLaMuerte.getLaMuerte(),"Imagenes/Mapa/CofreAbAngel.png");
         panelDepSobres[1]       = new PanelDepSobre(15, 430, 0, panelLaMuerte.getLaMuerte(),"Imagenes/Mapa/CofreAbDem.png");

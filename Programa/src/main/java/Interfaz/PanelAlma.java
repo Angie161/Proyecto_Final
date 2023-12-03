@@ -66,7 +66,7 @@ public class PanelAlma extends JPanel {
     }
 
     @Override
-    public void paintComponent(Graphics g) {
+    public void paint(Graphics g) {
         try{
             if(alma instanceof Serafin) {
                 g.setColor(alma.getColor());
