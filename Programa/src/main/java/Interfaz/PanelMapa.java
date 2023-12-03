@@ -28,8 +28,6 @@ public class PanelMapa extends JPanel {
     private Font fuentePersonalizada;
 
     public PanelMapa() {
-        super();
-
         panelLaMuerte           = new PanelLaMuerte();
         controles               = new Controles(panelLaMuerte);
         mausoleo                = new Mausoleo(panelLaMuerte.getLaMuerte(), new MundoTerrenal());
@@ -52,7 +50,7 @@ public class PanelMapa extends JPanel {
         panelPuente             = new PanelPuente(670,300);
         panelError              = new PanelError();
         panelMenuMausoleo       = new PanelMenuMausoleo(this);
-        panelAnuncio            = new PanelAnuncio();
+        panelAnuncio            = new PanelAnuncio(this);
         panelAltar[0]           = new PanelAltar(1165, 60,"Imagenes/Mapa/Altar1.png");
         panelAltar[1]           = new PanelAltar(1165, 531,"Imagenes/Mapa/Altar3.png");
         panelAltar[2]           = new PanelAltar(1150, 270,"Imagenes/Mapa/Altar2.png");
@@ -72,8 +70,8 @@ public class PanelMapa extends JPanel {
         add(panelSalidaDepSobres[1]);
         add(panelSalidaDepSobres[2]);
         add(panelSalidaDepSobres[3]);
-        add(panelMenuMausoleo);
         add(panelError);
+        add(panelMenuMausoleo);
         add(panelAnuncio);
 
         setComponentZOrder(panelPuente,1);
@@ -144,7 +142,7 @@ public class PanelMapa extends JPanel {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paint(Graphics g) {
         try {
             g.drawImage(imageMapa[0].getImage(), 0, 0, null);
             if (mausoleo.getBarca().getFuncional()) {
@@ -152,7 +150,7 @@ public class PanelMapa extends JPanel {
             } else {
                 g.drawImage(imageMapa[2].getImage(), 0, 0, null);
             }
-            super.paintComponent(g);
+            super.paint(g);
             g.setColor(Color.BLACK);
             g.setFont(fuentePersonalizada);
             g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
