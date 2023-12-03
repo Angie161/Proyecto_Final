@@ -12,12 +12,13 @@ public class PanelPuente extends JPanel {
     private static Point ubicacion;
     private static Puente puente = new Puente();
     private Hitbox hitbox;
+    private ImageIcon[] imagePuente = new ImageIcon[2];
     public PanelPuente(int x, int y) {
         ubicacion = new Point(x, y);
         setBounds(x,y,size.width, size.height);
         hitbox = new Hitbox(ubicacion.x + size.width/3,ubicacion.y,size.width - 2*size.width/3,size.height,2);
-        puente.setFuncional(true);
-        acutalizarHitbox();
+        imagePuente[0] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/PuenteOk.png"));
+        imagePuente[1] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/PuenteNotOk.png"));
     }
 
     public static Puente getPuente() {
@@ -45,13 +46,12 @@ public class PanelPuente extends JPanel {
 
     @Override
     protected void paintComponent(Graphics g) {
+        acutalizarHitbox();
         try {
             if (puente.getFuncional()) {
-                ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/PuenteOk.png"));
-                g.drawImage(imageIcon.getImage(), 0, 0, null);
+                g.drawImage(imagePuente[0].getImage(), 0, 0, null);
             } else {
-                ImageIcon imageIcon = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/PuenteNotOk.png"));
-                g.drawImage(imageIcon.getImage(), 0, 0, null);
+                g.drawImage(imagePuente[1].getImage(), 0, 0, null);
             }
         }catch (Exception e) {
             g.setColor(new Color(200, 150, 0));
