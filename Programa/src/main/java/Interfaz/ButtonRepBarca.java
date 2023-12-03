@@ -22,7 +22,9 @@ public class ButtonRepBarca extends JButton {
             public void mousePressed(MouseEvent e) {
                 try {
                     panelMapa.getMausoleo().repararBarca();
+                    PanelAnuncio.setComoEstaban(0);
                 }catch (FragmentosInsuficientesException ex){
+                    panelMapa.getPanelError().invocar("No tienes suficientes fragmentos");
                     System.out.println("No tienes suficientes fragmentos");
                 }
             }

@@ -22,7 +22,9 @@ public class ButtonRepPuente extends JButton {
             public void mousePressed(MouseEvent e) {
                 try {
                     panelMapa.getMausoleo().repararPuente(PanelPuente.getPuente());
+                    PanelAnuncio.setComoEstaban(1);
                 }catch (FragmentosInsuficientesException ex){
+                    panelMapa.getPanelError().invocar("No tienes suficientes fragmentos");
                     System.out.println("No tienes suficientes fragmentos");
                 }
             }

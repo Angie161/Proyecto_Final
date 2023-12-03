@@ -23,8 +23,8 @@ public class ButtonAumCap extends JButton {
                 try {
                     panelMapa.getMausoleo().aumentarCapacidad();
                 }catch (FragmentosInsuficientesException ex){
+                    panelMapa.getPanelError().invocar("No tienes suficientes fragmentos");
                     System.out.println("No tienes suficientes fragmentos");
-                    panelMapa.getPanelError().setVisible(true);
                 }
             }
 

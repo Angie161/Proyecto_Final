@@ -22,15 +22,21 @@ public class ButtonEnviarDem extends JButton {
             public void mousePressed(MouseEvent e) {
                 try {
                     panelMapa.getMausoleo().enviarDemonio();
+                    PanelAnuncio.addDemEnviados();
                 }catch (FragmentosInsuficientesException ex){
+                    panelMapa.getPanelError().invocar("No tienes suficientes fragmentos");
                     System.out.println("No tienes suficientes fragmentos");
                 } catch (DemonioNullException ex) {
+                    panelMapa.getPanelError().invocar("No hay demonios para enviar");
                     System.out.println("No Demonios para enviar");
                 } catch (BarcaRotaException ex) {
+                    panelMapa.getPanelError().invocar(" Tu barca está rota");
                     System.out.println("Tu barca está rota");
                 } catch (SinCapPermitidaException ex) {
+                    panelMapa.getPanelError().invocar("  No tienes capacidad");
                     System.out.println("No tienes capacidad");
                 } catch (AngelesInsuficienteException ex) {
+                    panelMapa.getPanelError().invocar("   Angeles insuficientes");
                     System.out.println("Angeles insuficientes");
                 }
             }

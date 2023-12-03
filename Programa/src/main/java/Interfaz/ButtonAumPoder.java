@@ -23,6 +23,7 @@ public class ButtonAumPoder extends JButton {
                 try {
                     panelMapa.getMausoleo().aumentarPoder();
                 }catch (FragmentosInsuficientesException ex){
+                    panelMapa.getPanelError().invocar("No tienes suficientes fragmentos");
                     System.out.println("No tienes suficientes fragmentos");
                 }
             }
