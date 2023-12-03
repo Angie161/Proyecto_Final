@@ -110,7 +110,7 @@ public class Mausoleo {
         if(propietario.getFragAlmas() >= precios.getPrecioRepararaPuente() && !puente.getFuncional()) {
             puente.setFuncional(true);
             propietario.addFragAlmas(-precios.getPrecioRepararaPuente());
-        } else if (barca.getFuncional()) {
+        } else if (puente.getFuncional()) {
             System.out.println("El puente no está roto");
         } else {
             throw new FragmentosInsuficientesException();
