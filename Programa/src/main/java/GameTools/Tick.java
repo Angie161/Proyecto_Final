@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.Random;
 
 public class Tick extends Thread {
-    private static final int tick = 5;
+    private static double tick = 5;
     private Controles controles;
     private PanelMapa panelMapa;
     private boolean interactuar = false;
@@ -25,28 +25,33 @@ public class Tick extends Thread {
     @Override
     public void run() {
         while(true) {
-            ArrayList<Hitbox> hitboxes = Hitbox.getTodasLasHitbox();
+            long startTime = System.currentTimeMillis();
             jugadorSigueAControles();
-            entrarAlMenu(hitboxes.get(0));
-            for(int i = 1; i < hitboxes.size(); i++) {
-                if(hitboxes.get(0).getHitbox().intersects(hitboxes.get(i).getHitbox())) {
-                    moverHitbox(hitboxes.get(i));
+            entrarAlMenu(Hitbox.getTodasLasHitbox().get(0));
+            for(int i = 1; i < Hitbox.getTodasLasHitbox().size(); i++) {
+                if(Hitbox.getTodasLasHitbox().get(0).getHitbox().intersects(Hitbox.getTodasLasHitbox().get(i).getHitbox())) {
+                    moverHitbox(Hitbox.getTodasLasHitbox().get(i));
                 }
                 try {
-                    panelMapa.getPanelAltar()[0].ingresarAlma(hitboxes.get(i));
-                    panelMapa.getPanelAltar()[1].ingresarAlma(hitboxes.get(i));
-                    panelMapa.getPanelAltar()[2].ingresarAlma(hitboxes.get(i));
+                    panelMapa.getPanelAltar()[0].ingresarAlma(Hitbox.getTodasLasHitbox().get(i));
+                    panelMapa.getPanelAltar()[1].ingresarAlma(Hitbox.getTodasLasHitbox().get(i));
+                    panelMapa.getPanelAltar()[2].ingresarAlma(Hitbox.getTodasLasHitbox().get(i));
                     panelMapa.getPanelAltar()[2].fucionarAlmas(panelMapa);
                 } catch(Exception e) {}
             }
-            sacarAlma(hitboxes.get(0));
+            sacarAlma(Hitbox.getTodasLasHitbox().get(0));
             if((new Random()).nextInt((int)400/(panelMapa.getMausoleo().getTierra().getCantDemEnviados() + 1)) == 0) {
                  controles.getJugador().getLaMuerte().addFragAlmas(panelMapa.getMausoleo().getTierra().muertes());
             }
             try {
-                Thread.sleep(Tick.tick);
+                Thread.sleep((int) tick);
             } catch (InterruptedException e) {
                 return;
+            }
+            long endTime = System.currentTimeMillis();
+            long duration = endTime - startTime;
+            if(duration > 6) {
+                tick -= 0.001;
             }
         }
     }
