@@ -52,6 +52,8 @@ public class Tick extends Thread {
             long duration = endTime - startTime;
             if(duration > 6) {
                 tick -= 0.001;
+            } else if(duration < 6) {
+                tick += 0.001;
             }
         }
     }
