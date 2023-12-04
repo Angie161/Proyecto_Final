@@ -36,7 +36,9 @@ public class Tick extends Thread {
                     panelMapa.getPanelAltar()[0].ingresarAlma(Hitbox.getTodasLasHitbox().get(i));
                     panelMapa.getPanelAltar()[1].ingresarAlma(Hitbox.getTodasLasHitbox().get(i));
                     panelMapa.getPanelAltar()[2].ingresarAlma(Hitbox.getTodasLasHitbox().get(i));
-                    panelMapa.getPanelAltar()[2].fucionarAlmas(panelMapa);
+                    if(!panelMapa.getPanelSalidaDepSobres()[0].getBounds().contains(Hitbox.getTodasLasHitbox().get(0).getHitbox()) && !panelMapa.getPanelSalidaDepSobres()[1].getBounds().contains(Hitbox.getTodasLasHitbox().get(0).getHitbox()) && !panelMapa.getPanelSalidaDepSobres()[2].getBounds().contains(Hitbox.getTodasLasHitbox().get(0).getHitbox()) && !panelMapa.getPanelSalidaDepSobres()[3].getBounds().contains(Hitbox.getTodasLasHitbox().get(0).getHitbox())) {
+                        panelMapa.getPanelAltar()[2].fucionarAlmas(panelMapa);
+                    }
                 } catch(Exception e) {}
             }
             sacarAlma(Hitbox.getTodasLasHitbox().get(0));
