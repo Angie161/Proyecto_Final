@@ -101,6 +101,7 @@ public class PanelMapa extends JPanel {
         }
 
         new Fps();
+        new Terremoto(PanelPuente.getPuente());
         tick = new Tick(controles, this);
         spawn.start();
     }
