@@ -2,8 +2,15 @@ package Interfaz;
 
 import javax.swing.*;
 
+/**
+ * Clase singleton que contiene el frame del programa.
+ */
 public class Ventana extends JFrame {
     private static Ventana instancia = new Ventana();
+    
+    /**
+     * Constructor personalizado.
+     */
     private Ventana() {
         super();
         instancia = this;
@@ -20,10 +27,18 @@ public class Ventana extends JFrame {
         setVisible(true);
     }
 
+    /**
+     * Método para obtener la instancia de la ventana.
+     *
+     * @return Ventana, la cual es la instancia de la ventana.
+     */
     public static Ventana getInstancia() {
         return instancia;
     }
 
+    /**
+     * Método para repintar la ventana.
+     */
     public static void repintar() {
         instancia.repaint();
     }
