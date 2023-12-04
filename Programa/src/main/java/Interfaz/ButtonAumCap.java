@@ -14,6 +14,8 @@ public class ButtonAumCap extends JButton {
     
     /**
      * Constructor de ButtonAumCap, configura los parámetros iniciales para que se muestren en pantalla.
+     *
+     * @param panelMapa con el cuál se accede a Mausoleo para modificar la capacidad.
      */
     public ButtonAumCap(PanelMapa panelMapa){
         super();
