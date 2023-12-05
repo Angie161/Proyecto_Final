@@ -1,9 +1,7 @@
 package Interfaz;
 
 import GameTools.*;
-import Logica.Barca;
-import Logica.Mausoleo;
-import Logica.MundoTerrenal;
+import Logica.*;
 
 import javax.swing.*;
 import java.awt.*;
