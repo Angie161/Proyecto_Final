@@ -15,7 +15,7 @@ public class ButtonRepBarca extends JButton {
     /**
      * Constructor de ButtonRepBarca, configura los parámetros iniciales para que se muestren en pantalla.
      *
-     * @param panelMapa con el cuál se accede a Mausoleo para reparar la barca.
+     * @param panelMapa con el cual se accede a Mausoleo para reparar la barca.
      */
     public ButtonRepBarca(PanelMapa panelMapa){
         super();
@@ -53,7 +53,7 @@ public class ButtonRepBarca extends JButton {
             public void mouseReleased(MouseEvent e) {}
 
             /**
-             * Evento ejecutado al presionar el botón. Envía un demonio si se tiene suficientes fragmentos, angeles y demonios.
+             * Evento ejecutado al entrar al botón. Oscurece el fondo del botón para generar el efecto de activación.
              *
              * @param e evento a ser procesado.
              */

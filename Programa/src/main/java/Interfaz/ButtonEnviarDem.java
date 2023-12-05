@@ -15,7 +15,7 @@ public class ButtonEnviarDem extends JButton {
     /**
      * Constructor de ButtonEnviarDem, configura los parámetros iniciales para que se muestren en pantalla.
      *
-     * @param panelMapa con el cuál se accede a Mausoleo para modificar la capacidad.
+     * @param panelMapa con el cual se accede al Mausoleo para ejecutar la compra.
      */
     public ButtonEnviarDem(PanelMapa panelMapa){
         super();

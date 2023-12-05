@@ -29,7 +29,7 @@ public class ButtonVolver extends JButton {
             public void mouseClicked(MouseEvent e) {}
 
             /**
-             * Evento ejecutado al presionar el botón. Convierte la visibilidad del MenuMausoleo.
+             * Evento ejecutado al presionar el botón. Convierte la visibilidad del MenuMausoleo en falsa.
              *
              * @param e evento a ser procesado.
              */
