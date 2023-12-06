@@ -20,6 +20,7 @@ public class Ventana extends JFrame {
 
         pack();
 
+        setIconImage((new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Aplicacion/IconJuego.png"))).getImage());
         setTitle("DeathsMission");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
