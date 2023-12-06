@@ -61,7 +61,7 @@ public class PanelAnuncio extends JPanel {
         String texto = "   Bienvenido a Deaths Mission";
         label[0].setText(texto.substring(0,15));
         label[1].setText(texto.substring(15));
-        Timer timer3 = new Timer(15, new ActionListener() {
+        Timer timer3 = new Timer(10, new ActionListener() {
             int x = 0;
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -82,7 +82,7 @@ public class PanelAnuncio extends JPanel {
                 x++;
             }
         });
-        Timer timer2 = new Timer(15, new ActionListener() {
+        Timer timer2 = new Timer(10, new ActionListener() {
             int x = 0;
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -103,7 +103,7 @@ public class PanelAnuncio extends JPanel {
                 x++;
             }
         });
-        Timer timer1 = new Timer(15, new ActionListener() {
+        Timer timer1 = new Timer(10, new ActionListener() {
             int x = 0;
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -124,7 +124,7 @@ public class PanelAnuncio extends JPanel {
                 x++;
             }
         });
-        Timer timer = new Timer(15, new ActionListener() {
+        Timer timer = new Timer(10, new ActionListener() {
             int x = 0;
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -150,7 +150,7 @@ public class PanelAnuncio extends JPanel {
     public void invocar(String texto) {
         label[0].setText(texto.substring(0,15));
         label[1].setText(texto.substring(15));
-        Timer timer = new Timer(10, new ActionListener() {
+        Timer timer = new Timer(5, new ActionListener() {
             int x = 0;
             @Override
             public void actionPerformed(ActionEvent e) {
