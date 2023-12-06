@@ -23,6 +23,7 @@ public class PanelMapa extends JPanel {
     private Spawner runeable;
     private Controles controles;
     private ImageIcon[] imageMapa = new ImageIcon[3];
+    private ImageIcon[] imageAlmas = new ImageIcon[4];
     private Font fuentePersonalizada;
 
     public PanelMapa() {
@@ -86,8 +87,12 @@ public class PanelMapa extends JPanel {
         setLocation(0, 0);
         try {
             imageMapa[0] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/Fondo.png"));
-            imageMapa[1] = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoOk.png"));
-            imageMapa[2] = new ImageIcon(PanelMapa.class.getClassLoader().getResource("Imagenes/Mapa/MausoleoNotOk.png"));
+            imageMapa[1] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/MausoleoOk.png"));
+            imageMapa[2] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/MausoleoNotOk.png"));
+            imageAlmas[0] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/IconFragmento.png"));
+            imageAlmas[1] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/IconAngel.png"));
+            imageAlmas[2] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/IconDem.png"));
+            imageAlmas[3] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/IconPersona.png"));
             fuentePersonalizada = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
             fuentePersonalizada = fuentePersonalizada.deriveFont(fuentePersonalizada.getSize()*30f);
             fuentePersonalizada = fuentePersonalizada.deriveFont(Font.BOLD);
@@ -152,7 +157,14 @@ public class PanelMapa extends JPanel {
             super.paint(g);
             g.setColor(Color.BLACK);
             g.setFont(fuentePersonalizada);
-            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
+            g.drawImage(imageAlmas[0].getImage(),5,8,null);
+            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 40, 30);
+            g.drawImage(imageAlmas[2].getImage(),1110,8,null);
+            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getDepSobre()[1].getTam()), 1140, 30);
+            g.drawImage(imageAlmas[1].getImage(),1010,8,null);
+            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getDepSobre()[2].getTam()), 1040, 30);
+            g.drawImage(imageAlmas[3].getImage(),1210,8,null);
+            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getDepSobre()[0].getTam()), 1240, 30);
         } catch (Exception e) {
             //System.err.println("Error al cargar el mapa");
             g.setColor(new Color(100, 200, 100));

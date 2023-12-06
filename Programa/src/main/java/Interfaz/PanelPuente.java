@@ -19,7 +19,6 @@ public class PanelPuente extends JPanel {
         hitbox = new Hitbox(ubicacion.x + size.width/3,ubicacion.y,size.width - 2*size.width/3,size.height,2);
         imagePuente[0] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/PuenteOk.png"));
         imagePuente[1] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/PuenteNotOk.png"));
-        puente.setFuncional(true);
     }
 
     public static Puente getPuente() {

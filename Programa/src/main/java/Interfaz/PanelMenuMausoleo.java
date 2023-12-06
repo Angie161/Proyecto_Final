@@ -15,6 +15,8 @@ public class PanelMenuMausoleo extends JPanel {
     private ButtonEnviarDem buttonEnviarDem;
     private ButtonRepBarca buttonRepBarca;
     private ButtonRepPuente buttonRepPuente;
+    private ImageIcon[] imageAlmas = new ImageIcon[4];
+    private ImageIcon imageMenu;
 
     private Font fuentePersonalizadaNegr;
     private Font fuenteNoNegr;
@@ -56,6 +58,13 @@ public class PanelMenuMausoleo extends JPanel {
         texto[13] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararaPuente() + " frag");
 
         try {
+            imageMenu = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Menu/MenuMausoleo.png"));
+            imageAlmas[0] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/IconFragmento.png"));
+            imageAlmas[1] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/IconAngel.png"));
+            imageAlmas[2] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/IconDem.png"));
+            imageAlmas[3] = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Mapa/IconPersona.png"));
+
+
             fuentePersonalizadaNegr = Font.createFont(Font.TRUETYPE_FONT, getClass().getClassLoader().getResourceAsStream("Fuentes/Angiesfont.ttf"));
             fuentePersonalizadaNegr = fuentePersonalizadaNegr.deriveFont(fuentePersonalizadaNegr.getSize()*40f);
             fuentePersonalizadaNegr = fuentePersonalizadaNegr.deriveFont(Font.BOLD);
@@ -121,11 +130,11 @@ public class PanelMenuMausoleo extends JPanel {
         texto[5].setText("Capacidad: " + panelMapa.getMausoleo().getTierra().getCapacidad());
         texto[6].setText("Dem. Enviados: " + panelMapa.getMausoleo().getTierra().getCantDemEnviados());
 
-        texto[9].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraPoder() + "frag");
-        texto[10].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraCapacidad(panelMapa.getMausoleo().getTierra()) + "frag");
-        texto[11].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + " angeles y " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()) + " frag");
-        texto[12].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararBarca() + "frag");
-        texto[13].setText("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararaPuente() + "frag");
+        texto[9].setText("Requiere:     " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraPoder());
+        texto[10].setText("Requiere:     " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraCapacidad(panelMapa.getMausoleo().getTierra()));
+        texto[11].setText("Requiere:  " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + "       y     " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()));
+        texto[12].setText("Requiere:     " + panelMapa.getMausoleo().getPrecios().getPrecioRepararBarca());
+        texto[13].setText("Requiere:     " + panelMapa.getMausoleo().getPrecios().getPrecioRepararaPuente());
     }
 
     @Override
@@ -133,8 +142,14 @@ public class PanelMenuMausoleo extends JPanel {
         actualizarValores();
         super.paintComponent(g);
         try {
-            ImageIcon imageIcon1 = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Menu/MenuMausoleo.png"));
-            g.drawImage(imageIcon1.getImage(), 0, 0, null);
+            g.drawImage(imageMenu.getImage(), 0, 0, null);
+            g.drawImage(imageAlmas[0].getImage(),716,134,null);
+            g.drawImage(imageAlmas[0].getImage(),716,284,null);
+            g.drawImage(imageAlmas[1].getImage(),760,434,null);
+            g.drawImage(imageAlmas[0].getImage(),806,434,null);
+            g.drawImage(imageAlmas[0].getImage(),716,639,null);
+            g.drawImage(imageAlmas[0].getImage(),1016,639,null);
+
         } catch(Exception e) {
 
             //Retrato Muerte
