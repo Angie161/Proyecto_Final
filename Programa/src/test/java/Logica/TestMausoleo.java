@@ -12,7 +12,6 @@ public class TestMausoleo {
     private Mausoleo mausoleo;
     private LaMuerte laMuerte;
     private MundoTerrenal mundoTerrenal;
-    private Barca barca;
     private Puente puente;
 
     /**
@@ -21,8 +20,7 @@ public class TestMausoleo {
     @BeforeEach
     void setup(){
         laMuerte = new LaMuerte();
-        barca = new Barca();
-        mundoTerrenal = new MundoTerrenal(barca);
+        mundoTerrenal = new MundoTerrenal();
         mausoleo = new Mausoleo(laMuerte,mundoTerrenal);
         puente = new Puente();
     }

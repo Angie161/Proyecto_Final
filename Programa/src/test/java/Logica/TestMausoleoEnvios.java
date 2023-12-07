@@ -14,7 +14,6 @@ public class TestMausoleoEnvios {
     private Mausoleo mausoleo;
     private LaMuerte laMuerte;
     private MundoTerrenal mundoTerrenal;
-    private Barca barca;
     private DemoniosFactory demFactory;
     private AngelesFactory angFactory;
     private Color color;
@@ -25,8 +24,7 @@ public class TestMausoleoEnvios {
     @BeforeEach
     void setup(){
         laMuerte = new LaMuerte();
-        barca = new Barca();
-        mundoTerrenal = new MundoTerrenal(barca);
+        mundoTerrenal = new MundoTerrenal();
         mausoleo = new Mausoleo(laMuerte,mundoTerrenal);
         color = new Color(0,0,0);
         demFactory = new DemoniosFactory();

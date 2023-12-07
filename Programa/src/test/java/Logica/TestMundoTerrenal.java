@@ -11,21 +11,21 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class TestMundoTerrenal {
     private MundoTerrenal mundoTerrenal;
-    private Barca barca;
     private Color color;
     private Lucifer lucifer;
     private Satan satan;
+    private LaMuerte laMuerte;
 
     /**
      * Inicializa las variables que se emplearán en todas las pruebas.
      */
     @BeforeEach
     void setup(){
-        barca = new Barca();
-        mundoTerrenal = new MundoTerrenal(barca);
+        mundoTerrenal = new MundoTerrenal();
         color = new Color(255,0,0);
         lucifer = new Lucifer(30, color);
         satan = new Satan(50, color);
+        laMuerte = new LaMuerte();
     }
 
     /**
@@ -70,6 +70,8 @@ public class TestMundoTerrenal {
         mundoTerrenal.agregarDemonio(lucifer);
         assertEquals(1, mundoTerrenal.getCantDemEnviados());
 
-        assertEquals(85, mundoTerrenal.muertes());
+        assertEquals(36, mundoTerrenal.muertes(laMuerte));
+        laMuerte.setPoder(2);
+        assertEquals(54, mundoTerrenal.muertes(laMuerte));
     }
 }
