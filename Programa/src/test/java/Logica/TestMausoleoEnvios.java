@@ -37,9 +37,7 @@ public class TestMausoleoEnvios {
         laMuerte.addFragAlmas(500);
 
         // Agregamos un 5 Angeles al depósito de la muerte, el mínimo para hacer un envío
-        for(int i=0; i<5; i++) {
-            laMuerte.getDepSobre()[2].add(angFactory.crearAngel(laMuerte, color));
-        }
+        laMuerte.getDepSobre()[2].add(angFactory.crearAngel(laMuerte, color));
 
         //Agregamos el demonio que queremos enviar
         laMuerte.getDepSobre()[1].add(demFactory.crearDemonio(laMuerte, color));
@@ -60,7 +58,7 @@ public class TestMausoleoEnvios {
     void envioCorrecto() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
         assertNotNull(laMuerte.getDepSobre()[1].see(0));
         assertEquals(500, mausoleo.getPrecios().getPrecioFragEnvio(mundoTerrenal));
-        assertEquals(5, mausoleo.getPrecios().getCantAngelesEnvio(mundoTerrenal));
+        assertEquals(1, mausoleo.getPrecios().getCantAngelesEnvio(mundoTerrenal));
 
         assertEquals(1, mausoleo.getTierra().getCapacidad());
         assertEquals(0, mausoleo.getTierra().getCantDemEnviados());
@@ -95,13 +93,9 @@ public class TestMausoleoEnvios {
         assertEquals(1, laMuerte.getDepSobre()[1].getTam());
         assertEquals(0, laMuerte.getDepSobre()[2].getTam());
 
-        //Añadimos 10 ángeles al depósito de la muerte.
-        for(int i=0; i<10; i++) {
-            laMuerte.getDepSobre()[2].add(angFactory.crearAngel(laMuerte, color));
-        }
-        assertEquals(10, laMuerte.getDepSobre()[2].getTam());
+        laMuerte.getDepSobre()[2].add(angFactory.crearAngel(laMuerte, color));
 
-        //Añadimos 600 fragmentos de almas al depósito de la muerte.
+        assertEquals(1, laMuerte.getDepSobre()[2].getTam());
         laMuerte.addFragAlmas(600);
 
         assertThrows(SinCapPermitidaException.class, () -> {
@@ -142,7 +136,7 @@ public class TestMausoleoEnvios {
     @DisplayName("Test envío con ángeles insuficientes")
     void envioAngelesInsuficientes() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
         laMuerte.getDepSobre()[2].get();
-        assertEquals(4,laMuerte.getDepSobre()[2].getTam());
+        assertEquals(0,laMuerte.getDepSobre()[2].getTam());
         assertThrows(AngelesInsuficienteException.class, () -> {
             mausoleo.enviarDemonio();
         });
