@@ -6,7 +6,9 @@
 
 ### 📋 Descripción y instrucciones de uso de la Interfaz.
 Esto es un videojuego donde la muerte, el jugador, se encuentra en el limbo y es la encargada de recibir las defunciones del mundo terrenal como fragmentos de almas, la moneda del juego, además de gestionar las almas de los demonios y ángeles que van apareciendo en el limbo y decidir que hacer con ellas.
-Las almas de los demonios y ángeles pueden ser empujadas, y de esa manera, hacerles caer al infierno para recibir fragmentos del almas acambio. Tambien, en el mausoleo, se pueden enviar demonios al mundo terrenal con la ayuda de ángeles, lo que alterará la cantidad de muertes que suceden allí. Las almas de los demonios, ángeles y personas se pueden guardar en los contenedores sobrenaturales ya que desaparecen despues de un tiempo si no lo haces. Y por último, estas se pueden fusionar en el cielo para crear nuevas almas más o menos valiosas.
+Las almas de los demonios y ángeles pueden ser empujadas, y de esa manera, hacerles caer al infierno para recibir fragmentos del almas acambio. Tambien, en el mausoleo, se pueden enviar demonios al mundo terrenal con la ayuda de ángeles, lo que alterará la cantidad de muertes que suceden allí. Las almas de los demonios, ángeles y personas se pueden guardar en los contenedores sobrenaturales para permitir que se sigan generando más en el caso de que no querramos hacerles caer al infierno. Y por último, todas las almas se pueden fusionar entre si, en el cielo, para crear nuevas almas más valiosas.
+
+Tambien si desea probar las funcionalidades del juego y no tener que darse el tiempo de jugar mucho, puede ir a la rama "AdminBranch" y allí contará con todo lo necesario para probar todas las funcionalidades, ya que la velocidad a la que ocurren algunos eventos del juego (destrucciones de estructuras, exorcismos, muertes) es más rapida y contara con mucho dinero al inicio.
 
 La muerte.
 * Es el jugador y tiene asociada una cantidad de fragmentos de almas y un poder, lo que le permite desbloquear mejoras.
@@ -25,7 +27,7 @@ Las almas de las personas.
 
 El mausoleo.
 
-* Aqui la muerte puede decidir enviar demonios al mundo terrenal, subir su poder, reparar el puente y reparar o mejorar la barca para enviar a los demonios.
+* Aqui la muerte puede decidir enviar demonios al mundo terrenal, subir su poder, reparar el puente y reparar o mejorar la barca para enviar a los demonios y ver sus estadísticas.
 
 
 ### 📝 UML (Boceto)
