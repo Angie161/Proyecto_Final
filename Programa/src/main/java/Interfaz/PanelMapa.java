@@ -6,6 +6,9 @@ import Logica.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Clase que representa visualmente el Mapa del juego, y el cuál contiene a todos los componentes visuales del juego.
+ */
 public class PanelMapa extends JPanel {
     private static Dimension size = new Dimension(1300, 800);
     private PanelLaMuerte panelLaMuerte;
@@ -26,6 +29,9 @@ public class PanelMapa extends JPanel {
     private ImageIcon[] imageAlmas = new ImageIcon[4];
     private Font fuentePersonalizada;
 
+    /**
+     * Constructor de PanelMapa, el cual establece las configuraciones iniciales para que se muestre en pantalla.
+     */
     public PanelMapa() {
         panelLaMuerte           = new PanelLaMuerte();
         controles               = new Controles(panelLaMuerte);
@@ -109,42 +115,76 @@ public class PanelMapa extends JPanel {
         spawn.start();
     }
 
+    /**
+     * Getter del tamaño del panelMapa.
+     * @return Dimension con el tamaño del mapa.
+     */
     public static Dimension getTam() {
         return size;
     }
 
-    public PanelPuente getPanelPuente() {
-        return panelPuente;
-    }
-
+    /**
+     * Getter del conjunto de paneles de altares contenido en el mapa.
+     * @return PanelAltar[].
+     */
     public PanelAltar[] getPanelAltar() {
         return panelAltar;
     }
 
+    /**
+     * Getter del panel de la muerte que se encuentra en el mapa.
+     * @return PanelLaMuerte.
+     */
     public PanelLaMuerte getPanelLaMuerte() {
         return panelLaMuerte;
     }
 
+    /**
+     * Getter del Mausoleo que se encuentra en el mapa.
+     * @return Mausoleo.
+     */
     public Mausoleo getMausoleo() {
         return mausoleo;
     }
 
+    /**
+     * Getter del conjunto de paneles de depósitos que se encuentran en el mapa.
+     * @return PanelDepSobre[].
+     */
     public PanelDepSobre[] getPanelDepSobres() {
         return panelDepSobres;
     }
 
+    /**
+     * Getter del conjunto de paneles de depósitos de salida que se encuentran en el mapa.
+     * @return PanelSalidaDepSobre[].
+     */
     public PanelSalidaDepSobre[] getPanelSalidaDepSobres() {
         return panelSalidaDepSobres;
     }
 
+    /**
+     * Getter del panel del menú del mausoleo que se encuentra en el mapa.
+     * @return PanelMenuMausoleo.
+     */
     public PanelMenuMausoleo getPanelMenuMausoleo() {
         return panelMenuMausoleo;
     }
 
+    /**
+     * Getter del panel de error que se encuentra en el mapa.
+     * @return PanelError.
+     */
     public PanelError getPanelError(){
         return panelError;
     }
 
+
+    /**
+     * Override del método paint() para dibujar personalizadamente.
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paint(Graphics g) {
         try {

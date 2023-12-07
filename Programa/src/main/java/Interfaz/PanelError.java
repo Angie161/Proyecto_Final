@@ -5,8 +5,15 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase que muestra en la interfaz un aviso para cuando se intenta realizar una compra en el Mausoleo y no se cumple algún requisito.
+ */
 public class PanelError extends JPanel {
     private JLabel label;
+
+    /**
+     * Constructor de PanelError, configura los parámetros iniciales para que se muestren en pantalla.
+     */
     public PanelError(){
         setOpaque(true);
         setLayout(null);
@@ -23,12 +30,23 @@ public class PanelError extends JPanel {
         } catch (Exception e) {}
         add(label);
     }
+
+    /**
+     * Muestra el anuncio del error por una cantidad de tiempo determinado.
+     *
+     * @param texto a mostrar en el anuncio.
+     */
     public void invocar(String texto) {
         if(label.getText().equals(" ")) {
             label.setText(texto);
             Timer timer = new Timer(1, new ActionListener() {
                 int x = 0;
 
+                /**
+                 * Establece la posición del texto.
+                 *
+                 * @param e the event to be processed
+                 */
                 @Override
                 public void actionPerformed(ActionEvent e) {
                     if (x < 150) {

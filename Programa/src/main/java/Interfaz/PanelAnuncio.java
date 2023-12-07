@@ -5,11 +5,21 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Clase que muestra en la interfaz un aviso para cuando ocurre algún evento especial dentro del juego que afecta el entorno del jugador.
+ * Asimismo muestra una pequeña introducción al inicializar el juego.
+ */
 public class PanelAnuncio extends JPanel {
     private JLabel[] label = new JLabel[2];
     private static boolean[] comoEstaban = new boolean[2];
     private static int demEnviados = 0;
     private Font fuentePersonalizada;
+
+    /**
+     * Constructor de PanelAnuncio. Se configuran los label correspondientes para aparecer en pantalla.
+     *
+     * @param panelMapa para corroborar los estados de los objetos que pueden ser destruidos en el juego.
+     */
     public PanelAnuncio(PanelMapa panelMapa){
         super();
         setOpaque(true);
@@ -33,6 +43,10 @@ public class PanelAnuncio extends JPanel {
         add(label[0]);
         add(label[1]);
         Thread revisarEventos = new Thread(new Runnable() {
+
+            /**
+             * Muestra el anuncio por un determinado periodo de tiempo.
+             */
             @Override
             public void run() {
                 while(true) {
@@ -43,7 +57,7 @@ public class PanelAnuncio extends JPanel {
                         invocar("  Se a roto     el puente");
                         comoEstaban[1] = false;
                     } else if (panelMapa.getMausoleo().getTierra().getCantDemEnviados() < demEnviados) {
-                        invocar("Te exorcizaron  un demonio");
+                        invocar("Exorcizaron     un demonio");
                         demEnviados--;
                     }
                     try {
@@ -57,12 +71,21 @@ public class PanelAnuncio extends JPanel {
         revisarEventos.start();
         tutorial();
     }
+
+    /**
+     * Muestra una secuencia de labels para indicar el tutorial del juego.
+     */
     public void tutorial() {
         String texto = "   Bienvenido a Deaths Mission";
         label[0].setText(texto.substring(0,15));
         label[1].setText(texto.substring(15));
         Timer timer3 = new Timer(10, new ActionListener() {
             int x = 0;
+
+            /**
+             * Establece la posición del texto.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(x < 150) {
@@ -84,6 +107,11 @@ public class PanelAnuncio extends JPanel {
         });
         Timer timer2 = new Timer(10, new ActionListener() {
             int x = 0;
+
+            /**
+             * Establece la posición del texto.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(x < 150) {
@@ -105,6 +133,11 @@ public class PanelAnuncio extends JPanel {
         });
         Timer timer1 = new Timer(10, new ActionListener() {
             int x = 0;
+
+            /**
+             * Establece la posición del texto.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(x < 150) {
@@ -126,6 +159,11 @@ public class PanelAnuncio extends JPanel {
         });
         Timer timer = new Timer(10, new ActionListener() {
             int x = 0;
+
+            /**
+             * Establece la posición del texto.
+             * @param e the event to be processed
+             */
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(x < 150) {
@@ -147,6 +185,11 @@ public class PanelAnuncio extends JPanel {
         });
         timer.start();
     }
+
+    /**
+     * Permite mostrar los textos en la pantalla.
+     * @param texto a imprimir.
+     */
     public void invocar(String texto) {
         label[0].setText(texto.substring(0,15));
         label[1].setText(texto.substring(15));
@@ -170,6 +213,11 @@ public class PanelAnuncio extends JPanel {
         });
         timer.start();
     }
+
+    /**
+     * Establece los estados reparados de los objetos, como el puente y la barca.
+     * @param cual, objeto referido.
+     */
     public static void setComoEstaban(int cual) {
         if(cual == 0) {
             comoEstaban[0] = true;
@@ -177,6 +225,10 @@ public class PanelAnuncio extends JPanel {
             comoEstaban[1] = true;
         }
     }
+
+    /**
+     * Agrega demonios enviados al mundo terrenal.
+     */
     public static void addDemEnviados(){
         demEnviados++;
     }

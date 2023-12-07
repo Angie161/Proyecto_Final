@@ -7,6 +7,9 @@ import java.awt.event.MouseListener;
 import java.io.File;
 import java.io.InputStream;
 
+/**
+ * Clase que representa visualmente al menú del mausoleo.
+ */
 public class PanelMenuMausoleo extends JPanel {
     private PanelMapa panelMapa;
     private ButtonVolver buttonVolver;
@@ -22,6 +25,10 @@ public class PanelMenuMausoleo extends JPanel {
     private Font fuenteNoNegr;
     private JLabel[] texto;
 
+    /**
+     * Constructor de PanelMenuMausoleo en el cual se configura los tamaños, buttons y texto que se encontrará en él.
+     * @param Mapa al cual está asociado el menú.
+     */
     public PanelMenuMausoleo(PanelMapa Mapa) {
         super();
         setOpaque(true);
@@ -121,6 +128,9 @@ public class PanelMenuMausoleo extends JPanel {
         add(buttonRepPuente);
     }
 
+    /**
+     * Actualiza los Jlabels que contienen los precios o estadisticas de la Muerte cada vez que se realiza una compra o cambia algún valor numérico relacionado con las almas o fragmentos de almas.
+     */
     public void actualizarValores(){
         texto[0].setText("Poder: " + panelMapa.getPanelLaMuerte().getLaMuerte().getPoder());
         texto[1].setText("Ángeles: " + panelMapa.getPanelLaMuerte().getLaMuerte().getDepSobre()[2].getTam());
@@ -137,6 +147,11 @@ public class PanelMenuMausoleo extends JPanel {
         texto[13].setText("Requiere:     " + panelMapa.getMausoleo().getPrecios().getPrecioRepararaPuente());
     }
 
+    /**
+     * Override del método paintComponent(g) para dibujar personalizadamente.
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     protected void paintComponent(Graphics g) {
         actualizarValores();

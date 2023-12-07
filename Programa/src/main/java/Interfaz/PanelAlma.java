@@ -6,9 +6,17 @@ import Logica.*;
 import javax.swing.*;
 import java.awt.*;
 
+/**
+ * Clase que representa visualmente las almas en el juego. Cada una con su hitbox implementada.
+ */
 public class PanelAlma extends JPanel {
     private final Almas alma;
     private Hitbox hitbox;
+
+    /**
+     * Constructor de PanelAlma, donde se configura su tamaño y se le asigna una hitbox.
+     * @param alma a la cuál está asociado el PanelAlma.
+     */
     public PanelAlma(Almas alma) {
         super();
         setSize(60,100);
@@ -16,18 +24,38 @@ public class PanelAlma extends JPanel {
         this.alma = alma;
     }
 
+    /**
+     * Getter de la hitbox asociada.
+     * @return Hitbox asociada.
+     */
     public Hitbox getHitbox() {
         return hitbox;
     }
 
+    /**
+     * Getter del alma asociada al panel.
+     * @return Almas, alma asociada al panel.
+     */
     public Almas getAlma() {
         return alma;
     }
+
+    /**
+     * Elimina la hitbox asociada al panel, para cuando se desea eliminar el alma de la interfaz.
+     * @return PanelAlma.
+     */
     public PanelAlma purificar() {
         Hitbox.eliminarHitbox(hitbox);
         return this;
     }
 
+    /**
+     * Establece la forma y ubicación de las aureolas de las almas de los ángeles en el panel.
+     * @param n cantidad de puntos con los que se graficará la aureola.
+     * @param a cuál de los dos poligonos que se emplean para dibujar la aureola completa se configurará.
+     * @param b altura a la que se encuentra la aureola.
+     * @return int[] arreglo de enteros que se usará para rellenar las aureolas en un paintComponent.
+     */
     private int[] ubicarAreolas(int n, int a, int b) {
         int[] x = new int[2*n];
         int[] y = new int[2*n];
@@ -65,6 +93,11 @@ public class PanelAlma extends JPanel {
         return null;
     }
 
+    /**
+     * Override del método paintComponent(g) para dibujar personalizadamente.
+     *
+     * @param g the <code>Graphics</code> object to protect
+     */
     @Override
     public void paint(Graphics g) {
         try{
