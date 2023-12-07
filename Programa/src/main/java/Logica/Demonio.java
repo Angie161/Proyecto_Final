@@ -39,10 +39,11 @@ public abstract class Demonio extends Almas {
     /**
      * Realiza el cálculo de la cantidad de muertes que un demonio puede provocar basándonos en sus estadísticas.
      *
+     * @param laMuerte la muerte a cargo del limbo.
      * @return entero con la cantidad de asesinatos provocados por el demonio.
      */
-    public int matar() {
-        double asesinatos = (maldad / 50) * Math.pow(rango,5);
+    public int matar(LaMuerte laMuerte) {
+        double asesinatos = maldad * Math.pow(2, rango) * laMuerte.getPoder() / 5;
         return (int) asesinatos;
     }
 }

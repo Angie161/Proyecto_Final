@@ -89,12 +89,13 @@ public class MundoTerrenal {
     /**
      * La cantidad de gente que muere en el mundo terrenal.
      *
+     * @param laMuerte la muerte a cargo del limbo.
      * @return la cantidad de gente que murió.
      */
-    public int muertes(){
-        int muertes = 1;
+    public int muertes(LaMuerte laMuerte){
+        int muertes = 0;
         for(int i = 0; i < demEnviados.getTam(); i++) {
-            muertes += ((Demonio) demEnviados.see(i)).matar();
+            muertes += ((Demonio) demEnviados.see(i)).matar(laMuerte);
         }
         return muertes;
     }

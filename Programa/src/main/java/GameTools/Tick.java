@@ -43,7 +43,7 @@ public class Tick extends Thread {
             }
             sacarAlma(Hitbox.getTodasLasHitbox().get(0));
             if((new Random()).nextInt((int)400/(panelMapa.getMausoleo().getTierra().getCantDemEnviados() + 1)) == 0) {
-                 controles.getJugador().getLaMuerte().addFragAlmas(panelMapa.getMausoleo().getTierra().muertes());
+                 controles.getJugador().getLaMuerte().addFragAlmas(panelMapa.getMausoleo().getTierra().muertes(panelMapa.getPanelLaMuerte().getLaMuerte()));
             }
             try {
                 Thread.sleep((int) tick);
