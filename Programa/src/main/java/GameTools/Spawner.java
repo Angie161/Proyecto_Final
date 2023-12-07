@@ -42,8 +42,8 @@ public class Spawner implements Runnable {
      */
     @Override
     public void run() {
+        int timeSpawn = 3000;
         while(true) {
-            int timeSpawn = 3000;
             try {
                 crearAlmaEn((new Random()).nextInt((int) size.height / entidadSize.height), (new Random()).nextInt((int) size.width / entidadSize.width));
                 timeSpawn = 3000;
