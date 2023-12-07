@@ -17,7 +17,7 @@ public class PanelError extends JPanel {
     public PanelError(){
         setOpaque(true);
         setLayout(null);
-        setBounds((PanelMapa.getTam().width -550)/2,-150,550, 55);
+        setBounds((PanelMapa.getTam().width -550)/2,-55,550, 55);
         setBackground(new Color(230, 180, 180, 190));
         setVisible(true);
         label = new JLabel(" ");
@@ -49,12 +49,12 @@ public class PanelError extends JPanel {
                  */
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    if (x < 150) {
+                    if (x < 55) {
                         setLocation(getLocation().x, getLocation().y + 1);
-                    } else if (300 < x) {
+                    } else if (150 < x) {
                         setLocation(getLocation().x, getLocation().y - 1);
                     }
-                    if (x > 450) {
+                    if (x > 205) {
                         label.setText(" ");
                         ((Timer) e.getSource()).stop();
                     }
