@@ -57,9 +57,10 @@ public class Mausoleo {
         if(propietario.getDepSobre()[1].see(0)==null){
             throw new DemonioNullException();
         } else if(propietario.getDepSobre()[2].getTam() >= precios.getCantAngelesEnvio(tierra) && propietario.getFragAlmas() >= precios.getPrecioFragEnvio(tierra)) {
+            int aux = precios.getPrecioFragEnvio(tierra);
             barca.traslado(tierra, (Demonio) propietario.getDepSobre()[1].see(0));
             propietario.getDepSobre()[1].get();
-            propietario.addFragAlmas(-precios.getPrecioFragEnvio(tierra));
+            propietario.addFragAlmas(-aux);
             for(int i = 0; i < precios.getCantAngelesEnvio(tierra); i++) {
                 propietario.getDepSobre()[2].get();
             }
