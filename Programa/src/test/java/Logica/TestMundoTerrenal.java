@@ -70,8 +70,8 @@ public class TestMundoTerrenal {
         mundoTerrenal.agregarDemonio(lucifer);
         assertEquals(1, mundoTerrenal.getCantDemEnviados());
 
-        assertEquals(36, mundoTerrenal.muertes(laMuerte));
+        assertEquals(24, mundoTerrenal.muertes(laMuerte));
         laMuerte.setPoder(2);
-        assertEquals(54, mundoTerrenal.muertes(laMuerte));
+        assertEquals(48, mundoTerrenal.muertes(laMuerte));
     }
 }
