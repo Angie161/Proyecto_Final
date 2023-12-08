@@ -1,10 +1,10 @@
 # 📖 Proyecto_Final
 
 <p align="center">
-  <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=%FF90BB90&size=25&center=true&vCenter=true&width=600&height=100&lines=Ce+travail+était+amusant;Cela+fait+des+merveilles;GitHub+est+incroyable"></a>
+  <a href="https://github.com/DenverCoder1/readme-typing-svg"><img src="https://readme-typing-svg.herokuapp.com?font=Time+New+Roman&color=%FF90BB90&size=25&center=true&vCenter=true&width=600&height=100&lines=Death's+Mission;Ce+travail+était+amusant;Cela+fait+des+merveilles;GitHub+est+incroyable"></a>
 </p>
 
-### 📋 Descripción y instrucciones de uso de la Interfaz.
+### 📋 Descripción e instrucciones de uso de la Interfaz.
 Esto es un videojuego donde la muerte, el jugador, se encuentra en el limbo y es la encargada de recibir las defunciones del mundo terrenal como fragmentos de almas, la moneda del juego, además de gestionar las almas de los demonios y ángeles que van apareciendo en el limbo y decidir que hacer con ellas.
 Las almas de los demonios y ángeles pueden ser empujadas, y de esa manera, hacerles caer al infierno para recibir fragmentos del almas acambio. Tambien, en el mausoleo, se pueden enviar demonios al mundo terrenal con la ayuda de ángeles, lo que alterará la cantidad de muertes que suceden allí. Las almas de los demonios, ángeles y personas se pueden guardar en los contenedores sobrenaturales para permitir que se sigan generando más en el caso de que no querramos hacerles caer al infierno. Y por último, todas las almas se pueden fusionar entre si, en el cielo, para crear nuevas almas más valiosas.
 
@@ -30,22 +30,22 @@ El mausoleo.
 * Aqui la muerte puede decidir enviar demonios al mundo terrenal, subir su poder, reparar el puente y reparar o mejorar la barca para enviar a los demonios y ver sus estadísticas.
 
 
-### 📝 UML (Boceto)
+### 📝 UML
 
 Avance en el UML: Modificaciones en clases del uml en el package interfaz, agregado de clases al uml de Gametools y de las Factories.
 
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/86a026c9-cd9a-4fe2-ad35-09ffd054ebed)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/a20f4f6b-5e93-46f0-aff1-6ab97b5d752e)
 
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/97fdd8e9-39c8-4a1f-8d83-877a588cc756)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/034d5afc-7e89-456a-8a3d-f811f3d3c160)
 
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/98096540-cf32-4331-84b4-fac2a7b08203)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/2744b13d-bb26-4d32-af51-f667b90c4e3d)
 
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/586e7c4f-ea88-4028-9fbf-38ab1051d153)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/7f116839-1e63-4948-b444-3c6f09430a97)
 
 
 Imagen del uml completo:
 
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/fa72d6b0-afc6-4041-8557-31b31a910abc)
+![Uml](https://github.com/Angie161/Proyecto_Final/assets/146099263/e2841786-b65d-43b1-a460-3f2b6f9dd483)
 
 
 ### 📍Casos de Uso
@@ -58,25 +58,28 @@ Imagen del uml completo:
 2. Singletón: Hicimos que la clase 'Ventana', perteneciente al package de la interfaz, implementase este patrón para así simplificar la tarea de repintarla cada que se tiene nueva información en los páneles de esta.
 
 
-### 💻 Interfaz Gráfica (Boceto)
-La siguiente foto es un boceto de referencia de la pantalla principal en papel.
+### 💻 Interfaz Gráfica
 
-![WhatsApp Image 2023-11-08 at 15 08 58](https://github.com/Angie161/Proyecto_Final/assets/146099765/26933464-6905-48a8-a019-61af1a00fd22)
+Esta es una imagen con la interfaz al ejecutar el programa. 
 
-Esta es una imagen con el prototipo de interfaz al ejecutar el programa. 
-
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/47c261b1-5e13-4f1b-9005-95c46c77b178)
-
-La siguiente foto contiene un boceto de cómo se verá el panel del Mausoleo una vez se accede a él.
-
-![20231117_174338](https://github.com/Angie161/Proyecto_Final/assets/146099263/bb003db4-60bb-459e-9e26-6c1893029bfe)
-
-Esta es una imagen con el prototipo de interfaz al entrar al Mausoleo.
-![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/8757b973-3849-4027-9e2c-a86e014d3acb)
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/3774fb80-5934-4a8f-8b54-fd181241f7f3)
 
 
-### 🔍Por implementar (Consultas)
-* (Por consultar) ¿Cómo poner en pausa un Hilo?: Queremos saber esto con la finalidad de generanr una especie de pausa en el juego al entrar en el Mausoleo.
+Esta es una imagen con la interfaz que se muestra al entrar al Mausoleo.
+
+![image](https://github.com/Angie161/Proyecto_Final/assets/146099263/8d921324-6e1f-4661-acde-1eda2c5edf56)
+
+
+### 🔍 Desiciones tomadas
+
+
+### 🔍 Problemas encontrados
+A lo largo del proyecto, el principal problema al que nos enfrentamos fue generar un sistemas de hitboxs adecuado y funcional para que se reconociesen las colisiones de manera idónea, pero tras una serie de pruebas y versiones logramos ajustarlo como queríamos.
+De la misma manera, fue complicado configurar la forma en la que se pintaban los elementos del juego para que se mostrasen en la posición esperada, ya que se solían sobreponer entre sí, por lo que tuvimos que ser bastante minuciosos y cuidadosos con los métodos _paint()_ y _paintComponent()_.
+
+### 🕹️ Requisitos
+* Pantalla 1920 x 1080
+* Procesador con velocidad base de 2.8 GHz
 
 
 ### 🤝🏻 Contribuidores (Grupo 20)
