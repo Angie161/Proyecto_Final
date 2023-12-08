@@ -71,14 +71,14 @@ Esta es una imagen con la interfaz que se muestra al entrar al Mausoleo.
 
 
 ### 🔍 Desiciones tomadas
-
+Nuestras desiciones se tomaron principalmente a la hora de plantear nuestro videojuego, donde la tematica, jugabilidad y diseño fue evolucionando hasta lo que es el dia de hoy. Comenzamos plantenado un juego muy simple, de entidades con formas basicas y mecánicas simples que consistian solo en empujar y "quemar" estas entidades, pero luego decidimos que podriamos plantear un juego similar pero con una temática mas interesante, almas y la muerte. Fuimos agregando elementos, como el menu y los depositos, asi mejorando la idea inicial. Decidimos comenzar con la logica, todo lo que seria una entidad o cosa, lo convertimos en una clase, luego nos dimos cuenta que necesitariamos un sistema de controles, hitbox, entre otras cosas que requerian un trabajo en paralelo al resto entonces creimos que era buena idea introducir los hilos a nuestro codigo. Tambien decidimos utilizar el patron Factory para la creacion de las almas ya que asi no debiamos manejarlo nosotros cuando quisieramos invocarlas. Finalmente encontramos que lo más util para probar las cosas que ibamos haciendo y sus funcionalidades era crear una version en el que todas las cosas sucedan más rápido y comencemos con dinero y almas guardadas, por lo tanto, creamos AdminBranch para darle ese uso.
 
 ### 🔍 Problemas encontrados
 A lo largo del proyecto, el principal problema al que nos enfrentamos fue generar un sistemas de hitboxs adecuado y funcional para que se reconociesen las colisiones de manera idónea, pero tras una serie de pruebas y versiones logramos ajustarlo como queríamos.
 De la misma manera, fue complicado configurar la forma en la que se pintaban los elementos del juego para que se mostrasen en la posición esperada, ya que se solían sobreponer entre sí, por lo que tuvimos que ser bastante minuciosos y cuidadosos con los métodos _paint()_ y _paintComponent()_.
 
 ### 🕹️ Requisitos
-* Pantalla 1920 x 1080
+* Pantalla 1920 x 1080 px
 * Procesador con velocidad base de 2.8 GHz
 
 
