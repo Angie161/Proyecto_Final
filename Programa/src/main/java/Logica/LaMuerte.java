@@ -1,5 +1,10 @@
 package Logica;
 
+import Factories.AngelesFactory;
+import Factories.DemoniosFactory;
+import Factories.PersonaFactory;
+
+import java.awt.*;
 import java.math.BigInteger;
 
 /**
@@ -14,12 +19,17 @@ public class LaMuerte {
      * Constructor personalizado en el que se inicializan las variables.
      */
     public LaMuerte() {
-        fragAlmas = new BigInteger("0");
+        fragAlmas = new BigInteger("812734128374231");
         poder     = 1;
 
         depSobre[0] = new DepSobre<Persona>();
         depSobre[1] = new DepSobre<Demonio>();
         depSobre[2] = new DepSobre<Angel>();
+        for(int i = 0; i < 100; i++) {
+            depSobre[0].add(PersonaFactory.crearPersona(this, Color.WHITE));
+            depSobre[1].add(DemoniosFactory.crearDemonio(this, new Color(100,0,0)));
+            depSobre[2].add(AngelesFactory.crearAngel(this, Color.WHITE));
+        }
     }
 
     /**

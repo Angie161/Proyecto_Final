@@ -69,7 +69,7 @@ public class PanelAnuncio extends JPanel {
             }
         });
         revisarEventos.start();
-        tutorial();
+        //tutorial();
     }
 
     /**

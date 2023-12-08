@@ -31,10 +31,10 @@ public class MundoTerrenal {
             @Override
             public void run() {
                 while(true) {
-                    exorcizar((new Random().nextInt(5000)));
-                    destruccionBarca((new Random().nextInt(5000)), barca);
+                    exorcizar((new Random().nextInt(334)));
+                    destruccionBarca((new Random().nextInt(333)), barca);
                     try {
-                        Thread.sleep(500/(demEnviados.getTam() + 1));
+                        Thread.sleep(100/(demEnviados.getTam() + 1));
                     } catch (InterruptedException e) {
                         return;
                     }

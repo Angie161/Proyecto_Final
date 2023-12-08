@@ -29,11 +29,11 @@ public class Terremoto {
             @Override
             public void run() {
                 while(true) {
-                    if((new Random()).nextInt(1000) == 1 && puente.getFuncional()==true) {
+                    if((new Random()).nextInt(100) == 1 && puente.getFuncional()==true) {
                         puente.setFuncional(false);
                     }
                     try {
-                        Thread.sleep(10000);
+                        Thread.sleep(100);
                     } catch (InterruptedException e) {
                         return;
                     }
