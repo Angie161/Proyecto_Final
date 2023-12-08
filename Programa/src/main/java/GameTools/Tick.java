@@ -21,8 +21,8 @@ public class Tick extends Thread {
 
     /**
      * Constructor de Tick.
-     * @param controles
-     * @param panelMapa
+     * @param controles los controles del jugador.
+     * @param panelMapa el mapa donde se mueve el jugador.
      */
     public Tick(Controles controles, PanelMapa panelMapa){
         super();
@@ -73,7 +73,7 @@ public class Tick extends Thread {
     }
 
     /**
-     * Permite que la muerte mueva las almas, variando su velocidad y posición.
+     * Permite que el jugador mueva las almas, variando su velocidad y posición.
      * @param hitbox la cuál se quiere mover.
      */
     private void moverHitbox(Hitbox hitbox) {
@@ -103,7 +103,7 @@ public class Tick extends Thread {
     }
 
     /**
-     * Establece la relación entre la hitbox del jugador y los controles.
+     * Establece la relación entre la hitbox del jugador, su panel y los controles.
      */
     private void jugadorSigueAControles() {
         controles.setLocation(controles.getLocation().x + controles.getJugador().getVelocidad().x, controles.getLocation().y + controles.getJugador().getVelocidad().y);
