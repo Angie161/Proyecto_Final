@@ -10,11 +10,20 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.Random;
 
+/**
+ * Clase encargada de la revisión del movimiento de las hitbox y su interacción con el entorno o demás hitbox.
+ */
 public class Tick extends Thread {
     private static double tick = 5;
     private Controles controles;
     private PanelMapa panelMapa;
     private boolean interactuar = false;
+
+    /**
+     * Constructor de Tick.
+     * @param controles
+     * @param panelMapa
+     */
     public Tick(Controles controles, PanelMapa panelMapa){
         super();
         this.controles = controles;
@@ -22,6 +31,9 @@ public class Tick extends Thread {
         start();
     }
 
+    /**
+     * Checkea el estado de las hitbox, llamando a métodos que se encargan de revisar si estas colisionan, son eliminadas del mapa, etc.
+     */
     @Override
     public void run() {
         while(true) {
@@ -60,6 +72,10 @@ public class Tick extends Thread {
         }
     }
 
+    /**
+     * Permite que la muerte mueva las almas, variando su velocidad y posición.
+     * @param hitbox la cuál se quiere mover.
+     */
     private void moverHitbox(Hitbox hitbox) {
         if (hitbox.isMovible()) {
             hitbox.setVelocidad(Hitbox.getTodasLasHitbox().get(0).getVelocidad());
@@ -86,12 +102,20 @@ public class Tick extends Thread {
         hitbox.setVelocidad(0,0);
     }
 
+    /**
+     * Establece la relación entre la hitbox del jugador y los controles.
+     */
     private void jugadorSigueAControles() {
         controles.setLocation(controles.getLocation().x + controles.getJugador().getVelocidad().x, controles.getLocation().y + controles.getJugador().getVelocidad().y);
         controles.getJugador().setLocation(controles.getLocation());
         controles.getJugador().getHitbox().setLocation(controles.getLocation());
         controles.getJugador().getHitbox().setVelocidad(controles.getJugador().getVelocidad());
     }
+
+    /**
+     * Establece las condiciones para que un alma sea enviada al infierno, desaparezca del mapa y agregue los fragmentos de almas correspondientes a la Muerte.
+     * @param h hitbox del alma que se quiere quemar.
+     */
     private void quemarAlma(Hitbox h) {
         if((h.getLocation().x > 719 && h.getLocation().x < 871 - h.getHitbox().width) && (h.getLocation().y > 435 || h.getLocation().y < (310 - h.getHitbox().height)) && PanelPuente.getPuente().getFuncional()) {
             int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
@@ -105,6 +129,11 @@ public class Tick extends Thread {
             Spawner.unAlmaMenos();
         }
     }
+
+    /**
+     * Establece las condiciones para que un alma sea almacenada en los depósitos sobrenaturales de entrada.
+     * @param h hitbox del alma que se desea guardar.
+     */
     private void guardarAlma(Hitbox h) {
         if(((PanelAlma) h.getPanelAsociado()).getAlma() instanceof Angel && panelMapa.getPanelDepSobres()[0].getBounds().contains(h.getHitbox())) {
             panelMapa.getPanelDepSobres()[0].getDepSobre().add(((PanelAlma) h.getPanelAsociado()).getAlma());
@@ -123,6 +152,11 @@ public class Tick extends Thread {
             Spawner.unAlmaMenos();
         }
     }
+
+    /**
+     * Establece las condiciones para que un alma sea sacada de los depósitos sobrenaturales de entrada.
+     * @param h hitbox de la muerte, la cual debe entrar en cierto perímetro para sacar almas.
+     */
     private void sacarAlma(Hitbox h) {
         if(panelMapa.getPanelSalidaDepSobres()[0].getBounds().contains(h.getHitbox())) {
             if(panelMapa.getPanelSalidaDepSobres()[0].getDepSobre().see(0) != null && panelMapa.getPanelAltar()[0].getPanelAlma() == null && !interactuar) {
@@ -196,6 +230,11 @@ public class Tick extends Thread {
             interactuar = false;
         }
     }
+
+    /**
+     * Establece el perímetro al cuál debe ingresar el jugador para que se active el Panel de Menu Principal.
+     * @param h hitbox de la muerte.
+     */
     private void entrarAlMenu(Hitbox h) {
         if((h.getLocation().x >= 325 && h.getLocation().x <= 565 ) && (h.getLocation().y > 75 && h.getLocation().y < 100)) {
             panelMapa.setComponentZOrder(panelMapa.getPanelMenuMausoleo(), 0);
