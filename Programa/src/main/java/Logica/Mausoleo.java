@@ -1,5 +1,7 @@
 package Logica;
 
+import java.math.BigInteger;
+
 /**
  * Esta clase representa la "casa" de la muerte y es la que permite hacer mejoras.
  */
@@ -56,17 +58,17 @@ public class Mausoleo {
     public void enviarDemonio() throws SinCapPermitidaException, BarcaRotaException, AngelesInsuficienteException, FragmentosInsuficientesException, DemonioNullException {
         if(propietario.getDepSobre()[1].see(0)==null){
             throw new DemonioNullException();
-        } else if(propietario.getDepSobre()[2].getTam() >= precios.getCantAngelesEnvio(tierra) && propietario.getFragAlmas() >= precios.getPrecioFragEnvio(tierra)) {
-            int aux = precios.getPrecioFragEnvio(tierra);
+        } else if(propietario.getDepSobre()[2].getTam() >= precios.getCantAngelesEnvio(tierra) && propietario.getFragAlmas().compareTo(precios.getPrecioFragEnvio(tierra)) >= 0) {
+            BigInteger aux = precios.getPrecioFragEnvio(tierra);
             barca.traslado(tierra, (Demonio) propietario.getDepSobre()[1].see(0));
             propietario.getDepSobre()[1].get();
-            propietario.addFragAlmas(-aux);
+            propietario.addFragAlmas(aux.negate());
             for(int i = 0; i < precios.getCantAngelesEnvio(tierra); i++) {
                 propietario.getDepSobre()[2].get();
             }
         } else if(propietario.getDepSobre()[2].getTam() < precios.getCantAngelesEnvio(tierra)) {
             throw new AngelesInsuficienteException();
-        } else if(propietario.getFragAlmas() < precios.getPrecioFragEnvio(tierra)) {
+        } else if(propietario.getFragAlmas().compareTo(precios.getPrecioFragEnvio(tierra)) < 0) {
             throw new FragmentosInsuficientesException();
         }
     }
@@ -77,8 +79,8 @@ public class Mausoleo {
      * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void aumentarCapacidad() throws FragmentosInsuficientesException {
-        if(propietario.getFragAlmas() >= precios.getPrecioMejoraCapacidad(tierra) && propietario.getPoder() * 2 >= tierra.getCapacidad()) {
-            propietario.addFragAlmas(-precios.getPrecioMejoraCapacidad(tierra));
+        if(propietario.getFragAlmas().compareTo(precios.getPrecioMejoraCapacidad(tierra)) >= 0 && propietario.getPoder() * 2 >= tierra.getCapacidad()) {
+            propietario.addFragAlmas(precios.getPrecioMejoraCapacidad(tierra).negate());
             tierra.setCapacidad(tierra.getCapacidad() + 1);
         } else {
             throw new FragmentosInsuficientesException();
@@ -90,12 +92,12 @@ public class Mausoleo {
      *
      * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
-    public void aumentarPoder() throws FragmentosInsuficientesException {
-        if(propietario.getFragAlmas() >= precios.getPrecioMejoraPoder() && propietario.getPoder()<100) {
-            propietario.addFragAlmas(-precios.getPrecioMejoraPoder());
+    public void aumentarPoder() throws FragmentosInsuficientesException, NivelMaximoException{
+        if(propietario.getFragAlmas().compareTo(precios.getPrecioMejoraPoder()) >= 0 && propietario.getPoder()<100) {
+            propietario.addFragAlmas(precios.getPrecioMejoraPoder().negate());
             propietario.setPoder(propietario.getPoder() + 1);
         } else if (propietario.getPoder()>=100){
-            System.out.println("Nivel Máximo alcanzado");
+            throw new NivelMaximoException();
         } else {
             throw new FragmentosInsuficientesException();
         }
@@ -108,9 +110,9 @@ public class Mausoleo {
      * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void repararPuente(Puente puente) throws FragmentosInsuficientesException {
-        if(propietario.getFragAlmas() >= precios.getPrecioRepararaPuente() && !puente.getFuncional()) {
+        if(propietario.getFragAlmas().compareTo(precios.getPrecioRepararaPuente()) >= 0 && !puente.getFuncional()) {
             puente.setFuncional(true);
-            propietario.addFragAlmas(-precios.getPrecioRepararaPuente());
+            propietario.addFragAlmas(precios.getPrecioRepararaPuente().negate());
         } else if (puente.getFuncional()) {
             System.out.println("El puente no está roto");
         } else {
@@ -124,9 +126,9 @@ public class Mausoleo {
      * @throws FragmentosInsuficientesException Cuando no hay Fragmentos de alma suficientes.
      */
     public void repararBarca() throws FragmentosInsuficientesException {
-        if(propietario.getFragAlmas() >= precios.getPrecioRepararBarca() && !barca.getFuncional()) {
+        if(propietario.getFragAlmas().compareTo(precios.getPrecioRepararBarca()) >= 0 && !barca.getFuncional()) {
             barca.setFuncional(true);
-            propietario.addFragAlmas(-precios.getPrecioRepararBarca());
+            propietario.addFragAlmas(precios.getPrecioRepararBarca().negate());
         } else if (barca.getFuncional()) {
             System.out.println("La barca no está rota");
         } else {

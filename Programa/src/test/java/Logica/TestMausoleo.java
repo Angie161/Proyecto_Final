@@ -3,6 +3,9 @@ package Logica;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+
+import java.math.BigInteger;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -35,7 +38,7 @@ public class TestMausoleo {
     @DisplayName("Test mejora de capacidad con fragmentos insuficientes")
     void aumentoFallidoCapacidad() throws FragmentosInsuficientesException{
         assertEquals(1,mundoTerrenal.getCapacidad());
-        assertEquals(0, laMuerte.getFragAlmas());
+        assertEquals(BigInteger.valueOf(0), laMuerte.getFragAlmas());
         assertThrows(FragmentosInsuficientesException.class, () -> {
             mausoleo.aumentarCapacidad();
         });
@@ -49,11 +52,11 @@ public class TestMausoleo {
     @Test
     @DisplayName("Test aumento de capacidad")
     void aumentoCapacidad() throws FragmentosInsuficientesException{
-        laMuerte.addFragAlmas(1600);
-        assertEquals(1600, laMuerte.getFragAlmas());
+        laMuerte.addFragAlmas(new BigInteger("1600"));
+        assertEquals(BigInteger.valueOf(1600), laMuerte.getFragAlmas());
         mausoleo.aumentarCapacidad();
         assertEquals(2,mundoTerrenal.getCapacidad());
-        assertEquals(100, laMuerte.getFragAlmas());
+        assertEquals(BigInteger.valueOf(100), laMuerte.getFragAlmas());
     }
 
     /**
@@ -65,7 +68,7 @@ public class TestMausoleo {
     @Test
     @DisplayName("Test mejora de poder con fragmentos insuficientes")
     void aumentoFallidoPoder() throws FragmentosInsuficientesException{
-        assertEquals(0, laMuerte.getFragAlmas());
+        assertEquals(BigInteger.valueOf(0), laMuerte.getFragAlmas());
         assertThrows(FragmentosInsuficientesException.class, () -> {
             mausoleo.aumentarPoder();
         });
@@ -78,12 +81,12 @@ public class TestMausoleo {
      */
     @Test
     @DisplayName("Test aumento de poder")
-    void aumentoPoder() throws FragmentosInsuficientesException{
-        laMuerte.addFragAlmas(3000);
-        assertEquals(3000, laMuerte.getFragAlmas());
+    void aumentoPoder() throws FragmentosInsuficientesException, NivelMaximoException{
+        laMuerte.addFragAlmas(BigInteger.valueOf(3000));
+        assertEquals(BigInteger.valueOf(3000), laMuerte.getFragAlmas());
         mausoleo.aumentarPoder();
         assertEquals(2,laMuerte.getPoder());
-        assertEquals(1000, laMuerte.getFragAlmas());
+        assertEquals(BigInteger.valueOf(1000), laMuerte.getFragAlmas());
     }
 
     /**
@@ -96,8 +99,8 @@ public class TestMausoleo {
     @DisplayName("Test reparar puente con fragmentos insuficientes")
     void reparacionFallidaPuente() throws FragmentosInsuficientesException{
         puente.setFuncional(false);
-        laMuerte.addFragAlmas(1000);
-        assertEquals(1000, laMuerte.getFragAlmas());
+        laMuerte.addFragAlmas(BigInteger.valueOf(1000));
+        assertEquals(BigInteger.valueOf(1000), laMuerte.getFragAlmas());
         assertThrows(FragmentosInsuficientesException.class, () -> {
             mausoleo.repararPuente(puente);
         });
@@ -112,11 +115,11 @@ public class TestMausoleo {
     @DisplayName("Test reparar puente")
     void reparacionPuente() throws FragmentosInsuficientesException{
         puente.setFuncional(false);
-        laMuerte.addFragAlmas(20000);
-        assertEquals(20000, laMuerte.getFragAlmas());
+        laMuerte.addFragAlmas(BigInteger.valueOf(20000));
+        assertEquals(BigInteger.valueOf(20000), laMuerte.getFragAlmas());
         mausoleo.repararPuente(puente);
         assertTrue(puente.getFuncional());
-        assertEquals(0, laMuerte.getFragAlmas());
+        assertEquals(BigInteger.valueOf(10000), laMuerte.getFragAlmas());
     }
 
     /**
@@ -129,8 +132,8 @@ public class TestMausoleo {
     @DisplayName("Test reparar barca con fragmentos insuficientes")
     void reparacionFallidaBarca() throws FragmentosInsuficientesException{
         mausoleo.getBarca().setFuncional(false);
-        laMuerte.addFragAlmas(1000);
-        assertEquals(1000, laMuerte.getFragAlmas());
+        laMuerte.addFragAlmas(BigInteger.valueOf(1000));
+        assertEquals(BigInteger.valueOf(1000), laMuerte.getFragAlmas());
         assertThrows(FragmentosInsuficientesException.class, () -> {
             mausoleo.repararBarca();
         });
@@ -145,10 +148,10 @@ public class TestMausoleo {
     @DisplayName("Test reparar barca")
     void reparacionBarca() throws FragmentosInsuficientesException{
         mausoleo.getBarca().setFuncional(false);
-        laMuerte.addFragAlmas(2000);
-        assertEquals(2000, laMuerte.getFragAlmas());
+        laMuerte.addFragAlmas(BigInteger.valueOf(2000));
+        assertEquals(BigInteger.valueOf(2000), laMuerte.getFragAlmas());
         mausoleo.repararBarca();
         assertTrue(mausoleo.getBarca().getFuncional());
-        assertEquals(0, laMuerte.getFragAlmas());
+        assertEquals(BigInteger.valueOf(0), laMuerte.getFragAlmas());
     }
 }

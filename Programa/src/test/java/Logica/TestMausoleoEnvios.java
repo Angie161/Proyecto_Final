@@ -5,6 +5,8 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import java.awt.*;
+import java.math.BigInteger;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 /**
@@ -34,7 +36,7 @@ public class TestMausoleoEnvios {
         mausoleo.getBarca().setFuncional(true);
 
         // Agregamos el mínimo de fragmentos de alma para hacer un envío
-        laMuerte.addFragAlmas(500);
+        laMuerte.addFragAlmas(BigInteger.valueOf(500));
 
         // Agregamos un 5 Angeles al depósito de la muerte, el mínimo para hacer un envío
         laMuerte.getDepSobre()[2].add(angFactory.crearAngel(laMuerte, color));
@@ -57,7 +59,7 @@ public class TestMausoleoEnvios {
     @DisplayName("Test envío correcto")
     void envioCorrecto() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
         assertNotNull(laMuerte.getDepSobre()[1].see(0));
-        assertEquals(500, mausoleo.getPrecios().getPrecioFragEnvio(mundoTerrenal));
+        assertEquals(BigInteger.valueOf(500), mausoleo.getPrecios().getPrecioFragEnvio(mundoTerrenal));
         assertEquals(1, mausoleo.getPrecios().getCantAngelesEnvio(mundoTerrenal));
 
         assertEquals(1, mausoleo.getTierra().getCapacidad());
@@ -65,7 +67,7 @@ public class TestMausoleoEnvios {
         mausoleo.enviarDemonio();
         assertEquals(1, mausoleo.getTierra().getCantDemEnviados());
 
-        assertEquals(0, laMuerte.getFragAlmas());
+        assertEquals(BigInteger.valueOf(0), laMuerte.getFragAlmas());
         assertEquals(0, laMuerte.getDepSobre()[1].getTam());
         assertEquals(0, laMuerte.getDepSobre()[2].getTam());
     }
@@ -89,14 +91,14 @@ public class TestMausoleoEnvios {
 
         mausoleo.enviarDemonio();
         assertEquals(1,mausoleo.getTierra().getCantDemEnviados());
-        assertEquals(0, laMuerte.getFragAlmas());
+        assertEquals(BigInteger.valueOf(0), laMuerte.getFragAlmas());
         assertEquals(1, laMuerte.getDepSobre()[1].getTam());
         assertEquals(0, laMuerte.getDepSobre()[2].getTam());
 
         laMuerte.getDepSobre()[2].add(angFactory.crearAngel(laMuerte, color));
 
         assertEquals(1, laMuerte.getDepSobre()[2].getTam());
-        laMuerte.addFragAlmas(600);
+        laMuerte.addFragAlmas(BigInteger.valueOf(600));
 
         assertThrows(SinCapPermitidaException.class, () -> {
             mausoleo.enviarDemonio();
@@ -155,8 +157,8 @@ public class TestMausoleoEnvios {
     @Test
     @DisplayName("Test envío con fragmentos insuficientes")
     void envioFragmentosInsuficientes() throws DemonioNullException, BarcaRotaException, FragmentosInsuficientesException, SinCapPermitidaException, AngelesInsuficienteException {
-        laMuerte.addFragAlmas(-10);
-        assertEquals(490,laMuerte.getFragAlmas());
+        laMuerte.addFragAlmas(new BigInteger("-10"));
+        assertEquals(BigInteger.valueOf(490),laMuerte.getFragAlmas());
         assertThrows(FragmentosInsuficientesException.class, () -> {
             mausoleo.enviarDemonio();
         });

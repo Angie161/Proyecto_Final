@@ -1,5 +1,7 @@
 package Logica;
 
+import java.math.BigInteger;
+
 /**
  * Clase que contendrá los precios de las mejoras y reparaciones en el Mausoleo.
  */
@@ -29,8 +31,8 @@ public class Precios {
      * @param mundoTerrenal el mundo terrenal donde se quiera realizar el envío.
      * @return la cantidad de fragmentos que se necesitará para realizar el siguiente envío.
      */
-    public int getPrecioFragEnvio(MundoTerrenal mundoTerrenal) {
-        return mundoTerrenal.getCantDemEnviados() * laMuerte.getPoder() * 100 + 500 * laMuerte.getPoder();
+    public BigInteger getPrecioFragEnvio(MundoTerrenal mundoTerrenal) {
+        return BigInteger.valueOf(mundoTerrenal.getCantDemEnviados() * laMuerte.getPoder() * 100 + 500 * laMuerte.getPoder());
     }
 
     /**
@@ -39,8 +41,8 @@ public class Precios {
      * @param mundoTerrenal el mundo terrenal al que se le quiere aumentar la capacidad.
      * @return el precio necesario para aumentar la capacidad del Mundo Terrenal.
      */
-    public int getPrecioMejoraCapacidad(MundoTerrenal mundoTerrenal) {
-        return mundoTerrenal.getCapacidad() * 1500;
+    public BigInteger getPrecioMejoraCapacidad(MundoTerrenal mundoTerrenal) {
+        return BigInteger.valueOf(mundoTerrenal.getCapacidad() * 1500);
     }
 
     /**
@@ -48,8 +50,8 @@ public class Precios {
      *
      * @return el precio necesario para aumentar el poder de LaMuerte.
      */
-    public int getPrecioMejoraPoder() {
-        return (int) Math.pow(laMuerte.getPoder(), 2) * 2000;
+    public BigInteger getPrecioMejoraPoder() {
+        return BigInteger.valueOf((long) Math.pow(laMuerte.getPoder(), 5) * 2000);
     }
     
     /**
@@ -57,8 +59,8 @@ public class Precios {
      *
      * @return el precio necesario para reparar la barca.
      */
-    public int getPrecioRepararBarca() {
-        return (int) Math.pow(2, laMuerte.getPoder()) * 1000;
+    public BigInteger getPrecioRepararBarca() {
+        return BigInteger.valueOf((long) Math.pow(laMuerte.getPoder(), 2.5) * 2000);
     }
 
     /**
@@ -66,7 +68,7 @@ public class Precios {
      *
      * @return el precio necesario para reparar el puente.
      */
-    public int getPrecioRepararaPuente() {
-        return (int) Math.pow(2, laMuerte.getPoder()) * 10000;
+    public BigInteger getPrecioRepararaPuente() {
+        return BigInteger.valueOf((long) Math.pow(laMuerte.getPoder(), 2.5) * 10000);
     }
 }

@@ -198,7 +198,7 @@ public class PanelMapa extends JPanel {
             g.setColor(Color.BLACK);
             g.setFont(fuentePersonalizada);
             g.drawImage(imageAlmas[0].getImage(),5,8,null);
-            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 40, 30);
+            g.drawString(panelLaMuerte.getLaMuerte().getFragAlmas().toString(), 40, 30);
             g.drawImage(imageAlmas[2].getImage(),1110,8,null);
             g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getDepSobre()[1].getTam()), 1140, 30);
             g.drawImage(imageAlmas[1].getImage(),1010,8,null);
@@ -220,7 +220,7 @@ public class PanelMapa extends JPanel {
 
             g.setColor(Color.BLACK);
             g.setFont(new Font("Arial", Font.PLAIN,20));
-            g.drawString(Long.toString(panelLaMuerte.getLaMuerte().getFragAlmas()), 10, 30);
+            g.drawString(panelLaMuerte.getLaMuerte().getFragAlmas().toString(), 10, 30);
         }
     }
 }

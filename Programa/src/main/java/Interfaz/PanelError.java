@@ -39,7 +39,7 @@ public class PanelError extends JPanel {
     public void invocar(String texto) {
         if(label.getText().equals(" ")) {
             label.setText(texto);
-            Timer timer = new Timer(1, new ActionListener() {
+            Timer timer = new Timer(5, new ActionListener() {
                 int x = 0;
 
                 /**

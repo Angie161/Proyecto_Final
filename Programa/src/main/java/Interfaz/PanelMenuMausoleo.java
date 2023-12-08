@@ -47,22 +47,11 @@ public class PanelMenuMausoleo extends JPanel {
         buttonRepPuente = new ButtonRepPuente(panelMapa);
         texto = new JLabel[14];
 
-        // 0: Poder, 1:CantAngeles, 2:CantDemonios, 3:CantPersonas, 4:cantFragAlmas, 5:Capacidad, 6:DemoniosEnviados.
-        texto[0] = new JLabel("Poder: " + panelMapa.getPanelLaMuerte().getLaMuerte().getPoder());
-        texto[1] = new JLabel("Ángeles: " + panelMapa.getPanelLaMuerte().getLaMuerte().getDepSobre()[2].getTam());
-        texto[2] = new JLabel("Demonios: " + panelMapa.getPanelLaMuerte().getLaMuerte().getDepSobre()[1].getTam());
-        texto[3] = new JLabel("Personas: " + panelMapa.getPanelLaMuerte().getLaMuerte().getDepSobre()[0].getTam());
-        texto[4] = new JLabel("Frag: " + panelMapa.getPanelLaMuerte().getLaMuerte().getFragAlmas());
-        texto[5] = new JLabel("Capacidad: " + panelMapa.getMausoleo().getTierra().getCapacidad());
-        texto[6] = new JLabel("Dem. enviados: " + panelMapa.getMausoleo().getTierra().getCantDemEnviados());
-        texto[7] = new JLabel("La Muerte");
-        texto[8] = new JLabel("Mundo Terrenal");
-
-        texto[9] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraPoder() + " frag");
-        texto[10] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioMejoraCapacidad(panelMapa.getMausoleo().getTierra()) + " frag");
-        texto[11] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getCantAngelesEnvio(panelMapa.getMausoleo().getTierra()) + " angeles y " + panelMapa.getMausoleo().getPrecios().getPrecioFragEnvio(panelMapa.getMausoleo().getTierra()) + " frag");
-        texto[12] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararBarca() + " frag");
-        texto[13] = new JLabel("Requiere: " + panelMapa.getMausoleo().getPrecios().getPrecioRepararaPuente() + " frag");
+        for(int i = 0; i < 14; i++) {
+            texto[i] = new JLabel();
+        }
+        texto[7].setText("La Muerte");
+        texto[8].setText("Mundo Terrenal");
 
         try {
             imageMenu = new ImageIcon(getClass().getClassLoader().getResource("Imagenes/Menu/MenuMausoleo.png"));
@@ -89,17 +78,17 @@ public class PanelMenuMausoleo extends JPanel {
         texto[1].setBounds(50,175,275,50);
         texto[2].setBounds(50, 225, 275,50);
         texto[3].setBounds(50, 275, 275,50);
-        texto[4].setBounds(50, 325, 450,50);
+        texto[4].setBounds(50, 325, 460,50);
         texto[5].setBounds(50, 550, 275,50);
         texto[6].setBounds(50, 600, 275,50);
         texto[7].setBounds(50, 50, 250, 50);
         texto[8].setBounds(50, 475, 250,50);
 
-        texto[9].setBounds(600, 125, 300,50);
+        texto[9].setBounds(600, 125, 500,50);
         texto[10].setBounds(600, 275, 550, 50);
         texto[11].setBounds(600, 425, 550, 50);
-        texto[12].setBounds(600, 630, 250, 50);
-        texto[13].setBounds(900, 630, 250, 50);
+        texto[12].setBounds(600, 630, 350, 50);
+        texto[13].setBounds(900, 630, 350, 50);
 
         for(int i = 0; i<9; i++){
             if (fuentePersonalizadaNegr != null) {

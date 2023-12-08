@@ -1,10 +1,12 @@
 package Logica;
 
+import java.math.BigInteger;
+
 /**
  * Esta clase es el protagonista de nuestro juego y representa al personaje utilizado por el jugador.
  */
 public class LaMuerte {
-    private long fragAlmas;
+    private BigInteger fragAlmas;
     private int poder;
     private DepSobre[] depSobre = new DepSobre[3];;
 
@@ -12,7 +14,7 @@ public class LaMuerte {
      * Constructor personalizado en el que se inicializan las variables.
      */
     public LaMuerte() {
-        fragAlmas = 0;
+        fragAlmas = new BigInteger("999999999999999999999");
         poder     = 1;
 
         depSobre[0] = new DepSobre<Persona>();
@@ -25,7 +27,7 @@ public class LaMuerte {
      *
      * @return la cantidad de fragmentos de alma que tenga el jugador.
      */
-    public long getFragAlmas() {
+    public BigInteger getFragAlmas() {
         return fragAlmas;
     }
 
@@ -34,8 +36,8 @@ public class LaMuerte {
      *
      * @param fragAlmasObtenido la cantidad que se quiere agregar o quitar.
      */
-    public void addFragAlmas(long fragAlmasObtenido) {
-        fragAlmas += fragAlmasObtenido;
+    public void addFragAlmas(BigInteger fragAlmasObtenido) {
+        fragAlmas = fragAlmas.add(fragAlmasObtenido);
     }
 
     /**

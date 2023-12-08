@@ -7,6 +7,7 @@ import Logica.Demonio;
 import Logica.Persona;
 
 import java.awt.*;
+import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -55,7 +56,7 @@ public class Tick extends Thread {
             }
             sacarAlma(Hitbox.getTodasLasHitbox().get(0));
             if((new Random()).nextInt((int)400/(panelMapa.getMausoleo().getTierra().getCantDemEnviados() + 1)) == 0) {
-                 controles.getJugador().getLaMuerte().addFragAlmas(panelMapa.getMausoleo().getTierra().muertes(panelMapa.getPanelLaMuerte().getLaMuerte()));
+                 controles.getJugador().getLaMuerte().addFragAlmas(BigInteger.valueOf(panelMapa.getMausoleo().getTierra().muertes(panelMapa.getPanelLaMuerte().getLaMuerte())));
             }
             try {
                 Thread.sleep((int) tick);
@@ -119,12 +120,12 @@ public class Tick extends Thread {
     private void quemarAlma(Hitbox h) {
         if((h.getLocation().x > 719 && h.getLocation().x < 871 - h.getHitbox().width) && (h.getLocation().y > 435 || h.getLocation().y < (310 - h.getHitbox().height)) && PanelPuente.getPuente().getFuncional()) {
             int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
-            controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
+            controles.getJugador().getLaMuerte().addFragAlmas(BigInteger.valueOf(valorDelAlma));
             panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());
             Spawner.unAlmaMenos();
         } else if (((h.getLocation().x > 719 && h.getLocation().x < 871 - h.getHitbox().width) && (h.getLocation().y > 435 || h.getLocation().y < (310 - h.getHitbox().height)) || (h.getLocation().x > (PanelPuente.getUbicacion().x + PanelPuente.getPuenteSize().width/3) && h.getLocation().x < (PanelPuente.getUbicacion().x + 2 * PanelPuente.getPuenteSize().width/3) - h.getHitbox().width + 1)) && (h.getLocation().y < 499 || h.getLocation().y > (301 - h.getHitbox().height)) && !PanelPuente.getPuente().getFuncional()) {
             int valorDelAlma = ((PanelAlma) h.getPanelAsociado()).getAlma().calcValor(controles.getJugador().getLaMuerte());
-            controles.getJugador().getLaMuerte().addFragAlmas(valorDelAlma);
+            controles.getJugador().getLaMuerte().addFragAlmas(BigInteger.valueOf(valorDelAlma));
             panelMapa.remove(((PanelAlma) h.getPanelAsociado()).purificar());
             Spawner.unAlmaMenos();
         }
