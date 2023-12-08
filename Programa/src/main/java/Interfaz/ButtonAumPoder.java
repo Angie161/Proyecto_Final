@@ -1,6 +1,7 @@
 package Interfaz;
 
 import Logica.FragmentosInsuficientesException;
+import Logica.NivelMaximoException;
 
 import javax.swing.*;
 import java.awt.*;
@@ -15,7 +16,7 @@ public class ButtonAumPoder extends JButton {
     /**
      * Constructor de ButtonAumCap, configura los parámetros iniciales para que se muestren en pantalla.
      *
-     * @param panelMapa con el cuál se accede a Mausoleo para modificar el Poder.
+     * @param panelMapa con el cual se accede a Mausoleo para modificar el Poder.
      */
     public ButtonAumPoder(PanelMapa panelMapa){
         super();
@@ -42,6 +43,9 @@ public class ButtonAumPoder extends JButton {
                 }catch (FragmentosInsuficientesException ex){
                     panelMapa.getPanelError().invocar("No tienes suficientes fragmentos");
                     System.out.println("No tienes suficientes fragmentos");
+                }catch (NivelMaximoException exp) {
+                    panelMapa.getPanelError().invocar("Poder máximo alcanzado");
+                    System.out.println("Poder máximo alcanzado");
                 }
             }
 
